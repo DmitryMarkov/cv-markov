@@ -395,12 +395,17 @@ hr {
 }
 
 a {
-  color: #9b4dca;
+  color: #1c82eb;
   text-decoration: none;
 }
 
 a:focus, a:hover {
-  color: #606c76;
+  color: #488cd2;
+  text-decoration: underline
+}
+
+a:focus > i, a:hover > i {
+  text-decoration: none
 }
 
 dl,
@@ -430,21 +435,6 @@ ol {
 
 ul {
   list-style: circle inside;
-}
-
-.button,
-button,
-dd,
-dt,
-li {
-  margin-bottom: 1.0rem;
-}
-
-fieldset,
-input,
-select,
-textarea {
-  margin-bottom: 1.5rem;
 }
 
 blockquote,
@@ -577,6 +567,44 @@ img {
 
 dt {
   margin-bottom: 0rem;
+  font-size: 1.5rem;
+}
+
+h6 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 40rem) {
+
+  .row .column.column-offset-10,
+  .row .column.column-offset-20,
+  .row .column.column-offset-25 ,
+  .row .column.column-offset-33, .row .column.column-offset-34,
+  .row .column.column-offset-50,
+  .row .column.column-offset-66, .row .column.column-offset-67,
+  .row .column.column-offset-75,
+  .row .column.column-offset-80 ,
+  .row .column.column-offset-90 {
+    margin-left: 0;
+  }
+
+  .row .column.column-10,
+  .row .column.column-20,
+  .row .column.column-25,
+  .row .column.column-33, .row .column.column-34,
+  .row .column.column-40,
+  .row .column.column-50,
+  .row .column.column-60,
+  .row .column.column-66, .row .column.column-67,
+  .row .column.column-75,
+  .row .column.column-80,
+  .row .column.column-90 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 /* Bootstrap particles */
@@ -598,8 +626,19 @@ dt {
 header h1 {
   text-transform: none;
   font-size: 4.0rem;
-  letter-spacing: .11em;
+  letter-spacing: .02em;
   word-spacing: 0.2em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+header .column > div {
+  margin-top: 2rem;
+  margin-bottom: 1.6rem;
+}
+
+header .column h5 + div a:not(:last-of-type) {
+  margin-right: 2.6rem;
 }
 
 .img-thumbnail {
@@ -616,35 +655,65 @@ header h1 {
   box-shadow: 0 2px 0 #ccc;
 }
 
-.description {
+#summary .column {
+  padding-top: 2.5rem;
+  background-color: #f0f0f0;
+  border-radius: .3em;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-left: calc(20% - 1.5rem);
+  margin-top: 1.0rem;
+  margin-bottom: 2.0rem;
+}
+
+@media (max-width: 40rem) {
+  #summary .column {
+    padding-left: 2.0rem;
+    margin-left: 0;
+    padding-right: 2.0rem;
+  }
+}
+
+em {
+  color: #aaa;
+}
+
+h3 {
   text-align: left;
   color: #ff5a18;
   font-family: 'Consolas', monospace;
   font-weight: 700;
   font-size: 1.4em;
-  margin-left: -11px;
+  margin-left: -0.55em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+
 }
-.description:before {
+h3:before {
   content: "<";
   visibility: hidden;
   color: #fa8c5f;
+  transition: visibility .1s;
 }
 
-.description:hover:before {
+h3:hover:before {
   content: "<";
   visibility: visible;
   color: #fa8c5f;
+  transition: visibility .1s;
 }
 
-.description:after {
+h3:after {
   content: ">";
   visibility: hidden;
   color: #fa8c5f;
+  transition: all .1s;
 }
-.description:hover:after {
+h3:hover:after {
   content: ">";
   visibility: visible;
   color: #fa8c5f;
+  transition: all .1s;
 }
 
 /* Font Awesome excerpt */
@@ -679,6 +748,9 @@ q-1 1 -1 2q-1 2 -1 3q-1 22 -13 36q0 -1 -1 -2v-2zM592 313q135 54 284 81q-2 1 -13 
 d="M1468 1156q28 -28 48 -76t20 -88v-1152q0 -40 -28 -68t-68 -28h-1344q-40 0 -68 28t-28 68v1600q0 40 28 68t68 28h896q40 0 88 -20t76 -48zM1024 1400v-376h376q-10 29 -22 41l-313 313q-12 12 -41 22zM1408 -128v1024h-416q-40 0 -68 28t-28 68v416h-768v-1536h1280z
 M233 768v-107h70l164 -661h159l128 485q7 20 10 46q2 16 2 24h4l3 -24q1 -3 3.5 -20t5.5 -26l128 -485h159l164 661h70v107h-300v-107h90l-99 -438q-5 -20 -7 -46l-2 -21h-4q0 3 -0.5 6.5t-1.5 8t-1 6.5q-1 5 -4 21t-5 25l-144 545h-114l-144 -545q-2 -9 -4.5 -24.5
 t-3.5 -21.5l-4 -21h-4l-2 21q-2 26 -7 46l-99 438h90v107h-300z" />
+    <glyph glyph-name="linkedin" unicode="&#xf0e1;"
+d="M349 911v-991h-330v991h330zM370 1217q1 -73 -50.5 -122t-135.5 -49h-2q-82 0 -132 49t-50 122q0 74 51.5 122.5t134.5 48.5t133 -48.5t51 -122.5zM1536 488v-568h-329v530q0 105 -40.5 164.5t-126.5 59.5q-63 0 -105.5 -34.5t-63.5 -85.5q-11 -30 -11 -81v-553h-329
+q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171 0 275 -113.5t104 -332.5z" />
     </font>
   </defs>
 </svg>) format('svf');
@@ -744,4 +816,8 @@ t-3.5 -21.5l-4 -21h-4l-2 21q-2 26 -7 46l-99 438h90v107h-300z" />
 
 .fa-file-word-o:before {
   content: "\f1c2";
+}
+
+.fa-linkedin:before {
+  content: "\f0e1";
 }
