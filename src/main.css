@@ -1,3 +1,6 @@
+/* Normalize.css excerpt */
+
+
 /* Bootstrap particles */
 
 .text-xs-left {
@@ -23,7 +26,7 @@ dt {
 header h1 {
   text-transform: none;
   font-size: 4.0rem;
-  letter-spacing: .12em;
+  letter-spacing: .11em;
   word-spacing: 0.2em;
 }
 
@@ -38,7 +41,7 @@ header h1 {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 50%;
-  width: 150px;
+  width: 11em;
   box-shadow: 0 2px 0 #ccc;
 }
 
@@ -74,4 +77,104 @@ header h1 {
   content: ">";
   visibility: visible;
   color: #fa8c5f;
+}
+
+/* Font Awesome excerpt */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url(data:application/font-svg;charset=utf-8;base64,<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg>
+<metadata>
+Created by FontForge 20120731 at Mon Oct 24 17:37:40 2016
+ By ,,,
+Copyright Dave Gandy 2016. All rights reserved.
+</metadata>
+<defs>
+  <font id="FontAwesome" horiz-adv-x="1536" >
+    <glyph glyph-name="twitter" unicode="&#xf099;" horiz-adv-x="1664"
+d="M1620 1128q-67 -98 -162 -167q1 -14 1 -42q0 -130 -38 -259.5t-115.5 -248.5t-184.5 -210.5t-258 -146t-323 -54.5q-271 0 -496 145q35 -4 78 -4q225 0 401 138q-105 2 -188 64.5t-114 159.5q33 -5 61 -5q43 0 85 11q-112 23 -185.5 111.5t-73.5 205.5v4q68 -38 146 -41
+q-66 44 -105 115t-39 154q0 88 44 163q121 -149 294.5 -238.5t371.5 -99.5q-8 38 -8 74q0 134 94.5 228.5t228.5 94.5q140 0 236 -102q109 21 205 78q-37 -115 -142 -178q93 10 186 50z" />
+    <glyph glyph-name="github" unicode="&#xf09b;"
+d="M768 1408q209 0 385.5 -103t279.5 -279.5t103 -385.5q0 -251 -146.5 -451.5t-378.5 -277.5q-27 -5 -40 7t-13 30q0 3 0.5 76.5t0.5 134.5q0 97 -52 142q57 6 102.5 18t94 39t81 66.5t53 105t20.5 150.5q0 119 -79 206q37 91 -8 204q-28 9 -81 -11t-92 -44l-38 -24
+q-93 26 -192 26t-192 -26q-16 11 -42.5 27t-83.5 38.5t-85 13.5q-45 -113 -8 -204q-79 -87 -79 -206q0 -85 20.5 -150t52.5 -105t80.5 -67t94 -39t102.5 -18q-39 -36 -49 -103q-21 -10 -45 -15t-57 -5t-65.5 21.5t-55.5 62.5q-19 32 -48.5 52t-49.5 24l-20 3q-21 0 -29 -4.5
+t-5 -11.5t9 -14t13 -12l7 -5q22 -10 43.5 -38t31.5 -51l10 -23q13 -38 44 -61.5t67 -30t69.5 -7t55.5 3.5l23 4q0 -38 0.5 -88.5t0.5 -54.5q0 -18 -13 -30t-40 -7q-232 77 -378.5 277.5t-146.5 451.5q0 209 103 385.5t279.5 279.5t385.5 103zM291 305q3 7 -7 12
+q-10 3 -13 -2q-3 -7 7 -12q9 -6 13 2zM322 271q7 5 -2 16q-10 9 -16 3q-7 -5 2 -16q10 -10 16 -3zM352 226q9 7 0 19q-8 13 -17 6q-9 -5 0 -18t17 -7zM394 184q8 8 -4 19q-12 12 -20 3q-9 -8 4 -19q12 -12 20 -3zM451 159q3 11 -13 16q-15 4 -19 -7t13 -15q15 -6 19 6z
+M514 154q0 13 -17 11q-16 0 -16 -11q0 -13 17 -11q16 0 16 11zM572 164q-2 11 -18 9q-16 -3 -14 -15t18 -8t14 14z" />
+    <glyph glyph-name="uniF1C1" unicode="&#xf1c1;"
+d="M1468 1156q28 -28 48 -76t20 -88v-1152q0 -40 -28 -68t-68 -28h-1344q-40 0 -68 28t-28 68v1600q0 40 28 68t68 28h896q40 0 88 -20t76 -48zM1024 1400v-376h376q-10 29 -22 41l-313 313q-12 12 -41 22zM1408 -128v1024h-416q-40 0 -68 28t-28 68v416h-768v-1536h1280z
+M894 465q33 -26 84 -56q59 7 117 7q147 0 177 -49q16 -22 2 -52q0 -1 -1 -2l-2 -2v-1q-6 -38 -71 -38q-48 0 -115 20t-130 53q-221 -24 -392 -83q-153 -262 -242 -262q-15 0 -28 7l-24 12q-1 1 -6 5q-10 10 -6 36q9 40 56 91.5t132 96.5q14 9 23 -6q2 -2 2 -4q52 85 107 197
+q68 136 104 262q-24 82 -30.5 159.5t6.5 127.5q11 40 42 40h21h1q23 0 35 -15q18 -21 9 -68q-2 -6 -4 -8q1 -3 1 -8v-30q-2 -123 -14 -192q55 -164 146 -238zM318 54q52 24 137 158q-51 -40 -87.5 -84t-49.5 -74zM716 974q-15 -42 -2 -132q1 7 7 44q0 3 7 43q1 4 4 8
+q-1 1 -1 2q-1 2 -1 3q-1 22 -13 36q0 -1 -1 -2v-2zM592 313q135 54 284 81q-2 1 -13 9.5t-16 13.5q-76 67 -127 176q-27 -86 -83 -197q-30 -56 -45 -83zM1238 329q-24 24 -140 24q76 -28 124 -28q14 0 18 1q0 1 -2 3z" />
+    <glyph glyph-name="_422" unicode="&#xf1c2;"
+d="M1468 1156q28 -28 48 -76t20 -88v-1152q0 -40 -28 -68t-68 -28h-1344q-40 0 -68 28t-28 68v1600q0 40 28 68t68 28h896q40 0 88 -20t76 -48zM1024 1400v-376h376q-10 29 -22 41l-313 313q-12 12 -41 22zM1408 -128v1024h-416q-40 0 -68 28t-28 68v416h-768v-1536h1280z
+M233 768v-107h70l164 -661h159l128 485q7 20 10 46q2 16 2 24h4l3 -24q1 -3 3.5 -20t5.5 -26l128 -485h159l164 661h70v107h-300v-107h90l-99 -438q-5 -20 -7 -46l-2 -21h-4q0 3 -0.5 6.5t-1.5 8t-1 6.5q-1 5 -4 21t-5 25l-144 545h-114l-144 -545q-2 -9 -4.5 -24.5
+t-3.5 -21.5l-4 -21h-4l-2 21q-2 26 -7 46l-99 438h90v107h-300z" />
+    </font>
+  </defs>
+</svg>) format('svf');
+  font-weight: normal;
+  font-style: normal
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 'FontAwesome';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+.fa-fw {
+  width: 1.28571429em;
+  text-align: center
+}
+
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center
+}
+
+.fa-stack-1x {
+  line-height: inherit
+}
+
+.fa-stack-2x {
+  font-size: 2em
+}
+
+.fa-inverse {
+  color: #fff
+}
+
+/* Icons */
+
+.fa-twitter:before {
+  content: "\f099";
+}
+
+.fa-github:before {
+  content: "\f09b";
+}
+
+.fa-file-pdf-o:before {
+  content: "\f1c1";
+}
+
+.fa-file-word-o:before {
+  content: "\f1c2";
 }
