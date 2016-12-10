@@ -1,4 +1,4 @@
-/* This file is not minified intentionally. Anyway, it's less than 15Kb. */
+/* This file is not minified intentionally. Anyway, it's less than 7Kb gzipped. */
 
 /* Google Fonts Include */
 /* 300 */
@@ -404,10 +404,6 @@ a:focus, a:hover {
   text-decoration: underline
 }
 
-a:focus > i, a:hover > i {
-  text-decoration: none
-}
-
 dl,
 ol,
 ul {
@@ -541,7 +537,7 @@ h6 {
     font-size: 2.4rem;
   }
   h6 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -571,7 +567,6 @@ dt {
 }
 
 h6 {
-  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.6;
   margin-bottom: 0;
@@ -672,6 +667,7 @@ header .column h5 + div a:not(:last-of-type),
     padding-left: 2.0rem;
     margin-left: 0;
     padding-right: 2.0rem;
+    padding-top: 2.0rem;
   }
 }
 
@@ -754,9 +750,9 @@ d="M349 911v-991h-330v991h330zM370 1217q1 -73 -50.5 -122t-135.5 -49h-2q-82 0 -13
 q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171 0 275 -113.5t104 -332.5z" />
     </font>
   </defs>
-</svg>) format('svf');
+</svg>) format('svg');
   font-weight: normal;
-  font-style: normal
+  font-style: normal;
 }
 
 .fa {
@@ -765,12 +761,12 @@ q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .fa-fw {
   width: 1.28571429em;
-  text-align: center
+  text-align: center;
 }
 
 .fa-stack {
@@ -779,26 +775,26 @@ q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171
   width: 2em;
   height: 2em;
   line-height: 2em;
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 .fa-stack-1x, .fa-stack-2x {
   position: absolute;
   left: 0;
   width: 100%;
-  text-align: center
+  text-align: center;
 }
 
 .fa-stack-1x {
-  line-height: inherit
+  line-height: inherit;
 }
 
 .fa-stack-2x {
-  font-size: 2em
+  font-size: 2em;
 }
 
 .fa-inverse {
-  color: #fff
+  color: #fff;
 }
 
 /* Icons */
