@@ -1,0 +1,77 @@
+/* Bootstrap particles */
+
+.text-xs-left {
+  text-align: left !important;
+}
+
+.text-xs-right {
+  text-align: right !important;
+}
+
+.text-xs-center {
+  text-align: center !important;
+}
+
+/* Milligram overrides */
+
+dt {
+  margin-bottom: 0rem;
+}
+
+/* My classes */
+
+header h1 {
+  text-transform: none;
+  font-size: 4.0rem;
+  letter-spacing: .12em;
+  word-spacing: 0.2em;
+}
+
+
+.img-thumbnail {
+  vertical-align: middle;
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 150px;
+  box-shadow: 0 2px 0 #ccc;
+}
+
+.description {
+}
+
+.description {
+  text-align: left;
+  color: #ff5a18;
+  font-family: 'Consolas', monospace;
+  font-weight: 700;
+  font-size: 1.4em;
+  margin-left: -11px;
+}
+.description:before {
+  content: "<";
+  visibility: hidden;
+  color: #fa8c5f;
+}
+
+.description:hover:before {
+  content: "<";
+  visibility: visible;
+  color: #fa8c5f;
+}
+
+.description:after {
+  content: ">";
+  visibility: hidden;
+  color: #fa8c5f;
+}
+.description:hover:after {
+  content: ">";
+  visibility: visible;
+  color: #fa8c5f;
+}
