@@ -637,7 +637,8 @@ header .column > div {
   margin-bottom: 1.6rem;
 }
 
-header .column h5 + div a:not(:last-of-type) {
+header .column h5 + div a:not(:last-of-type),
+#additional > div:last-of-type a:not(:last-of-type) {
   margin-right: 2.6rem;
 }
 
