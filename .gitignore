@@ -38,3 +38,7 @@ jspm_packages
 /*/.DS_Store
 /.DS_Store
 /lib/
+/lib/zach.html
+/lib/roboto.css
+/lib/normalize.css
+/lib/milligram.css
