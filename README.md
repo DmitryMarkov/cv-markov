@@ -1,2 +1,2 @@
 # cv-markov
-My resume page
+CV layout in HTML, CSS and Milligram framework.
