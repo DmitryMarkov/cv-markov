@@ -509,6 +509,7 @@ h2 {
 h3 {
   font-size: 1.6rem;
   letter-spacing: 0;
+  word-spacing: -0.15em;
   line-height: 1.4;
 }
 
@@ -539,6 +540,7 @@ h6 {
   }
   h3 {
     font-size: 1.6rem;
+    word-spacing: -0.2em;
   }
   h4 {
     font-size: 1.6rem;
@@ -574,12 +576,6 @@ img {
 dt {
   margin-bottom: 0rem;
   font-size: 1.5rem;
-}
-
-h6,h4 {
-  font-weight: 700;
-  line-height: 1.6;
-  margin-bottom: 0;
 }
 
 @media (max-width: 40rem) {
@@ -628,13 +624,58 @@ h6,h4 {
 
 /* My classes */
 
-header h1 {
+h1 {
   text-transform: none;
   font-size: 4.0rem;
   letter-spacing: .02em;
   word-spacing: 0.1em;
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+
+h3 {
+  color: #ff5a18;
+  font-family: 'Consolas', monospace;
+  font-weight: 700;
+  font-size: 1.4em;
+  margin-left: -0.55em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+
+}
+
+h3:before {
+  content: "<";
+  visibility: hidden;
+  color: #fa8c5f;
+  transition: visibility .1s;
+}
+
+h3:hover:before {
+  content: "<";
+  visibility: visible;
+  color: #fa8c5f;
+  transition: visibility .1s;
+}
+
+h3:after {
+  content: ">";
+  visibility: hidden;
+  color: #fa8c5f;
+  transition: all .1s;
+}
+
+h3:hover:after {
+  content: ">";
+  visibility: visible;
+  color: #fa8c5f;
+  transition: all .1s;
+}
+
+h4 {
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
 header .column > div {
@@ -687,44 +728,6 @@ em {
 
 b {
   font-weight: 500;
-}
-
-h3 {
-  text-align: left;
-  color: #ff5a18;
-  font-family: 'Consolas', monospace;
-  font-weight: 700;
-  font-size: 1.4em;
-  margin-left: -0.55em;
-  margin-top: 2.5rem;
-  margin-bottom: 0.5rem;
-
-}
-h3:before {
-  content: "<";
-  visibility: hidden;
-  color: #fa8c5f;
-  transition: visibility .1s;
-}
-
-h3:hover:before {
-  content: "<";
-  visibility: visible;
-  color: #fa8c5f;
-  transition: visibility .1s;
-}
-
-h3:after {
-  content: ">";
-  visibility: hidden;
-  color: #fa8c5f;
-  transition: all .1s;
-}
-h3:hover:after {
-  content: ">";
-  visibility: visible;
-  color: #fa8c5f;
-  transition: all .1s;
 }
 
 /* Font Awesome excerpt */
