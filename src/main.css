@@ -509,14 +509,14 @@ h2 {
 h3 {
   font-size: 1.6rem;
   letter-spacing: 0;
-  word-spacing: -0.15em;
+  word-spacing: -0.25em;
   line-height: 1.4;
 }
 
 h4 {
   font-size: 1.6rem;
-  letter-spacing: -.08rem;
-  line-height: 1.35;
+  letter-spacing: -.01rem;
+  line-height: 1.4;
 }
 
 h5 {
@@ -540,7 +540,6 @@ h6 {
   }
   h3 {
     font-size: 1.6rem;
-    word-spacing: -0.2em;
   }
   h4 {
     font-size: 1.6rem;
