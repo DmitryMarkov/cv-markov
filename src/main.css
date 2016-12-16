@@ -496,7 +496,7 @@ h6 {
 }
 
 h1 {
-  font-size: 4.0rem;
+  font-size: 3.5rem;
   line-height: 1.2;
 }
 
@@ -533,7 +533,7 @@ h6 {
 
 @media (min-width: 40rem) {
   h1 {
-    font-size: 4.0rem;
+    font-size: 3.5rem;
   }
   h2 {
     font-size: 2.4rem;
@@ -573,8 +573,7 @@ img {
 /* Milligram overrides */
 
 dt {
-  margin-bottom: 0rem;
-  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 40rem) {
@@ -625,7 +624,6 @@ dt {
 
 h1 {
   text-transform: none;
-  font-size: 4.0rem;
   letter-spacing: .02em;
   word-spacing: 0.1em;
   margin-top: 2rem;
@@ -708,9 +706,16 @@ header .column h2 + div a:not(:last-of-type),
   border-radius: .3em;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  margin-left: calc(20% - 1.5rem);
   margin-top: 1.0rem;
   margin-bottom: 2.0rem;
+}
+
+#summary .column-66 {
+  margin-left: calc(20% - 1.5rem);
+}
+
+#summary dt {
+  font-size: 1.5rem;
 }
 
 @media (max-width: 40rem) {
@@ -762,9 +767,10 @@ q-1 1 -1 2q-1 2 -1 3q-1 22 -13 36q0 -1 -1 -2v-2zM592 313q135 54 284 81q-2 1 -13 
 d="M1468 1156q28 -28 48 -76t20 -88v-1152q0 -40 -28 -68t-68 -28h-1344q-40 0 -68 28t-28 68v1600q0 40 28 68t68 28h896q40 0 88 -20t76 -48zM1024 1400v-376h376q-10 29 -22 41l-313 313q-12 12 -41 22zM1408 -128v1024h-416q-40 0 -68 28t-28 68v416h-768v-1536h1280z
 M233 768v-107h70l164 -661h159l128 485q7 20 10 46q2 16 2 24h4l3 -24q1 -3 3.5 -20t5.5 -26l128 -485h159l164 661h70v107h-300v-107h90l-99 -438q-5 -20 -7 -46l-2 -21h-4q0 3 -0.5 6.5t-1.5 8t-1 6.5q-1 5 -4 21t-5 25l-144 545h-114l-144 -545q-2 -9 -4.5 -24.5
 t-3.5 -21.5l-4 -21h-4l-2 21q-2 26 -7 46l-99 438h90v107h-300z" />
-    <glyph glyph-name="linkedin" unicode="&#xf0e1;"
-d="M349 911v-991h-330v991h330zM370 1217q1 -73 -50.5 -122t-135.5 -49h-2q-82 0 -132 49t-50 122q0 74 51.5 122.5t134.5 48.5t133 -48.5t51 -122.5zM1536 488v-568h-329v530q0 105 -40.5 164.5t-126.5 59.5q-63 0 -105.5 -34.5t-63.5 -85.5q-11 -30 -11 -81v-553h-329
-q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171 0 275 -113.5t104 -332.5z" />
+    <glyph glyph-name="_409" unicode="&#xf1b4;" horiz-adv-x="2048"
+d="M1848 1197h-511v-124h511v124zM1596 771q-90 0 -146 -52.5t-62 -142.5h408q-18 195 -200 195zM1612 186q63 0 122 32t76 87h221q-100 -307 -427 -307q-214 0 -340.5 132t-126.5 347q0 208 130.5 345.5t336.5 137.5q138 0 240.5 -68t153 -179t50.5 -248q0 -17 -2 -47h-658
+q0 -111 57.5 -171.5t166.5 -60.5zM277 236h296q205 0 205 167q0 180 -199 180h-302v-347zM277 773h281q78 0 123.5 36.5t45.5 113.5q0 144 -190 144h-260v-294zM0 1282h594q87 0 155 -14t126.5 -47.5t90 -96.5t31.5 -154q0 -181 -172 -263q114 -32 172 -115t58 -204
+q0 -75 -24.5 -136.5t-66 -103.5t-98.5 -71t-121 -42t-134 -13h-611v1260z" />
     </font>
   </defs>
 </svg>) format('svg');
@@ -832,6 +838,6 @@ q2 399 2 647t-1 296l-1 48h329v-144h-2q20 32 41 56t56.5 52t87 43.5t114.5 15.5q171
   content: "\f1c2";
 }
 
-.fa-linkedin:before {
-  content: "\f0e1";
+.fa-behance:before {
+  content: "\f1b4";
 }
