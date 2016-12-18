@@ -1,4 +1,4 @@
-/* This file is not minified intentionally. Anyway, it's less than 7Kb gzipped. */
+/* This file is not minified intentionally. Anyway, it's less than 10Kb gzipped. */
 
 /* Google Fonts Include */
 /* 300 */
@@ -726,6 +726,10 @@ header .column h2 + div a:not(:last-of-type),
     padding-right: 2.0rem;
     padding-top: 2.0rem;
   }
+
+  li {
+    list-style-position: outside;
+  }
 }
 
 em {
@@ -783,4 +787,18 @@ b {
 
 .fa-file-pdf-o:before {
   content: '\f004';
+}
+
+@media print {
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li,
+  dt {
+    color: #000;
+  }
 }
