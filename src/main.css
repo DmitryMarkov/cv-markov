@@ -412,9 +412,15 @@ a:focus, a:hover {
   text-decoration: underline
 }
 
+ul {
+  list-style: circle inside;
+  margin-top: 0;
+  padding-left: 0;
+}
+
 dl,
 ol,
-ul {
+ul.unstyled {
   list-style: none;
   margin-top: 0;
   padding-left: 0;
@@ -435,10 +441,6 @@ ul ul {
 
 ol {
   list-style: decimal inside;
-}
-
-ul {
-  list-style: circle inside;
 }
 
 blockquote,
@@ -526,9 +528,11 @@ h5 {
 }
 
 h6 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   letter-spacing: 0;
   line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 40rem) {
@@ -548,7 +552,7 @@ h6 {
     font-size: 2.4rem;
   }
   h6 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -714,7 +718,7 @@ header .column h2 + div a:not(:last-of-type),
   margin-left: calc(20% - 1.5rem);
 }
 
-#summary dt {
+#summary li {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
