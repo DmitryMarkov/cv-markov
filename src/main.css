@@ -197,19 +197,8 @@ p {
   margin-bottom: 2.5rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 300;
-  letter-spacing: -.1rem;
-  margin-bottom: 2.0rem;
-  margin-top: 0;
-}
-
 h1 {
+  font-weight: 300;
   font-size: 3.5rem;
   line-height: 1.2;
   text-transform: none;
@@ -222,6 +211,9 @@ h2 {
   font-size: 1.8rem;
   letter-spacing: -.05rem;
   line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: 2.0rem;
+  margin-top: 0;
 }
 
 h3 {
@@ -271,6 +263,7 @@ h4 {
   letter-spacing: -.01rem;
   font-weight: 700;
   line-height: 1.6;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -279,6 +272,7 @@ h6 {
   letter-spacing: 0;
   line-height: 1.4;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
