@@ -321,6 +321,7 @@ header .column h2 + nav a:not(:last-of-type),
 }
 
 .img-thumbnail {
+  margin-top: 2rem;
   vertical-align: middle;
   display: inline-block;
   max-width: 100%;
