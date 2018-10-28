@@ -1,0 +1,17 @@
+{
+  "name": "cv-markov",
+  "version": "2.0.0",
+  "description": "Dmitry Markov's CV in pure HTML & CSS",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryMarkov/cv-markov.git"
+  },
+  "keywords": [],
+  "author": "Dmitry Markov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitryMarkov/cv-markov/issues"
+  },
+  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme"
+}
