@@ -71,6 +71,9 @@ section {
 }
 
 a {
+  display: inline-block;
+  padding: .09rem .375rem;
+  margin: -.09rem -.375rem;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
   color: #1c82eb;
@@ -80,6 +83,10 @@ a {
 a:active,
 a:hover {
   outline-width: 0;
+}
+
+a:focus {
+  text-decoration: none;
 }
 
 b {
@@ -178,7 +185,7 @@ img {
   }
 }
 
-a:focus, a:hover {
+a:hover {
   color: #488cd2;
   text-decoration: underline
 }
@@ -330,9 +337,9 @@ header .column > nav {
   margin-bottom: 1.6rem;
 }
 
-header .column h2 + nav a:not(:last-of-type),
-#additional > div:last-of-type a:not(:last-of-type) {
-  margin-right: 2.6rem;
+header .column h2 + nav .fa:not(:first-of-type),
+#additional > div:last-of-type .fa:not(:first-of-type) {
+  margin-left: 2.6rem;
 }
 
 .img-thumbnail {
@@ -407,6 +414,7 @@ header .column h2 + nav a:not(:last-of-type),
   font-size: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-right: .5rem;
 }
 
 /* Icons */
