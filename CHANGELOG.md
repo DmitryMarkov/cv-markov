@@ -1,3 +1,7 @@
+# v2.1.0 [2019-07-20]
+- Added new experience (Allthings)
+- Updated introduction
+
 # v2.0.0 [2018-10-28]
 - Removed russian version
 - Updated last position experience
