@@ -1,3 +1,8 @@
+# v2.2.0 [2019-12-02]
+- Updated title, experience and assets
+- Replaced Behance link with LinkedIn
+- Updated icons format from woff to woff2
+
 # v2.1.0 [2019-07-20]
 - Added new experience (Allthings)
 - Updated introduction
