@@ -1,6 +1,6 @@
 {
   "name": "cv-markov",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Dmitry Markov's CV in pure HTML & CSS",
   "main": "index.html",
   "repository": {
