@@ -1,3 +1,6 @@
+# v2.3.0 [2019-12-07]
+- Improved Lighthouse analytics score (100/4)
+
 # v2.2.0 [2019-12-02]
 - Updated title, experience and assets
 - Replaced Behance link with LinkedIn
