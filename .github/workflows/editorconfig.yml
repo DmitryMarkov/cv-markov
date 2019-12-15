@@ -12,6 +12,5 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: run editor config checker
       - run: yarn install
       - run: yarn editorconfig
