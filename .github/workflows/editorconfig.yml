@@ -1,4 +1,4 @@
-name: CSS
+name: EditorConfig
 on: [pull_request]
 
 jobs:
@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: run stylelint
+      - name: run editor config checker
       - run: yarn install
-      - run: yarn csslint
+      - run: yarn editorconfig
