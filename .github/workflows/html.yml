@@ -1,17 +1,22 @@
-name: CSS
+name: HTML
 on: [pull_request]
 
 jobs:
-  lint:
+  validate:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [13.x]
+        java: [8.x]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: run stylelint
+      - uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+          architecture: x64
+      - name: run html validator
       - run: yarn install
-      - run: yarn css
+      - run: yarn html
