@@ -1,9 +1,0 @@
-{
-  "automerge": true,
-  "automergeType": "branch",
-  "commitMessagePrefix": "renovate: ",
-  "extends": ["config:base"],
-  "major": {
-    "automerge": true
-  }
-}

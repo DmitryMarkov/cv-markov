@@ -1,22 +1,22 @@
 {
   "name": "cv-markov",
   "version": "3.0.0",
+  "author": "Dmitry Markov",
   "description": "Dmitry Markov's CV in pure HTML & CSS",
+  "bugs": {
+    "url": "https://github.com/DmitryMarkov/cv-markov/issues"
+  },
+  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme",
+  "keywords": [
+    "html",
+    "css"
+  ],
+  "license": "ISC",
   "main": "index.html",
   "repository": {
     "type": "git",
     "url": "git@github.com:DmitryMarkov/cv-markov.git"
   },
-  "keywords": [
-    "html",
-    "css"
-  ],
-  "author": "Dmitry Markov",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DmitryMarkov/cv-markov/issues"
-  },
-  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme",
   "scripts": {
     "build": "gulp",
     "css": "stylelint src/**/*.css",
@@ -24,8 +24,8 @@
     "editorconfig": "editorconfig-checker",
     "html": "node-w3c-validator -i ./index.html -f lint -evH",
     "markdown": "remark '*.md'",
-    "prettier": "prettier --config .prettierrc ./src/** ./index.html",
-    "prettier:fix": "prettier --write --config .prettierrc ./src/** ./index.html"
+    "prettier": "prettier ./src/** ./index.html",
+    "prettier:fix": "prettier --write ./src/** ./index.html"
   },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
@@ -38,15 +38,28 @@
     "node-w3c-validator": "1.6.0",
     "prettier": "1.19.1",
     "remark-cli": "7.0.1",
+    "remark-preset-lint-markdown-style-guide": "2.1.3",
     "remark-preset-lint-recommended": "3.0.3",
     "stylelint": "12.0.0",
     "stylelint-config-prettier": "8.0.0",
     "stylelint-prettier": "1.1.2"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{css, html}": [
@@ -58,16 +71,60 @@
       "yarn markdown"
     ]
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+  "nodeW3Cvalidator": {
+    "suppressErrors": []
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "printWidth": 76,
+    "semi": false,
+    "singleQuote": true
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-lint-markdown-style-guide"
+    ]
+  },
+  "renovate": {
+    "automerge": true,
+    "automergeType": "branch",
+    "commitMessagePrefix": "renovate: ",
+    "extends": [
+      "config:base"
+    ],
+    "major": {
+      "automerge": true
     }
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "stylelint": {
+    "extends": "stylelint-prettier/recommended",
+    "rules": {
+      "block-no-empty": null,
+      "color-no-invalid-hex": true,
+      "declaration-colon-space-after": "always",
+      "indentation": [
+        2,
+        {
+          "except": [
+            "value"
+          ]
+        }
+      ],
+      "max-empty-lines": 2,
+      "rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ],
+      "block-opening-brace-space-before": "always",
+      "block-opening-brace-newline-after": "always"
+    }
+  }
 }
