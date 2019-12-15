@@ -1,11 +1,11 @@
 {
   "name": "cv-markov",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Dmitry Markov's CV in pure HTML & CSS",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DmitryMarkov/cv-markov.git"
+    "url": "git@github.com:DmitryMarkov/cv-markov.git"
   },
   "keywords": [],
   "author": "Dmitry Markov",
@@ -13,5 +13,48 @@
   "bugs": {
     "url": "https://github.com/DmitryMarkov/cv-markov/issues"
   },
-  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme"
+  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme",
+  "scripts": {
+    "build": "gulp",
+    "csslint": "stylelint src/**/*.css",
+    "csslint:fix": "stylelint src/**/*.css --fix",
+    "prettier": "prettier --config .prettierrc ./src/** ./index.html",
+    "prettier:fix": "prettier --write --config .prettierrc ./src/** ./index.html"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "autoprefixer": "9.7.3",
+    "gulp": "4.0.2",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "prettier": "1.19.1",
+    "stylelint": "12.0.0",
+    "stylelint-config-prettier": "8.0.0",
+    "stylelint-prettier": "1.1.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.css": [
+      "yarn prettier",
+      "yarn csslint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie < 11",
+    "not op_mini all"
+  ]
 }

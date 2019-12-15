@@ -1,3 +1,6 @@
+# v3.0.0 [2019-12-xx]
+- Added husky, lint-staged, prettier, stylelint, gulp, postcss and renovate-bot
+
 # v2.3.0 [2019-12-07]
 - Improved Lighthouse analytics score (100/4)
 
