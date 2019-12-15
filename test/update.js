@@ -1,6 +1,6 @@
 const fs = require('fs');
-const puppeteer = require('puppeteer');
 const { startServer } = require('polyserve');
+const puppeteer = require('puppeteer');
 
 const TEST_DIR = 'test';
 const TEST_REF_DIR = `${TEST_DIR}/reference`;
@@ -31,7 +31,7 @@ const takeReferenceScreenshots = async () => {
   page = await browser.newPage();
 
   await page.setViewport({ width: 1280, height: 1080 });
-  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`);
+  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`, { waitUntil: 'networkidle0'});
   await page.screenshot({ path: `${TEST_REF_DIR}/${DESKTOP_DIR}/${route}.png`, fullPage: true });
   await browser.close();
 
@@ -39,7 +39,7 @@ const takeReferenceScreenshots = async () => {
   page = await browser.newPage();
 
   await page.setViewport({ width: 375, height: 667, isMobile: true });
-  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`);
+  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`, { waitUntil: 'networkidle0'});
   await page.screenshot({ path: `${TEST_REF_DIR}/${MOBILE_DIR}/${route}.png`, fullPage: true });
   await browser.close();
 

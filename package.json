@@ -63,6 +63,9 @@
       "@commitlint/config-conventional"
     ]
   },
+  "engines": {
+    "node": ">=12"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
