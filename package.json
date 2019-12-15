@@ -7,7 +7,10 @@
     "type": "git",
     "url": "git@github.com:DmitryMarkov/cv-markov.git"
   },
-  "keywords": [],
+  "keywords": [
+    "html",
+    "css"
+  ],
   "author": "Dmitry Markov",
   "license": "ISC",
   "bugs": {
@@ -16,8 +19,11 @@
   "homepage": "https://github.com/DmitryMarkov/cv-markov#readme",
   "scripts": {
     "build": "gulp",
-    "csslint": "stylelint src/**/*.css",
-    "csslint:fix": "stylelint src/**/*.css --fix",
+    "css": "stylelint src/**/*.css",
+    "css:fix": "stylelint src/**/*.css --fix",
+    "editorconfig": "editorconfig-checker",
+    "html": "node-w3c-validator -i ./index.html -f lint -evH",
+    "markdown": "remark '*.md'",
     "prettier": "prettier --config .prettierrc ./src/** ./index.html",
     "prettier:fix": "prettier --write --config .prettierrc ./src/** ./index.html"
   },
@@ -25,10 +31,14 @@
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
     "autoprefixer": "9.7.3",
+    "editorconfig-checker": "3.0.3",
     "gulp": "4.0.2",
     "husky": "3.1.0",
     "lint-staged": "9.5.0",
+    "node-w3c-validator": "1.6.0",
     "prettier": "1.19.1",
+    "remark-cli": "7.0.1",
+    "remark-preset-lint-recommended": "3.0.3",
     "stylelint": "12.0.0",
     "stylelint-config-prettier": "8.0.0",
     "stylelint-prettier": "1.1.2"
@@ -39,10 +49,13 @@
     ]
   },
   "lint-staged": {
-    "*.css": [
+    "*.{css, html}": [
       "yarn prettier",
-      "yarn csslint",
+      "yarn css",
       "git add"
+    ],
+    "*.md": [
+      "yarn markdown"
     ]
   },
   "husky": {
@@ -54,7 +67,7 @@
   "browserslist": [
     ">0.2%",
     "not dead",
-    "not ie < 11",
+    "not ie <= 11",
     "not op_mini all"
   ]
 }
