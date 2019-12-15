@@ -1,87 +1,51 @@
 const fs = require('fs');
 const expect = require('chai').expect;
-const pixelmatch = require('pixelmatch');
 const PNG = require('pngjs').PNG;
-const { startServer } = require('polyserve');
+const { startServers } = require('polyserve');
 const puppeteer = require('puppeteer');
 
-const TEST_DIR = 'test';
-const TEST_REF_DIR = `${TEST_DIR}/reference`;
-const TEST_ACT_DIR = `${TEST_DIR}/screenshots`;
-const TEST_URL = 'http://127.0.0.1';
-const TEST_PORT = 4444;
-const DESKTOP_DIR = 'desktop';
-const MOBILE_DIR = 'mobile';
-let route = 'index';
+const createDirs = require('./util/createDirs');
+const getPixelDiff = require('./util/getPixelDiff');
+const takeScreenshot = require('./util/takeScreenshot');
+const routes = require('./config/routes');
+const config = require('./config');
 
-const takeScreenshot = async (page, dir) => {
-  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`, { waitUntil: 'networkidle0'});
-  await page.screenshot({ path: `${TEST_ACT_DIR}/${dir}/${route}.png`, fullPage: true });
-
-  return PNG.sync.read(fs.readFileSync(`${TEST_ACT_DIR}/${dir}/${route}.png`));
-};
-
-const getDiffPixels = async (img1, img2, dir) => {
-  const { width, height } = img1;
-  const diff = new PNG({ width, height });
-  fs.writeFileSync(`${TEST_ACT_DIR}/${dir}/diff.png`, PNG.sync.write(diff));
-
-  return pixelmatch(img1.data, img2.data, diff.data, width, height, { threshold: 0.1 });
-};
+const { referenceDir, testDir, env, viewports } = config;
 
 describe('check screenshots are correct', async function() {
-  let polyserve, browser, page;
+  let servers, browser, page;
 
-  before(async function() {
-    polyserve = await startServer({ port: TEST_PORT });
-
-    if(!fs.existsSync(TEST_ACT_DIR)) {
-      fs.mkdirSync(TEST_ACT_DIR);
-    }
-
-    if(!fs.existsSync(`${TEST_ACT_DIR}/${DESKTOP_DIR}`)) {
-      fs.mkdirSync(`${TEST_ACT_DIR}/${DESKTOP_DIR}`)
-    }
-
-    if(!fs.existsSync(`${TEST_ACT_DIR}/${MOBILE_DIR}`)) {
-      fs.mkdirSync(`${TEST_ACT_DIR}/${MOBILE_DIR}`)
-    }
+  before(async () => {
+    servers = await startServers({ port: env.TEST_PORT });
+    createDirs(testDir, viewports);
   });
 
-  after(async () => await polyserve.close());
+  after(async () => await servers.server.close());
 
-  beforeEach(async function() {
+  beforeEach(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
   });
 
   afterEach(async () => await browser.close());
 
-  context('in desktop mode', function() {
-    it('for index page', async function() {
-        await page.setViewport({ width: 1280, height: 1080 });
+  viewports.forEach(viewport => {
+    const { name: viewportName, width, height } = viewport;
 
-        const img1 = await takeScreenshot(page, DESKTOP_DIR);
-        const img2 = PNG.sync.read(fs.readFileSync(`${TEST_REF_DIR}/${DESKTOP_DIR}/${route}.png`));
-        const numDiffPixels = await getDiffPixels(img1, img2, DESKTOP_DIR);
+    context(`in ${viewportName} mode`, () => {
+      routes.forEach(route => {
+        it(`for '/${route}' route`, async () => {
+          await page.setViewport({ width, height });
 
-        expect(img1.width, 'image widths are the same').equal(img2.width);
-        expect(img1.height, 'image heights are the same').equal(img2.height);
-        expect(numDiffPixels, 'number of different pixels').equal(0);
-    })
-  });
+          const referenceImage = PNG.sync.read(fs.readFileSync(`${referenceDir}/${viewportName}/${route}.png`));
+          const testImage = await takeScreenshot(page, route, viewportName, testDir);
+          const numDiffPixels = await getPixelDiff(testImage, referenceImage, viewportName, testDir);
 
-  context('in mobile mode', function() {
-    it('for index page', async function() {
-      await page.setViewport({ width: 375, height: 667, isMobile: true });
-
-      const img1 = await takeScreenshot(page, MOBILE_DIR);
-      const img2 = PNG.sync.read(fs.readFileSync(`${TEST_REF_DIR}/${MOBILE_DIR}/${route}.png`));
-      const numDiffPixels = await getDiffPixels(img1, img2, MOBILE_DIR);
-
-      expect(img1.width, 'image widths are the same').equal(img2.width);
-      expect(img1.height, 'image heights are the same').equal(img2.height);
-      expect(numDiffPixels, 'number of different pixels').equal(0);
+          expect(testImage.width, 'image widths are the same').equal(referenceImage.width);
+          expect(testImage.height, 'image heights are the same').equal(referenceImage.height);
+          expect(numDiffPixels, 'number of different pixels').equal(0);
+        })
+      });
     });
-  })
+  });
 });

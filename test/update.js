@@ -1,51 +1,31 @@
-const fs = require('fs');
-const { startServer } = require('polyserve');
+const { startServers } = require('polyserve');
 const puppeteer = require('puppeteer');
 
-const TEST_DIR = 'test';
-const TEST_REF_DIR = `${TEST_DIR}/reference`;
-const TEST_URL = 'http://127.0.0.1';
-const TEST_PORT = 4444;
-const DESKTOP_DIR = 'desktop';
-const MOBILE_DIR = 'mobile';
+const createDirs = require('./util/createDirs');
+const takeScreenshot = require('./util/takeScreenshot');
+const routes = require('./config/routes');
+const config = require('./config');
 
-const takeReferenceScreenshots = async () => {
-  let polyserve, browser, page;
-  let route = 'index';
+const { referenceDir, env, viewports } = config;
 
-  polyserve = await startServer({ port: TEST_PORT });
+(async () => {
+  let servers, browser, page;
 
-  if(!fs.existsSync(TEST_REF_DIR)) {
-    fs.mkdirSync(TEST_REF_DIR);
+  servers = await startServers({ port: env.TEST_PORT });
+  createDirs(referenceDir, viewports);
+  for await (const viewport of viewports) {
+    const { name: viewportName, width, height } = viewport;
+
+    for await (const route of routes) {
+      browser = await puppeteer.launch();
+      page = await browser.newPage();
+
+      await page.setViewport({ width, height});
+      await takeScreenshot(page, route, viewportName, referenceDir);
+      await browser.close();
+    }
   }
-
-  if(!fs.existsSync(`${TEST_REF_DIR}/${DESKTOP_DIR}`)) {
-    fs.mkdirSync(`${TEST_REF_DIR}/${DESKTOP_DIR}`)
-  }
-
-  if(!fs.existsSync(`${TEST_REF_DIR}/${MOBILE_DIR}`)) {
-    fs.mkdirSync(`${TEST_REF_DIR}/${MOBILE_DIR}`)
-  }
-
-  browser = await puppeteer.launch();
-  page = await browser.newPage();
-
-  await page.setViewport({ width: 1280, height: 1080 });
-  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`, { waitUntil: 'networkidle0'});
-  await page.screenshot({ path: `${TEST_REF_DIR}/${DESKTOP_DIR}/${route}.png`, fullPage: true });
-  await browser.close();
-
-  browser = await puppeteer.launch();
-  page = await browser.newPage();
-
-  await page.setViewport({ width: 375, height: 667, isMobile: true });
-  await page.goto(`${TEST_URL}:${TEST_PORT}/${route}`, { waitUntil: 'networkidle0'});
-  await page.screenshot({ path: `${TEST_REF_DIR}/${MOBILE_DIR}/${route}.png`, fullPage: true });
-  await browser.close();
-
-  await polyserve.close();
+  await servers.server.close();
 
   return 0;
-};
-
-takeReferenceScreenshots();
+})();
