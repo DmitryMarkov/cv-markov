@@ -39,10 +39,10 @@ describe('check screenshots are correct', async function() {
 
           const referenceImage = PNG.sync.read(fs.readFileSync(`${referenceDir}/${viewportName}/${route}.png`));
           const testImage = await takeScreenshot(page, route, viewportName, testDir);
-          const numDiffPixels = await getPixelDiff(testImage, referenceImage, viewportName, testDir);
 
           expect(testImage.width, 'image widths are the same').equal(referenceImage.width);
           expect(testImage.height, 'image heights are the same').equal(referenceImage.height);
+          const numDiffPixels = await getPixelDiff(testImage, referenceImage, viewportName, testDir);
           expect(numDiffPixels, 'number of different pixels').equal(0);
         })
       }
