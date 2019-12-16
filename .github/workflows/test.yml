@@ -1,0 +1,21 @@
+name: Tests
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [13.x]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn test
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: diff
+          path: test/screenshots
