@@ -26,7 +26,7 @@
     "markdown": "remark '*.md'",
     "prettier": "prettier ./src/** ./index.html",
     "prettier:fix": "prettier --write ./src/** ./index.html",
-    "test": "mocha test/index.js --timeout 5000",
+    "test": "mocha test/index.js --timeout 15000",
     "test:update": "node test/update.js"
   },
   "devDependencies": {
