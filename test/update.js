@@ -9,16 +9,15 @@ const config = require('./config');
 const { referenceDir, env, viewports } = config;
 
 (async () => {
-  let servers, browser, page;
-
-  servers = await startServers({ port: env.TEST_PORT });
+  const servers = await startServers({ port: env.TEST_PORT });
   createDirs(referenceDir, viewports);
+
   for await (const viewport of viewports) {
     const { name: viewportName, width, height } = viewport;
 
     for await (const route of routes) {
-      browser = await puppeteer.launch();
-      page = await browser.newPage();
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
 
       await page.setViewport({ width, height});
       await takeScreenshot(page, route, viewportName, referenceDir);

@@ -29,11 +29,11 @@ describe('check screenshots are correct', async function() {
 
   afterEach(async () => await browser.close());
 
-  viewports.forEach(viewport => {
+  for (const viewport of viewports) {
     const { name: viewportName, width, height } = viewport;
 
     context(`in ${viewportName} mode`, () => {
-      routes.forEach(route => {
+      for (const route of routes) {
         it(`for '/${route}' route`, async () => {
           await page.setViewport({ width, height });
 
@@ -45,7 +45,7 @@ describe('check screenshots are correct', async function() {
           expect(testImage.height, 'image heights are the same').equal(referenceImage.height);
           expect(numDiffPixels, 'number of different pixels').equal(0);
         })
-      });
+      }
     });
-  });
+  }
 });
