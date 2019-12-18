@@ -1,9 +1,12 @@
 # Changelog 
+
 ## v3.0.0 [2019-12-xx]
 
 - Added husky, lint-staged, commitlint, editorconfigchecker, markdown lint, prettier, stylelint, gulp, postcss and renovate-bot
 - Added GitHub Actions
 - Added screenshot tests with Puppeteer
+- Added versioning tag to assets to prevent undesired cashing
+- Updated CV verbiage and assets
 
 ## v2.3.0 [2019-12-07]
 
