@@ -21,7 +21,7 @@
     "build": "gulp",
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
-    "editorconfig": "editorconfig-checker",
+    "editorconfig": "editorconfig-checker --exclude _materials",
     "html": "node-w3c-validator -i ./index.html -f lint -evH",
     "markdown": "remark '*.md'",
     "prettier": "prettier ./src/** ./index.html",
