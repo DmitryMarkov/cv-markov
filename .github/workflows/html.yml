@@ -17,5 +17,5 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           architecture: x64
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - run: yarn html
