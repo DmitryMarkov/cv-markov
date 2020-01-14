@@ -25,5 +25,5 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-      - run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
       - run: yarn editorconfig
