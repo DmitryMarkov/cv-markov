@@ -3,6 +3,7 @@
 ## v3.0.0 [2020-01-xx]
 
 - Added husky, lint-staged, commitlint, editorconfigchecker, markdown lint, prettier, stylelint and renovate-bot
+- Added gulp build pipeline
 - Added GitHub Actions
 - Added screenshot tests with Puppeteer
 - Added versioning tag to assets to prevent undesired cashing

@@ -17,8 +17,8 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+# Compiled binary
+build
 
 # Dependency directories
 node_modules
