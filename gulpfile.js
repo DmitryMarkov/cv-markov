@@ -22,6 +22,12 @@ $.gulp.task('copy:assets', () => {
     .pipe($.gulp.dest($.config.dest + '/assets'))
 })
 
+$.gulp.task('copy:favicon', () => {
+  return $.gulp
+    .src('./favicon.ico', { since: $.gulp.lastRun('copy:favicon') })
+    .pipe($.gulp.dest($.config.dest))
+})
+
 $.gulp.task('do:css', () => {
   return $.gulp
     .src('./src/main.css')
@@ -42,13 +48,13 @@ $.gulp.task('do:css', () => {
       ])
     )
     .pipe($.plugins.sourcemaps.write('.'))
-    .pipe($.gulp.dest($.config.dest + '/src/main.css'))
+    .pipe($.gulp.dest($.config.dest + '/src'))
 })
 
 $.gulp.task('do:html', () => {
   return $.gulp
     .src('index.html')
-    .pipe($.plugins.replace('${version}', $.package.version))
+    .pipe($.plugins.replace('$version', $.package.version))
     .pipe($.plugins.htmlmin({ collapseWhitespace: true }))
     .pipe($.gulp.dest($.config.dest))
 })
@@ -61,6 +67,6 @@ $.gulp.task(
   'default',
   $.gulp.series(
     'clean',
-    $.gulp.parallel('copy:assets', 'do:css', 'do:html')
+    $.gulp.parallel('copy:assets', 'copy:favicon', 'do:css', 'do:html')
   )
 )
