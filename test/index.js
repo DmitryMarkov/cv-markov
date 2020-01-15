@@ -17,7 +17,7 @@ describe('check screenshots are correct', async function() {
 
   before(async () => {
     servers = await startServers({
-      entrypoint: env.SRC_DIR,
+      root: env.SRC_DIR,
       port: env.TEST_PORT,
     })
     createDirs(testDir, viewports)

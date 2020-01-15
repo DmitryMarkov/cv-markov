@@ -16,7 +16,7 @@ module.exports = {
     },
   ],
   env: {
-    SRC_DIR: '/build',
+    SRC_DIR: 'build',
     TEST_URL: 'http://127.0.0.1',
     TEST_PORT: 4444,
   },

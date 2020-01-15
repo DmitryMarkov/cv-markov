@@ -10,7 +10,7 @@ const { referenceDir, env, viewports } = config
 
 ;(async () => {
   const servers = await startServers({
-    entrypoint: env.SRC_DIR,
+    root: env.SRC_DIR,
     port: env.TEST_PORT,
   })
   createDirs(referenceDir, viewports)
