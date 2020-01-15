@@ -28,8 +28,8 @@
     "prettier:fix": "prettier --write ./src/** ./index.html",
     "serve": "gulp watch",
     "start": "yarn serve",
-    "test": "mocha test/index.js --timeout 15000",
-    "test:update": "node test/update.js"
+    "test": "yarn build && mocha test/index.js --timeout 15000",
+    "test:update": "yarn build && node test/update.js"
   },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
