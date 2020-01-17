@@ -274,6 +274,7 @@ h3 {
 h3:before {
   color: #fa8c5f;
   content: '<';
+  font-size: 1.75rem;
   visibility: hidden;
   transition: visibility 0.1s;
 }
@@ -288,6 +289,7 @@ h3:hover:before {
 h3:after {
   color: #fa8c5f;
   content: '>';
+  font-size: 1.75rem;
   visibility: hidden;
   transition: all 0.1s;
 }
@@ -484,13 +486,22 @@ header .column h2 + nav .fa:not(:first-of-type),
 @media print {
   html,
   body,
+  a,
+  div,
+  em,
   h1,
   h2,
   h3,
   h4,
   h6,
-  p,
-  li {
-    color: #000;
+  i,
+  li,
+  p {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
+  a {
+    text-decoration: underline !important;
   }
 }
