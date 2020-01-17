@@ -1,5 +1,6 @@
 const config = {
   dest: './build',
+  tasks: ['./gulp/favicon.generate.js'],
 }
 
 global.$ = {
@@ -11,6 +12,10 @@ global.$ = {
   package: require('./package'),
   plugins: require('gulp-load-plugins')(),
 }
+
+$.config.tasks.forEach(taskPath => {
+  require(taskPath)()
+})
 
 $.gulp.task('clean', cb => {
   return $.del($.config.dest, cb)
@@ -67,6 +72,6 @@ $.gulp.task(
   'default',
   $.gulp.series(
     'clean',
-    $.gulp.parallel('copy:assets', 'copy:favicon', 'do:css', 'do:html')
+    $.gulp.parallel('copy:assets', 'favicon:generate', 'do:css', 'do:html')
   )
 )
