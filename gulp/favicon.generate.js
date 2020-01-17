@@ -1,7 +1,3 @@
-/* global $ */
-
-const FAVICON_DATA_FILE = 'faviconData.json'
-
 module.exports = () => {
   $.gulp.task('favicon:generate', done => {
     $.plugins.realFavicon.generateFavicon(
@@ -69,9 +65,9 @@ module.exports = () => {
         },
         versioning: {
           paramName: 'v',
-          paramValue: 'YAXqvxw540',
+          paramValue: $.package.version,
         },
-        markupFile: FAVICON_DATA_FILE,
+        markupFile: $.config.faviconFile,
       },
       function() {
         done()

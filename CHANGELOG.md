@@ -7,6 +7,7 @@
 - Added GitHub Actions
 - Added screenshot tests with Puppeteer
 - Added versioning tag to assets to prevent undesired cashing
+- Added icon generator and manifest
 - Updated CV verbiage and assets
 
 ## v2.3.0 [2019-12-07]
