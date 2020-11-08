@@ -1,6 +1,6 @@
 # Changelog
 
-## v3.0.0 [2020-01-xx]
+## v3.0.0 [2020-11-08]
 
 - Added husky, lint-staged, commitlint, editorconfigchecker, markdown lint, prettier, stylelint and renovate-bot
 - Added gulp build pipeline
@@ -8,6 +8,7 @@
 - Added screenshot tests with Puppeteer
 - Added versioning tag to assets to prevent undesired cashing
 - Added icon generator and manifest
+- Added dark theme
 - Updated CV verbiage and assets
 
 ## v2.3.0 [2019-12-07]
