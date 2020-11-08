@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.0 [2020-11-xx]
+
+- Added new experience (OXYGEN TECHNOLOGIES)
+
 ## v3.0.0 [2020-11-08]
 
 - Added husky, lint-staged, commitlint, editorconfigchecker, markdown lint, prettier, stylelint and renovate-bot

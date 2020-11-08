@@ -1,6 +1,6 @@
 {
   "name": "cv-markov",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "author": "Dmitry Markov",
   "description": "Dmitry Markov's CV in pure HTML & CSS",
   "bugs": {
@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "gulp",
+    "build:favicons": "gulp publish",
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
     "editorconfig": "editorconfig-checker",
@@ -29,7 +30,8 @@
     "serve": "gulp watch",
     "start": "yarn serve",
     "test": "yarn build && mocha test/index.js --timeout 15000",
-    "test:update": "yarn build && node test/update.js"
+    "test:update": "yarn build && node test/update.js",
+    "updeps": "yarn upgrade-interactive --latest --exact"
   },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
@@ -73,7 +75,7 @@
     ]
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "husky": {
     "hooks": {
