@@ -109,7 +109,7 @@
   "renovate": {
     "automerge": true,
     "automergeType": "branch",
-    "commitMessagePrefix": "renovate: ",
+    "commitMessagePrefix": "Renovate: ",
     "extends": [
       "config:base"
     ],
