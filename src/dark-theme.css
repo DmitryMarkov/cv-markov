@@ -1,0 +1,45 @@
+body {
+  background-color: #1f2024;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+em,
+.fa {
+  color: rgba(255, 255, 255, 0.47);
+}
+
+h1,
+h2,
+h4,
+h6 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+h3,
+h3:before,
+h3:hover:before,
+h3:after,
+h3:hover:after {
+  color: #ff6b30;
+}
+
+a {
+  color: #1b89ee;
+}
+
+#summary a {
+  color: #3a9bee;
+}
+
+a:hover,
+#summary a:hover {
+  color: #4aa9f1;
+}
+
+#summary .column {
+  background-color: #2d2f33;
+}
+
+.img-thumbnail {
+  box-shadow: 0 2px 0 #010101;
+}

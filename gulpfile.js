@@ -1,5 +1,17 @@
 const config = {
+  src: './src',
   dest: './build',
+  faviconFile: 'faviconData.json',
+  tasks: [
+    './gulp/clean.js',
+    './gulp/copy.assets.js',
+    './gulp/do.css.js',
+    './gulp/do.html.js',
+    './gulp/favicon.generate.js',
+    './gulp/favicon.check-for-update.js',
+    './gulp/publish.js',
+    './gulp/watch.js',
+  ],
 }
 
 global.$ = {
@@ -7,66 +19,20 @@ global.$ = {
   cssnano: require('cssnano'),
   config,
   del: require('del'),
+  fs: require('fs'),
   gulp: require('gulp'),
   package: require('./package'),
   plugins: require('gulp-load-plugins')(),
 }
 
-$.gulp.task('clean', cb => {
-  return $.del($.config.dest, cb)
-})
-
-$.gulp.task('copy:assets', () => {
-  return $.gulp
-    .src('./assets/**/*.*', { since: $.gulp.lastRun('copy:assets') })
-    .pipe($.gulp.dest($.config.dest + '/assets'))
-})
-
-$.gulp.task('copy:favicon', () => {
-  return $.gulp
-    .src('./favicon.ico', { since: $.gulp.lastRun('copy:favicon') })
-    .pipe($.gulp.dest($.config.dest))
-})
-
-$.gulp.task('do:css', () => {
-  return $.gulp
-    .src('./src/main.css')
-    .pipe($.plugins.sourcemaps.init())
-    .pipe(
-      $.plugins.postcss([
-        $.autoprefixer(),
-        $.cssnano({
-          preset: [
-            'default',
-            {
-              discardComments: {
-                removeAll: true,
-              },
-            },
-          ],
-        }),
-      ])
-    )
-    .pipe($.plugins.sourcemaps.write('.'))
-    .pipe($.gulp.dest($.config.dest + '/src'))
-})
-
-$.gulp.task('do:html', () => {
-  return $.gulp
-    .src('index.html')
-    .pipe($.plugins.replace('$version', $.package.version))
-    .pipe($.plugins.htmlmin({ collapseWhitespace: true }))
-    .pipe($.gulp.dest($.config.dest))
-})
-
-$.gulp.task('watch', () => {
-  // todo
+$.config.tasks.forEach(taskPath => {
+  require(taskPath)()
 })
 
 $.gulp.task(
   'default',
   $.gulp.series(
     'clean',
-    $.gulp.parallel('copy:assets', 'copy:favicon', 'do:css', 'do:html')
+    $.gulp.parallel('copy:assets', 'do:css', 'do:html')
   )
 )

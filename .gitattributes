@@ -1,7 +1,9 @@
 * text eol=lf
 
-*.jpg binary
-*.png binary
-*.pdf binary
-*.psd binary
 *.docx binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.png binary
+*.psd binary
