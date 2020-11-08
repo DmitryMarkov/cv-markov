@@ -1,17 +1,142 @@
 {
   "name": "cv-markov",
-  "version": "2.3.0",
-  "description": "Dmitry Markov's CV in pure HTML & CSS",
-  "main": "index.html",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DmitryMarkov/cv-markov.git"
-  },
-  "keywords": [],
+  "version": "3.0.0",
   "author": "Dmitry Markov",
-  "license": "ISC",
+  "description": "Dmitry Markov's CV in pure HTML & CSS",
   "bugs": {
     "url": "https://github.com/DmitryMarkov/cv-markov/issues"
   },
-  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme"
+  "homepage": "https://github.com/DmitryMarkov/cv-markov#readme",
+  "keywords": [
+    "html",
+    "css"
+  ],
+  "license": "ISC",
+  "main": "src/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DmitryMarkov/cv-markov.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "css": "stylelint src/**/*.css",
+    "css:fix": "stylelint src/**/*.css --fix",
+    "editorconfig": "editorconfig-checker",
+    "html": "node-w3c-validator -i src/index.html -f lint -evH",
+    "markdown": "remark '*.md'",
+    "prettier": "prettier ./src/** src/index.html",
+    "prettier:fix": "prettier --write ./src/** src/index.html",
+    "serve": "gulp watch",
+    "start": "yarn serve",
+    "test": "yarn build && mocha test/index.js --timeout 15000",
+    "test:update": "yarn build && node test/update.js"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "autoprefixer": "9.7.3",
+    "chai": "4.2.0",
+    "cssnano": "4.1.10",
+    "editorconfig-checker": "3.0.3",
+    "gulp": "4.0.2",
+    "gulp-htmlmin": "5.0.1",
+    "gulp-load-plugins": "2.0.2",
+    "gulp-postcss": "8.0.0",
+    "gulp-real-favicon": "0.3.2",
+    "gulp-replace": "1.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "mocha": "6.2.2",
+    "node-w3c-validator": "1.6.0",
+    "pixelmatch": "5.1.0",
+    "pngjs": "3.4.0",
+    "polyserve": "0.27.15",
+    "prettier": "1.19.1",
+    "puppeteer": "2.0.0",
+    "remark-cli": "7.0.1",
+    "remark-preset-lint-markdown-style-guide": "2.1.3",
+    "remark-preset-lint-recommended": "3.0.3",
+    "stylelint": "12.0.0",
+    "stylelint-config-prettier": "8.0.0",
+    "stylelint-prettier": "1.1.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{css, html}": [
+      "yarn prettier",
+      "yarn css",
+      "git add"
+    ],
+    "*.md": [
+      "yarn markdown"
+    ]
+  },
+  "nodeW3Cvalidator": {
+    "suppressErrors": []
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "printWidth": 76,
+    "semi": false,
+    "singleQuote": true
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-lint-markdown-style-guide"
+    ]
+  },
+  "renovate": {
+    "automerge": true,
+    "automergeType": "branch",
+    "commitMessagePrefix": "renovate: ",
+    "extends": [
+      "config:base"
+    ],
+    "major": {
+      "automerge": true
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-prettier/recommended",
+    "rules": {
+      "block-no-empty": null,
+      "color-no-invalid-hex": true,
+      "declaration-colon-space-after": "always",
+      "max-empty-lines": 2,
+      "rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ],
+      "block-opening-brace-space-before": "always",
+      "block-opening-brace-newline-after": "always"
+    }
+  }
 }

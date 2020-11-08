@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-version="2.3.0">
+<html lang="en" data-version="$version">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,17 +9,26 @@
 
     <meta name="description" content="Professional web developer with 15+ years of experience in web and software development" />
 
-    <link rel="preload" href="src/main.css" as="style" />
+    <link rel="preload" href="main.css" as="style" />
     <link rel="preconnect" href="//fonts.gstatic.com" />
-    <link href="src/main.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet" />
+    <link href="dark-theme.css" rel="stylesheet" media="(prefers-color-scheme: dark)" />
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="//dmitrymarkov.pro/assets/images/apple-icon.png" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=$version" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=$version" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=$version" />
+    <link rel="manifest" href="/site.webmanifest?v=$version" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=$version" color="#5bbad5" />
+    <link rel="shortcut icon" href="/favicon.ico?v=$version" />
+    <meta name="apple-mobile-web-app-title" content="Dmitry Markov" />
+    <meta name="application-name" content="Dmitry Markov" />
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=$version" />
+    <meta name="theme-color" content="#ffffff" />
 
     <meta property="og:title" content="Dmitry Markov - Frontend Web Developer" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="http://dmitrymarkov.pro/assets/images/og-image-1200.png" />
+    <meta property="og:image" content="http://dmitrymarkov.pro/assets/images/og-image-1200.png?v=$version" />
     <meta property="og:url" content="https://dmitrymarkov.pro" />
     <meta property="og:description" content="Professional web developer with 15+ years of experience in web and software development" />
     <meta property="og:locale" content="en_GB" />
@@ -27,7 +36,7 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Dmitry Markov - Frontend Web Developer" />
     <meta property="twitter:description" content="Professional web developer with 15+ years of experience in web and software development" />
-    <meta property="twitter:image" content="http://dmitrymarkov.pro/assets/images/og-image-1200.png" />
+    <meta property="twitter:image" content="http://dmitrymarkov.pro/assets/images/og-image-1200.png?v=$version" />
     <meta property="twitter:url" content="https://dmitrymarkov.pro" />
     <meta property="twitter:site" content="@damarkov" />
   </head>
@@ -235,13 +244,12 @@
           <div class="column column-80 column-offset-20">
             <h4>Download résumé</h4>
             <p>
-              <i class="fa fa-file-word-o"></i><a href="/assets/documents/Dmitry-Markov-2019.docx" title="Download 166Kb">Microsoft Word</a>
-              <i class="fa fa-file-pdf-o"></i><a href="/assets/documents/Dmitry-Markov-2019.pdf" title="Download 242Kb">Adobe PDF</a>
+              <i class="fa fa-file-word-o"></i><a href="/assets/documents/Dmitry-Markov-2019.docx?v=$version" title="Download 166Kb">Microsoft Word</a>
+              <i class="fa fa-file-pdf-o"></i><a href="/assets/documents/Dmitry-Markov-2019.pdf?v=$version" title="Download 242Kb">Adobe PDF</a>
             </p>
           </div>
         </div>
       </section>
     </div>
-<!--  There is no JavaScript here intentionally  -->
   </body>
 </html>
