@@ -6,7 +6,8 @@
 
 ## v3.0.0 [2020-11-08]
 
-- Added husky, lint-staged, commitlint, editorconfigchecker, markdown lint, prettier, stylelint and renovate-bot
+- Added husky, lint-staged, commitlint, editorconfigchecker, markdown lint
+- Added prettier, stylelint and renovate-bot
 - Added gulp build pipeline
 - Added GitHub Actions
 - Added screenshot tests with Puppeteer
