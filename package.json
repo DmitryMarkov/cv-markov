@@ -40,7 +40,7 @@
     "editorconfig-checker": "3.3.0",
     "gulp": "4.0.2",
     "gulp-htmlmin": "5.0.1",
-    "gulp-load-plugins": "2.0.2",
+    "gulp-load-plugins": "2.0.5",
     "gulp-postcss": "8.0.0",
     "gulp-real-favicon": "0.3.2",
     "gulp-replace": "1.0.0",
