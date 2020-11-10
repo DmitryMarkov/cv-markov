@@ -1,8 +1,9 @@
 # Changelog
 
-## v3.1.0 [2020-11-xx]
+## v3.1.0 [2020-11-10]
 
 - Added new experience (OXYGEN TECHNOLOGIES)
+- Updated image assets, layout and styles (Lighthouse optimization)
 - Updated node engine and dependencies
 
 ## v3.0.0 [2020-11-08]
