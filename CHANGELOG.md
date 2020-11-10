@@ -3,6 +3,7 @@
 ## v3.1.0 [2020-11-xx]
 
 - Added new experience (OXYGEN TECHNOLOGIES)
+- Updated node engine and dependencies
 
 ## v3.0.0 [2020-11-08]
 
