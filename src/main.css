@@ -311,16 +311,6 @@ h4 {
   margin-top: 0.375rem;
 }
 
-h6 {
-  color: #606c76;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-  margin-top: 0;
-}
-
 @media (min-width: 40rem) {
   h1 {
     font-size: 3.8rem;
@@ -341,10 +331,6 @@ h6 {
     line-height: 1.45;
     margin-bottom: 0;
     margin-top: 0;
-  }
-
-  h6 {
-    font-size: 1.5rem;
   }
 
   ul {
@@ -410,6 +396,17 @@ header .column h2 + nav .fa:not(:first-of-type),
 
 #summary a {
   color: #126bc9;
+}
+
+#summary strong {
+  color: #606c76;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-block-start: 0;
+  margin-block-end: 1rem;
 }
 
 #summary ul,
@@ -493,7 +490,7 @@ header .column h2 + nav .fa:not(:first-of-type),
   h2,
   h3,
   h4,
-  h6,
+  strong,
   i,
   li,
   p {

@@ -1,4 +1,8 @@
-![][actions-tests] ![][actions-html] ![][actions-css] ![][actions-markdown] ![][actions-editor-config]
+![][actions-tests]
+![][actions-html]
+![][actions-css]
+![][actions-markdown]
+![][actions-editor-config]
 # Dmitry Markov's CV
 
 Available on https://dmitrymarkov.pro
