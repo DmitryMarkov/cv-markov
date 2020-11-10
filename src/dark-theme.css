@@ -11,7 +11,7 @@ em,
 h1,
 h2,
 h4,
-h6 {
+#summary strong {
   color: rgba(255, 255, 255, 0.75);
 }
 
