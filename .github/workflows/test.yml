@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - run: yarn test
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: diff
