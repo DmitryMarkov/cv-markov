@@ -34,7 +34,7 @@
     "updeps": "yarn upgrade-interactive --latest --exact"
   },
   "resolutions": {
-    "braces": "^2.3.1",
+    "braces": "^3.0.0",
     "dot-prop": "^5.1.1",
     "kind-of": "^6.0.3",
     "lodash": "^4.17.19",
