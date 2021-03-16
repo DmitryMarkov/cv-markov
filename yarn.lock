@@ -3447,14 +3447,13 @@ editions@^1.3.3:
   resolved "https://registry.yarnpkg.com/editions/-/editions-1.3.4.tgz#3662cb592347c3168eb8e498a0ff73271d67f50b"
   integrity sha512-gzao+mxnYDzIysXKMQi/+M1mjy/rjestjg6OPoYTtI+3Izp23oiGZitsl9lPDPiTGXbcSIk1iJWhliSaglxnUg==
 
-editorconfig-checker@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/editorconfig-checker/-/editorconfig-checker-4.0.0.tgz#94b0d8e0e39ef1c2a9ca25fc17d65f6e8bcbaf61"
-  integrity sha512-Vd0bfNHFsacoy+4l7TTSXpoCwBD6njW5OTz9ftYSTkKZokC4nPzFMVg1ZBci3BzXqxpT/pt5b+t3raKJ9EYvrg==
+editorconfig-checker@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/editorconfig-checker/-/editorconfig-checker-4.0.1.tgz#70dfb024825e30a4088e3bfc90b843556641167a"
+  integrity sha512-Ne/3lXG7CUqOy1yXA4Q0rNjHlwQywkiujZPfFC7dAgGmVAN3BLQCUxMik+tufcWTiN3VhBN+Ra+UoCqJ6c9Jgw==
   dependencies:
     https-proxy-agent "^5.0.0"
     node-fetch "^2.6.0"
-    rimraf "^3.0.2"
     tar "^6.0.0"
 
 ee-first@1.1.1:
