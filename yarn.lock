@@ -3447,10 +3447,10 @@ editions@^1.3.3:
   resolved "https://registry.yarnpkg.com/editions/-/editions-1.3.4.tgz#3662cb592347c3168eb8e498a0ff73271d67f50b"
   integrity sha512-gzao+mxnYDzIysXKMQi/+M1mjy/rjestjg6OPoYTtI+3Izp23oiGZitsl9lPDPiTGXbcSIk1iJWhliSaglxnUg==
 
-editorconfig-checker@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/editorconfig-checker/-/editorconfig-checker-4.0.1.tgz#70dfb024825e30a4088e3bfc90b843556641167a"
-  integrity sha512-Ne/3lXG7CUqOy1yXA4Q0rNjHlwQywkiujZPfFC7dAgGmVAN3BLQCUxMik+tufcWTiN3VhBN+Ra+UoCqJ6c9Jgw==
+editorconfig-checker@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/editorconfig-checker/-/editorconfig-checker-4.0.2.tgz#d3f33c7feb954de8c6c8c0111c5bea49e5b8f727"
+  integrity sha512-tUI7ABIzMB1kfwTUQmX+gaZGCMNuUgGuRHJ+Xu4Tk9T8lV8Vy5w/EaQsSZ7NKrOgLxbekptw6MUgrzHTvhceLw==
   dependencies:
     https-proxy-agent "^5.0.0"
     node-fetch "^2.6.0"
