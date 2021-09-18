@@ -25,21 +25,22 @@
     "editorconfig": "editorconfig-checker",
     "html": "node-w3c-validator -i src/index.html -f lint -evH",
     "markdown": "remark '*.md'",
+    "prepare": "husky install",
     "prettier": "prettier ./src/** src/index.html",
     "prettier:fix": "prettier --write ./src/** src/index.html",
     "serve": "gulp watch",
     "start": "yarn serve",
     "test": "yarn build && mocha test/index.js --timeout 15000",
     "test:update": "yarn build && node test/update.js",
-    "updeps": "yarn upgrade-interactive --latest --exact"
+    "up": "yarn upgrade-interactive --latest --exact"
   },
   "resolutions": {
     "braces": "^3.0.0",
-    "dot-prop": "^6.0.0",
+    "dot-prop": "^6.0.1",
     "kind-of": "^6.0.3",
     "lodash": "^4.17.19",
     "minimist": "^1.2.3",
-    "yargs-parser": "^20.0.0"
+    "yargs-parser": "^20.2.9"
   },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
@@ -64,7 +65,7 @@
     "pngjs": "6.0.0",
     "polyserve": "0.27.15",
     "postcss": "8.3.6",
-    "prettier": "2.4.0",
+    "prettier": "2.4.1",
     "puppeteer": "10.2.0",
     "remark-cli": "10.0.0",
     "remark-preset-lint-markdown-style-guide": "5.0.1",
@@ -86,12 +87,6 @@
   },
   "engines": {
     "node": ">=14"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{css, html}": [
