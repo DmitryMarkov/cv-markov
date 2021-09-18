@@ -3457,10 +3457,10 @@ domutils@^2.4.3:
     domelementtype "^2.2.0"
     domhandler "^4.1.0"
 
-dot-prop@^4.1.0, dot-prop@^5.1.0, dot-prop@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-6.0.0.tgz#bd579fd704d970981c4b05de591db648959f2ebb"
-  integrity sha512-xCbB8IN3IT+tdgoEPOnJmYTNJDrygGFOmiQEiVa5eAD+JEB1vTgMNhVGRnN5Eex/6amck7cdcrixb1qN9Go+GQ==
+dot-prop@^4.1.0, dot-prop@^5.1.0, dot-prop@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-6.0.1.tgz#fc26b3cf142b9e59b74dbd39ed66ce620c681083"
+  integrity sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==
   dependencies:
     is-obj "^2.0.0"
 
@@ -8032,10 +8032,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.0.tgz#85bdfe0f70c3e777cf13a4ffff39713ca6f64cba"
-  integrity sha512-DsEPLY1dE5HF3BxCRBmD4uYZ+5DCbvatnolqTqcxEgKVZnL2kUfyu7b8pPQ5+hTBkdhU9SLUmK0/pHb07RE4WQ==
+prettier@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.1.tgz#671e11c89c14a4cfc876ce564106c4a6726c9f5c"
+  integrity sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==
 
 pretty-bytes@^4.0.2:
   version "4.0.2"
@@ -11300,10 +11300,10 @@ yaml@^1.10.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-yargs-parser@20.2.4, yargs-parser@>=5.0.0-security.0, yargs-parser@^20.0.0, yargs-parser@^20.2.2, yargs-parser@^20.2.3, yargs-parser@^5.0.0:
-  version "20.2.4"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
-  integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
+yargs-parser@20.2.4, yargs-parser@>=5.0.0-security.0, yargs-parser@^20.2.2, yargs-parser@^20.2.3, yargs-parser@^20.2.9, yargs-parser@^5.0.0:
+  version "20.2.9"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
+  integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
 yargs-unparser@2.0.0:
   version "2.0.0"
