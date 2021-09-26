@@ -45,7 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
-    "autoprefixer": "10.3.5",
+    "autoprefixer": "10.3.6",
     "chai": "4.3.4",
     "cssnano": "5.0.8",
     "del": "6.0.0",
