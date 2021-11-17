@@ -40,7 +40,7 @@
     "kind-of": "^6.0.3",
     "lodash": "^4.17.19",
     "minimist": "^1.2.3",
-    "yargs-parser": "^20.2.9"
+    "yargs-parser": "^21.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "14.1.0",
