@@ -6594,10 +6594,10 @@ node-unzip-2@^0.2.7:
     readable-stream "~1.0.0"
     setimmediate "~1.0.1"
 
-node-w3c-validator@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/node-w3c-validator/-/node-w3c-validator-2.0.1.tgz#02556a8681d3416e3d46612adbb0f76cdcdef6c5"
-  integrity sha512-D59H0XwFXHtvWM6SaHWa4af571h539JAPOetJDWU2SV+CPxhJgaK3rg81XAu//4WkhcNomYlZST1N1o6W0+PsA==
+node-w3c-validator@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/node-w3c-validator/-/node-w3c-validator-2.0.2.tgz#e4d44856d3b8e6086bbdd491bc1cec3a29379a54"
+  integrity sha512-qCwlJrHto8byQdeQOQtEMbQwpHT296vikxsQfcriMpkp/PmcAvuzxQiM+0tZkjGHppfz70XXlQhFkNeyb+anoQ==
   dependencies:
     chalk "^4.1.0"
     commander "^6.2.0"
@@ -6606,7 +6606,7 @@ node-w3c-validator@2.0.1:
     lodash ">=4.17.20"
     mkdirp "^1.0.4"
     ora "^5.1.0"
-    vnu-jar "^20.6.30"
+    vnu-jar "^21.10.12"
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
@@ -10724,10 +10724,10 @@ vlq@^0.2.2:
   resolved "https://registry.yarnpkg.com/vlq/-/vlq-0.2.3.tgz#8f3e4328cf63b1540c0d67e1b2778386f8975b26"
   integrity sha512-DRibZL6DsNhIgYQ+wNdWDL2SL3bKPlVrRiBqV5yuMm++op8W4kGFtaQfCs4KEJn0wBZcHVHJ3eoywX8983k1ow==
 
-vnu-jar@^20.6.30:
-  version "20.6.30"
-  resolved "https://registry.yarnpkg.com/vnu-jar/-/vnu-jar-20.6.30.tgz#897882d4502411e77a3f17a2e793b26396603109"
-  integrity sha512-zlNNe7jW6cTIrxVlZK9AcZiNWjxzjqi7LpTafBCi4OY4bsh2uyGhxXT2l6hZ3ibpxP0ZC/pQsBpFQEACS0ePIg==
+vnu-jar@^21.10.12:
+  version "21.10.12"
+  resolved "https://registry.yarnpkg.com/vnu-jar/-/vnu-jar-21.10.12.tgz#45c26e4beada32e85f7771182b6699da7ee7675c"
+  integrity sha512-tC+BEIWbLW0duLlQl75j9jWcrkPH+hSNGOe5D/FhT21c+JBqVk7Zc7gkDswT6VRlt7skJe4e31wnoAFoLDSg0Q==
 
 vscode-uri@=1.0.6:
   version "1.0.6"
