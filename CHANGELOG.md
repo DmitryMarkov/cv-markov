@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2.0 [2021-09-20]
+
+- Added new experience (Allthings)
+
 ## v3.1.0 [2020-11-10]
 
 - Added new experience (OXYGEN TECHNOLOGIES)
