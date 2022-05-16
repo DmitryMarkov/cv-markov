@@ -48,7 +48,7 @@
     "autoprefixer": "10.4.7",
     "chai": "4.3.6",
     "cssnano": "5.1.7",
-    "del": "6.0.0",
+    "del": "6.1.0",
     "editorconfig-checker": "4.0.2",
     "gulp": "4.0.2",
     "gulp-htmlmin": "5.0.1",
