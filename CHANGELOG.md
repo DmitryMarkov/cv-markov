@@ -1,6 +1,6 @@
 # Changelog
 
-## v3.2.0 [2021-09-20]
+## v3.2.0 [2022-06-25]
 
 - Added new experience (Allthings)
 

@@ -1,6 +1,6 @@
 {
   "name": "cv-markov",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "author": "Dmitry Markov",
   "description": "Dmitry Markov's CV in pure HTML & CSS",
   "bugs": {
@@ -28,6 +28,7 @@
     "prepare": "husky install",
     "prettier": "prettier ./src/** src/index.html",
     "prettier:fix": "prettier --write ./src/** src/index.html",
+    "security-audit": "yarn audit --groups dependencies --level high || test $? -lt 7",
     "serve": "gulp watch",
     "start": "yarn serve",
     "test": "yarn build && mocha test/index.js --timeout 15000",
@@ -35,12 +36,7 @@
     "up": "yarn upgrade-interactive --latest --exact"
   },
   "resolutions": {
-    "braces": "^3.0.0",
-    "dot-prop": "^7.0.0",
-    "kind-of": "^6.0.3",
-    "lodash": "^4.17.19",
-    "minimist": "^1.2.3",
-    "yargs-parser": "^21.0.0"
+    "caniuse-lite": "^1.0.30001356"
   },
   "devDependencies": {
     "@commitlint/cli": "17.0.2",
