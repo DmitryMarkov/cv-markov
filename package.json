@@ -46,7 +46,7 @@
     "@commitlint/cli": "17.2.0",
     "@commitlint/config-conventional": "17.2.0",
     "autoprefixer": "10.4.13",
-    "chai": "4.3.6",
+    "chai": "4.3.7",
     "cssnano": "5.1.14",
     "del": "6.1.1",
     "editorconfig-checker": "4.0.2",
