@@ -72,7 +72,7 @@
     "remark-preset-lint-recommended": "6.1.2",
     "stylelint": "15.2.0",
     "stylelint-config-prettier": "9.0.5",
-    "stylelint-prettier": "2.0.0"
+    "stylelint-prettier": "3.0.0"
   },
   "browserslist": [
     ">0.2%",
