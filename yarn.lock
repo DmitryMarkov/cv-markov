@@ -3456,11 +3456,11 @@ domutils@^2.6.0:
     domhandler "^4.2.0"
 
 dot-prop@^4.1.0, dot-prop@^5.1.0, dot-prop@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-7.0.0.tgz#3939ec2f37f445b729f8769075d3a7888ccc3680"
-  integrity sha512-GD9mHUsKiACS+U6Vqq8V1q6uR+7/5dQB+iQUyCkT0hKSEtX3hPcswUjYTyAGUuovvJsosBrCYmtjkCgi1gRLyQ==
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-7.2.0.tgz#468172a3529779814d21a779c1ba2f6d76609809"
+  integrity sha512-Ol/IPXUARn9CSbkrdV4VJo7uCy1I3VuSiWCaFSg+8BdUOzF9n3jefIpcgAydvUZbTdEBZs2vEiTiS9m61ssiDA==
   dependencies:
-    type-fest "^2.10.0"
+    type-fest "^2.11.2"
 
 duplexer2@^0.1.2:
   version "0.1.4"
@@ -10471,10 +10471,10 @@ type-fest@^0.8.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
-type-fest@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.10.0.tgz#0ee9c3cd411efb3bba434065d32235592d3644cf"
-  integrity sha512-u2yreDMllFI3VCpWt0rKrGs/E2LO0YHBwiiOIj+ilQh9+ALMaa4lNBSdoDvuHN3cbKcYk9L1BXP49x9RT+o/SA==
+type-fest@^2.11.2:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
+  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
 type-is@~1.6.18:
   version "1.6.18"
