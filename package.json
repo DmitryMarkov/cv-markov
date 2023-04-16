@@ -36,7 +36,7 @@
     "up": "yarn upgrade-interactive --latest --exact"
   },
   "resolutions": {
-    "caniuse-lite": "^1.0.30001356"
+    "caniuse-lite": "^1.0.30001478"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.1",
