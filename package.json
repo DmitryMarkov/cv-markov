@@ -87,8 +87,7 @@
   "lint-staged": {
     "*.{css, html}": [
       "yarn prettier",
-      "yarn css",
-      "git add"
+      "yarn css"
     ],
     "*.md": [
       "yarn markdown"
