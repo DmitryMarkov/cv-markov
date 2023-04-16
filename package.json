@@ -82,7 +82,7 @@
     ]
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "lint-staged": {
     "*.{css, html}": [
