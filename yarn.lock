@@ -3494,10 +3494,10 @@ each-props@^1.3.2:
     is-plain-object "^2.0.1"
     object.defaults "^1.1.0"
 
-editorconfig-checker@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/editorconfig-checker/-/editorconfig-checker-5.0.1.tgz#cb4bf7a9b80f1b63b141b8897d7cc326fce0d3ae"
-  integrity sha512-6hXq9VVDkyCxVYKdGtIj+yhVR1fi/6W6Ykz/+kItLPARulJvr2/VXgWZ5OGWx1UYm2RD6XOzWyx1JF6DLgQ/8Q==
+editorconfig-checker@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/editorconfig-checker/-/editorconfig-checker-5.1.0.tgz#44cf727259525bf973e300b7deff4a6e265ecde6"
+  integrity sha512-oC1/DTQm/hEn24nA3HXT4KCLMcKzU9aHNJzfKirHZcTt9nE0rkL26uer1fLrquz4ED4SL/vIFwBhMl8O8JNLdQ==
 
 ee-first@1.1.1:
   version "1.1.1"
