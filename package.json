@@ -65,7 +65,7 @@
     "pngjs": "7.0.0",
     "polyserve": "0.27.15",
     "postcss": "8.4.32",
-    "prettier": "3.1.0",
+    "prettier": "3.1.1",
     "puppeteer": "11.0.0",
     "remark-cli": "11.0.0",
     "remark-preset-lint-markdown-style-guide": "5.1.3",
