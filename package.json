@@ -57,7 +57,7 @@
     "gulp-real-favicon": "0.3.2",
     "gulp-replace": "1.1.4",
     "gulp-sourcemaps": "3.0.0",
-    "husky": "8.0.3",
+    "husky": "9.0.6",
     "lint-staged": "13.2.3",
     "mocha": "10.2.0",
     "node-w3c-validator": "2.0.2",
