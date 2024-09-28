@@ -49,7 +49,7 @@
     "chai": "4.5.0",
     "cssnano": "6.1.2",
     "del": "6.1.1",
-    "editorconfig-checker": "5.0.1",
+    "editorconfig-checker": "6.0.0",
     "gulp": "4.0.2",
     "gulp-htmlmin": "5.0.1",
     "gulp-load-plugins": "2.0.8",
