@@ -59,7 +59,7 @@
     "gulp-sourcemaps": "3.0.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
-    "mocha": "10.7.3",
+    "mocha": "10.8.2",
     "node-w3c-validator": "2.0.2",
     "pixelmatch": "5.3.0",
     "pngjs": "7.0.0",
