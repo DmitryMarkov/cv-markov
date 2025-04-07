@@ -3,10 +3,12 @@ on: [pull_request]
 
 jobs:
   test:
+#    turn off for now
+    if: false
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

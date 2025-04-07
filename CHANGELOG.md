@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.2.0 [2025-04-07]
+
+- Added new experience (Allthings)
+- Added security audit check to pipeline
+- Upgrade runners from Nodejs 14.x to 18.x
+- Added git hook to prevent commits directly to master
+- Turn off screenshot tests on PRs
+
 ## v3.1.0 [2020-11-10]
 
 - Added new experience (OXYGEN TECHNOLOGIES)
