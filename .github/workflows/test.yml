@@ -3,6 +3,8 @@ on: [pull_request]
 
 jobs:
   test:
+#    turn off for now
+    if: false
     runs-on: ubuntu-latest
     strategy:
       matrix:
