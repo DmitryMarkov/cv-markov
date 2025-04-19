@@ -7,3 +7,4 @@
 - [ ] add Lighthouse check to pipeline
 - [ ] add semantic versioning tooling
 - [ ] PWA optimizations
+- [ ] Add Allthings/Oxygen zeugnis docs
