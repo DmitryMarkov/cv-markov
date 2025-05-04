@@ -114,7 +114,7 @@
     "automergeType": "branch",
     "commitMessagePrefix": "Renovate: ",
     "extends": [
-      "config:base"
+      "config:recommended"
     ],
     "major": {
       "automerge": true
