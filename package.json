@@ -1,8 +1,8 @@
 {
   "name": "cv-markov",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "author": "Dmitry Markov",
-  "description": "Dmitry Markov's CV in pure HTML & CSS",
+  "description": "Dmitry Markov's CV",
   "bugs": {
     "url": "https://github.com/DmitryMarkov/cv-markov/issues"
   },

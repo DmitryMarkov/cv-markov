@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.2.1 [2025-07-08]
+
+- Changed title
+- Tweak pipeline
+- Removed unrelated experience
+
 ## v3.2.0 [2025-04-07]
 
 - Added new experience (Allthings)
