@@ -2357,10 +2357,10 @@ ccount@^2.0.0:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-2.0.1.tgz#17a3bf82302e0870d6da43a01311a8bc02a3ecf5"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
 
-chai@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/chai/-/chai-6.0.1.tgz#88c2b4682fb56050647e222d2cf9d6772f2607b3"
-  integrity sha512-/JOoU2//6p5vCXh00FpNgtlw0LjvhGttaWc+y7wpW9yjBm3ys0dI8tSKZxIOgNruz5J0RleccatSIC3uxEZP0g==
+chai@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/chai/-/chai-6.1.0.tgz#55bb29968dafdda651b1ec7626636efb57359a11"
+  integrity sha512-AMqnsoEd9fQwUrbFfq8DOSpF22Iyi3vIto3aUcyPal1jMTr7lLuI9FkrfuqucC/f7JHRZt9+m6Al/T76sTBXBA==
 
 chainsaw@~0.1.0:
   version "0.1.0"
