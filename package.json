@@ -42,7 +42,7 @@
     "@commitlint/cli": "20.1.0",
     "@commitlint/config-conventional": "20.0.0",
     "autoprefixer": "10.4.22",
-    "chai": "6.2.0",
+    "chai": "6.2.1",
     "cssnano": "6.1.2",
     "del": "6.1.1",
     "editorconfig-checker": "5.0.1",
