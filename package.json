@@ -39,8 +39,8 @@
     "caniuse-lite": "^1.0.30001478"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.4.0",
-    "@commitlint/config-conventional": "20.4.0",
+    "@commitlint/cli": "20.4.1",
+    "@commitlint/config-conventional": "20.4.1",
     "autoprefixer": "10.4.24",
     "chai": "6.2.2",
     "cssnano": "6.1.2",
