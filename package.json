@@ -43,7 +43,7 @@
     "@commitlint/config-conventional": "20.5.0",
     "autoprefixer": "10.5.0",
     "chai": "6.2.2",
-    "cssnano": "6.1.2",
+    "cssnano": "8.0.1",
     "del": "6.1.1",
     "editorconfig-checker": "5.0.1",
     "gulp": "4.0.2",
