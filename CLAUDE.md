@@ -13,6 +13,7 @@ Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack
 - `yarn build` — `vite build`. Output → `build/` (HTML minified, `$version` replaced with `package.json#version`, `main.css` and `dark-theme.css` processed through PostCSS with autoprefixer + cssnano, `assets/` copied verbatim into `build/assets/`).
 - `yarn serve` / `yarn start` — `vite` dev server with HMR. CSS files served live (autoprefixer applied on the fly, no minification); assets/ available at `/assets/...`; HTML transforms (`$version` and CSS-link injection) apply on every reload.
 - `yarn preview` — `vite preview --port 4444`, serves the production `build/` for manual smoke-testing or visual-regression tests.
+- `yarn build:favicons` — `node scripts/generate-favicons.mjs`. Manual, offline regeneration of favicon set from `materials/icon-transparent.png`. Writes 33 files into `assets/favicons/` and prints HTML tags into `src/_favicon-tags.html` (gitignored scratch file) for manual integration into `src/index.html`. Re-run only when the source icon changes — the generated files are committed and copied as-is during `yarn build`.
 - `yarn test` — builds, then runs Mocha (`test/index.js`, 15s timeout). Will be replaced by Playwright in Phase 5; currently broken on Node 24 because `polyserve` is abandoned.
 - `yarn test:update` — rebuilds, then regenerates the reference screenshots in `test/reference/{desktop,mobile}/`. Same Phase 5 caveat.
 - Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (`html-validate` 10, pure JS, config in `.htmlvalidate.json`), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
@@ -41,6 +42,12 @@ The test suite is purely a pixel-diff harness — there is no DOM or unit testin
 3. `pixelmatch` (threshold 0.1) compares against `test/reference/<viewport>/<route>.png`. The test asserts **0 different pixels** — any visual drift fails. Diff images are written to `test/screenshots/<viewport>/diff.png`.
 
 Because the assertion is `equal(0)`, screenshots are platform-sensitive (font rendering differs Linux vs macOS). The CI test job is currently gated off (`if: false` in `.github/workflows/pipeline.yml`); run tests locally and regenerate references with `yarn test:update` for any deliberate UI change.
+
+## Favicons
+
+Generated offline by `scripts/generate-favicons.mjs` (the `favicons` npm package, depends on `sharp`). Output lives in `assets/favicons/` (33 PNG/ICO files plus `manifest.webmanifest` and `browserconfig.xml`) and gets copied into `build/assets/favicons/` by the same `vite-plugin-static-copy` target that handles `assets/`. URLs in HTML reference `/assets/favicons/...?v=$version` (Vite substitutes the version at build time). The manifest and browserconfig themselves do not carry cache-busting params on icon refs — they're loaded with `?v=$version` from the HTML and contain stable paths into the same icons folder.
+
+`sharp` requires a postinstall build script. Yarn 4 disables those by default for security; the project enables it explicitly via `dependenciesMeta."sharp@0.33.5".built: true` in `package.json`. If `sharp`'s major version changes after a Renovate bump, update that key.
 
 ## HTML validation
 
