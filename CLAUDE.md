@@ -46,7 +46,7 @@ Because the assertion is `equal(0)`, screenshots are platform-sensitive (font re
 
 - **Conventional Commits** via commitlint (`commit-msg` husky hook).
 - **No direct commits to `master`** — `pre-commit` husky hook hard-fails. Work on a feature branch.
-- `pre-commit` also runs `yarn check --integrity` and `lint-staged` (prettier + stylelint on `*.{css,html}`, remark on `*.md`).
+- `pre-commit` runs `lint-staged` (prettier + stylelint on `*.{css,html}`, remark on `*.md`).
 - Prettier config lives in `package.json`: `singleQuote`, no semicolons, `printWidth: 76`, `arrowParens: avoid`. Stylelint extends `stylelint-prettier/recommended`.
 - Renovate is enabled with full automerge (including major); dependency PRs land on green CI without review.
 
