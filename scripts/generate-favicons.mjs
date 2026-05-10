@@ -1,9 +1,8 @@
 import { favicons } from 'favicons'
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 
-const root = resolve(fileURLToPath(import.meta.url), '../..')
+const root = resolve(import.meta.dirname, '..')
 const source = resolve(root, 'materials/icon-transparent.png')
 const outDir = resolve(root, 'assets/favicons')
 const tagsFile = resolve(root, 'src/_favicon-tags.html')
@@ -48,7 +47,7 @@ await Promise.all([
     `${response.html
       .join('\n')
       .replaceAll(
-        /(href="\/assets\/favicons\/[^"]+)"/g,
+        /((?:href|content)="\/assets\/favicons\/[^"]+)"/g,
         '$1?v=$$version"'
       )}\n`
   ),

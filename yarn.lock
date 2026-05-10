@@ -4120,7 +4120,7 @@ __metadata:
     vite: "npm:8.0.11"
     vite-plugin-static-copy: "npm:4.1.0"
   dependenciesMeta:
-    sharp@0.33.5:
+    sharp:
       built: true
   languageName: unknown
   linkType: soft

@@ -40,7 +40,7 @@
     "caniuse-lite": "^1.0.30001478"
   },
   "dependenciesMeta": {
-    "sharp@0.33.5": {
+    "sharp": {
       "built": true
     }
   },
