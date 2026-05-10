@@ -2,6 +2,12 @@
 
 ## v4.0.0 [unreleased]
 
+- Added favicons 7.2.0 with offline scripts/generate-favicons.mjs
+- Generated 33 static icons + manifest.webmanifest + browserconfig.xml
+- Removed gulp-real-favicon (was Phase 2) and faviconData.json artifact
+- yarn build:favicons now runs locally with no network call
+- Favicons live under /assets/favicons/, cache-busted by ?v=$version
+- Allowed sharp postinstall via dependenciesMeta in package.json
 - Replaced node-w3c-validator (Java) with html-validate 10.15.0
 - Added .htmlvalidate.json extending recommended preset
 - Overrode doctype-style and void-style to match Prettier output

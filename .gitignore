@@ -39,6 +39,9 @@ winscp.md
 # Tests
 test/screenshots
 
+# Favicon generator scratch output
+src/_favicon-tags.html
+
 # Yarn 4
 .yarn/*
 !.yarn/patches

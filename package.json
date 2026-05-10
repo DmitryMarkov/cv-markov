@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "build:favicons": "node scripts/generate-favicons.mjs",
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
     "editorconfig": "editorconfig-checker",
@@ -38,6 +39,11 @@
   "resolutions": {
     "caniuse-lite": "^1.0.30001478"
   },
+  "dependenciesMeta": {
+    "sharp": {
+      "built": true
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "20.5.0",
     "@commitlint/config-conventional": "20.5.0",
@@ -45,6 +51,7 @@
     "chai": "6.2.2",
     "cssnano": "8.0.1",
     "editorconfig-checker": "5.0.1",
+    "favicons": "7.2.0",
     "html-validate": "10.15.0",
     "husky": "9.1.7",
     "lint-staged": "13.2.3",
