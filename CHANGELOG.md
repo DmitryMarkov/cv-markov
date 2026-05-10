@@ -1,5 +1,21 @@
 # Changelog
 
+## v4.0.0 [unreleased]
+
+- Bumped engines.node to >=24 (Node 24 LTS)
+- Bumped CI Node version from 18.x to 24.x
+- Updated GitHub Actions to current patch versions
+- Migrated workflow set-output syntax to GITHUB\_OUTPUT
+- Migrated setup-java v1 (deprecated) to v4 with required distribution
+- Upgraded Husky to 9.1.7 and rewrote hooks under v9 format
+- Removed yarn check --integrity from pre-commit (deprecated)
+- Fixed silently-broken lint-staged glob
+- Bumped Stylelint to 17.11.0 and stylelint-prettier to 5.0.3
+- Dropped redundant stylelint-config-prettier
+- Added corepack enable step to CI jobs and Dockerfile
+- Scoped remark to explicit files (excludes CLAUDE.md)
+- Added CLAUDE.md for future Claude Code sessions
+
 ## v3.2.1 [2025-07-08]
 
 - Changed title
