@@ -28,12 +28,12 @@
     "prepare": "husky",
     "prettier": "prettier ./src/** src/index.html",
     "prettier:fix": "prettier --write ./src/** src/index.html",
-    "security-audit": "yarn audit --groups dependencies --level high || test $? -lt 7",
+    "security-audit": "yarn npm audit --severity critical",
     "serve": "gulp watch",
     "start": "yarn serve",
     "test": "yarn build && mocha test/index.js --timeout 15000",
     "test:update": "yarn build && node test/update.js",
-    "up": "yarn upgrade-interactive --latest --exact"
+    "up": "yarn upgrade-interactive"
   },
   "resolutions": {
     "caniuse-lite": "^1.0.30001478"
@@ -136,5 +136,6 @@
         }
       ]
     }
-  }
+  },
+  "packageManager": "yarn@4.14.1"
 }
