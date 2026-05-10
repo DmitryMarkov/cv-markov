@@ -2,6 +2,10 @@
 
 ## v4.0.0 [unreleased]
 
+- Renovate major.automerge -> false (review majors by hand)
+- browserslist simplified to ["defaults", "not op_mini all"]
+- README replaced multi-badge legacy with single CI badge
+- TODO checked off completed items (local dev, dockerized tests)
 - Replaced mocha/chai/puppeteer/pixelmatch/pngjs/polyserve with @playwright/test
 - Tests run inside mcr.microsoft.com/playwright:v1.59.1-noble Docker image
 - Added docker-compose.yml; yarn test wraps it locally

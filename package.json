@@ -68,9 +68,7 @@
     "vite-plugin-static-copy": "4.1.0"
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie >= 0",
+    "defaults",
     "not op_mini all"
   ],
   "commitlint": {
@@ -114,7 +112,7 @@
       "config:recommended"
     ],
     "major": {
-      "automerge": true
+      "automerge": false
     },
     "packageRules": [
       {
