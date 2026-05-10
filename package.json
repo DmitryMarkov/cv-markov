@@ -13,6 +13,7 @@
   ],
   "license": "ISC",
   "main": "src/index.html",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com:DmitryMarkov/cv-markov.git"
@@ -28,12 +29,13 @@
     "prepare": "husky",
     "prettier": "prettier ./src/** src/index.html",
     "prettier:fix": "prettier --write ./src/** src/index.html",
-    "preview": "vite preview --port 4444",
+    "preview": "vite preview --host 127.0.0.1 --port 4444",
     "security-audit": "yarn npm audit --severity critical",
     "serve": "vite",
     "start": "yarn serve",
-    "test": "yarn build && mocha test/index.js --timeout 15000",
-    "test:update": "yarn build && node test/update.js",
+    "test": "HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm test",
+    "test:run": "playwright test",
+    "test:update": "TEST_FLAGS=--update-snapshots HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm test",
     "up": "yarn upgrade-interactive"
   },
   "resolutions": {
@@ -47,21 +49,16 @@
   "devDependencies": {
     "@commitlint/cli": "20.5.0",
     "@commitlint/config-conventional": "20.5.0",
+    "@playwright/test": "1.59.1",
     "autoprefixer": "10.5.0",
-    "chai": "6.2.2",
     "cssnano": "8.0.1",
     "editorconfig-checker": "5.0.1",
     "favicons": "7.2.0",
     "html-validate": "10.15.0",
     "husky": "9.1.7",
     "lint-staged": "13.2.3",
-    "mocha": "10.8.2",
-    "pixelmatch": "7.2.0",
-    "pngjs": "7.0.0",
-    "polyserve": "0.27.15",
     "postcss": "8.5.14",
     "prettier": "3.8.3",
-    "puppeteer": "24.43.0",
     "remark-cli": "12.0.1",
     "remark-preset-lint-markdown-style-guide": "6.0.1",
     "remark-preset-lint-recommended": "7.0.1",
@@ -118,7 +115,23 @@
     ],
     "major": {
       "automerge": true
-    }
+    },
+    "packageRules": [
+      {
+        "groupName": "playwright",
+        "groupSlug": "playwright",
+        "matchPackageNames": [
+          "@playwright/test",
+          "mcr.microsoft.com/playwright"
+        ]
+      },
+      {
+        "matchPackageNames": [
+          "mcr.microsoft.com/playwright"
+        ],
+        "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-noble$"
+      }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-prettier/recommended",

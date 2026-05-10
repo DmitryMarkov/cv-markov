@@ -3,3 +3,8 @@
 build
 node_modules
 materials
+tests
+playwright-report
+playwright.config.js
+docker-compose.yml
+test-results
