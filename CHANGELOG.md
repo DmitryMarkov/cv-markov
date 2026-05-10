@@ -51,7 +51,7 @@
 - Bumped engines.node to >=24 (Node 24 LTS)
 - Bumped CI Node version from 18.x to 24.x
 - Updated GitHub Actions to current patch versions
-- Migrated workflow set-output syntax to GITHUB\_OUTPUT
+- Migrated workflow set-output syntax to GITHUB_OUTPUT
 - Migrated setup-java v1 (deprecated) to v4 with required distribution
 - Upgraded Husky to 9.1.7 and rewrote hooks under v9 format
 - Removed yarn check --integrity from pre-commit (deprecated)
