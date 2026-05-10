@@ -28,7 +28,7 @@ const writeProcessedCss = async (outDir) => {
   const processor = buildPostcss()
   for (const file of cssEntries) {
     const from = resolve(import.meta.dirname, 'src', file)
-    const to = resolve(import.meta.dirname, outDir, file)
+    const to = resolve(outDir, file)
     const css = await readFile(from, 'utf8')
     const result = await processor.process(css, {
       from,
@@ -47,7 +47,7 @@ export default defineConfig({
     outDir: '../build',
     emptyOutDir: true,
     sourcemap: true,
-    rollupOptions: { input: 'src/index.html' },
+    rollupOptions: { input: 'index.html' },
   },
   plugins: [
     viteStaticCopy({
@@ -69,13 +69,19 @@ export default defineConfig({
         },
       },
     },
-    {
-      name: 'postcss-static-build',
-      apply: 'build',
-      async closeBundle() {
-        await writeProcessedCss('build')
-      },
-    },
+    (() => {
+      let outDir = null
+      return {
+        name: 'postcss-static-build',
+        apply: 'build',
+        configResolved(config) {
+          outDir = resolve(config.root, config.build.outDir)
+        },
+        async closeBundle() {
+          await writeProcessedCss(outDir)
+        },
+      }
+    })(),
     {
       name: 'postcss-static-dev',
       apply: 'serve',
