@@ -5,13 +5,19 @@ services:
     volumes:
       - .:/work
       - playwright-node-modules:/work/node_modules
-    command: >
-      sh -c "
-      corepack enable &&
-      yarn install --immutable &&
-      yarn build &&
-      yarn test:run ${TEST_FLAGS:-}
-      "
+    environment:
+      HOST_UID: ${HOST_UID:-1000}
+      HOST_GID: ${HOST_GID:-1000}
+      TEST_FLAGS: ${TEST_FLAGS:-}
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        set -e
+        trap 'chown -R "$$HOST_UID:$$HOST_GID" /work/build /work/playwright-report /work/test-results /work/tests/__screenshots__ 2>/dev/null || true' EXIT
+        corepack enable
+        yarn install --immutable
+        yarn build
+        yarn test:run $$TEST_FLAGS
 
 volumes:
   playwright-node-modules:

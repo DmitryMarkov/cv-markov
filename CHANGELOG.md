@@ -10,6 +10,9 @@
 - Re-enabled CI test job (was if:false) using container: field
 - Dropped legacy mocha CMD from Dockerfile
 - vite preview now binds to 127.0.0.1 to align with Playwright baseURL
+- Added "type": "module" to package.json (consistent ESM, no .mjs renames)
+- Renovate groups @playwright/test and the playwright Docker image into one PR
+- docker-compose entrypoint chowns generated files back to host UID on exit
 - Added favicons 7.2.0 with offline scripts/generate-favicons.mjs
 - Generated 33 static icons + manifest.webmanifest + browserconfig.xml
 - Removed gulp-real-favicon (was Phase 2) and faviconData.json artifact

@@ -13,6 +13,7 @@
   ],
   "license": "ISC",
   "main": "src/index.html",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com:DmitryMarkov/cv-markov.git"
@@ -32,9 +33,9 @@
     "security-audit": "yarn npm audit --severity critical",
     "serve": "vite",
     "start": "yarn serve",
-    "test": "docker compose run --rm test",
+    "test": "HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm test",
     "test:run": "playwright test",
-    "test:update": "TEST_FLAGS=--update-snapshots docker compose run --rm test",
+    "test:update": "TEST_FLAGS=--update-snapshots HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm test",
     "up": "yarn upgrade-interactive"
   },
   "resolutions": {
@@ -114,7 +115,23 @@
     ],
     "major": {
       "automerge": true
-    }
+    },
+    "packageRules": [
+      {
+        "groupName": "playwright",
+        "groupSlug": "playwright",
+        "matchPackageNames": [
+          "@playwright/test",
+          "mcr.microsoft.com/playwright"
+        ]
+      },
+      {
+        "matchPackageNames": [
+          "mcr.microsoft.com/playwright"
+        ],
+        "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-noble$"
+      }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-prettier/recommended",
