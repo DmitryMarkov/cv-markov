@@ -2,6 +2,13 @@
 
 ## v4.0.0 [unreleased]
 
+- Bumped @commitlint/cli + config-conventional 20.5.0 -> 21.0.0
+- Bumped lint-staged 13.2.3 -> 17.0.4 (four majors)
+- Bumped editorconfig-checker 5.0.1 -> 6.1.1
+- Renovate major.automerge -> false (review majors by hand)
+- browserslist simplified to ["defaults", "not op_mini all"]
+- README replaced multi-badge legacy with single CI badge
+- TODO checked off completed items (local dev, dockerized tests)
 - Replaced mocha/chai/puppeteer/pixelmatch/pngjs/polyserve with @playwright/test
 - Tests run inside mcr.microsoft.com/playwright:v1.59.1-noble Docker image
 - Added docker-compose.yml; yarn test wraps it locally
@@ -44,7 +51,7 @@
 - Bumped engines.node to >=24 (Node 24 LTS)
 - Bumped CI Node version from 18.x to 24.x
 - Updated GitHub Actions to current patch versions
-- Migrated workflow set-output syntax to GITHUB\_OUTPUT
+- Migrated workflow set-output syntax to GITHUB_OUTPUT
 - Migrated setup-java v1 (deprecated) to v4 with required distribution
 - Upgraded Husky to 9.1.7 and rewrote hooks under v9 format
 - Removed yarn check --integrity from pre-commit (deprecated)

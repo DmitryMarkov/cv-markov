@@ -1,9 +1,9 @@
 # TODO
 
-- [ ] local dev
+- [x] local dev
 - [ ] publish action
 - [ ] dark/light mode css switcher
-- [ ] dockerized screenshot test runner
+- [x] dockerized screenshot test runner
 - [ ] add Lighthouse check to pipeline
 - [ ] add semantic versioning tooling
 - [ ] PWA optimizations

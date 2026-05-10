@@ -1,14 +1,19 @@
-![][actions-tests]
-![][actions-html]
-![][actions-css]
-![][actions-markdown]
-![][actions-editor-config]
+![CI][actions-ci]
+
 # Dmitry Markov's CV
 
-Available on https://dmitrymarkov.pro
+Available on <https://dmitrymarkov.pro>.
 
-[actions-css]: https://github.com/DmitryMarkov/cv-markov/workflows/CSS/badge.svg
-[actions-html]: https://github.com/DmitryMarkov/cv-markov/workflows/HTML/badge.svg
-[actions-markdown]: https://github.com/DmitryMarkov/cv-markov/workflows/Markdown/badge.svg
-[actions-tests]: https://github.com/DmitryMarkov/cv-markov/workflows/Tests/badge.svg
-[actions-editor-config]: https://github.com/DmitryMarkov/cv-markov/workflows/EditorConfig/badge.svg
+## Local development
+
+```sh
+corepack enable           # one-time, may need sudo
+yarn install --immutable
+yarn serve                # Vite dev server with HMR
+yarn build                # production build → ./build
+yarn test                 # visual regression in Docker
+```
+
+See [CLAUDE.md](./CLAUDE.md) for the full architecture and tooling notes.
+
+[actions-ci]: https://github.com/DmitryMarkov/cv-markov/actions/workflows/pipeline.yml/badge.svg?branch=master
