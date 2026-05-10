@@ -52,6 +52,6 @@ Because the assertion is `equal(0)`, screenshots are platform-sensitive (font re
 
 ## Notes
 
-- Node engines field requires `>=16`; CI lint jobs run on 18.x; the disabled test job is set to 24.x; `Dockerfile` uses `node:24`. Use Node 18+ locally; Node 24 if you intend to run the screenshot tests under the same conditions as the Docker image.
+- Node engines field requires `24`; CI jobs run on 24.x; the disabled test job is also set to 24.x; `Dockerfile` uses `node:24`. Use Node 24 locally, including if you want to run the screenshot tests under the same conditions as the Docker image.
 - `assets/documents/*.pdf|.docx` are the downloadable CV files and are served as-is from `build/assets/`.
 - `materials/` contains source artwork (PSD, master icon) — not shipped.
