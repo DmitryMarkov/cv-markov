@@ -2,6 +2,13 @@
 
 ## v4.0.0 [unreleased]
 
+- Replaced Gulp pipeline with Vite 8.0.11 + custom PostCSS plugin
+- Removed gulp and 7 plugins, plus del and standalone postcss.config.js
+- Added vite-plugin-static-copy 4.1.0 for assets/ -> build/assets/
+- yarn serve now boots a Vite dev server with HMR (was a no-op)
+- yarn preview added (vite preview --port 4444) for production smoke
+- yarn build:favicons removed (returns in Phase 4 as offline script)
+- main.css and dark-theme.css filenames preserved in build output
 - Migrated from Yarn Classic 1.22 to Yarn 4.14.1 via Corepack
 - Added .yarnrc.yml with nodeLinker: node-modules and exact-version policy
 - Set packageManager field in package.json
