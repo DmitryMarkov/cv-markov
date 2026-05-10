@@ -8,13 +8,16 @@ A single-page static CV/resume site (HTML + CSS, no JS framework) published at h
 
 ## Common commands
 
+Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack downloads it on demand. First-time setup on a new machine: `corepack enable` (one-time, may need sudo on macOS), then `yarn install --immutable`.
+
 - `yarn build` — run default Gulp task: `clean` → parallel `copy:assets` + `do:css` + `do:html`. Output → `build/`.
 - `yarn build:favicons` — `gulp publish`: same as build but also regenerates favicons via RealFaviconGenerator (network call).
 - `yarn serve` / `yarn start` — currently a no-op (`gulp watch` task body is empty / `// todo`). There is no functional dev server. To preview, run `yarn build` and serve `build/` with any static server (e.g. `npx polyserve --root build`).
 - `yarn test` — builds, then runs Mocha (`test/index.js`, 15s timeout). See "Testing" below.
 - `yarn test:update` — rebuilds, then regenerates the reference screenshots in `test/reference/{desktop,mobile}/`. Run this after any intentional visual change.
-- Lint: `yarn css` (stylelint), `yarn css:fix`, `yarn html` (W3C, requires Java), `yarn markdown` (remark), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
-- `yarn security-audit` — `yarn audit` filtered to high+; exits 0 unless severity ≥ 7.
+- Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (W3C, requires Java), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
+- `yarn security-audit` — `yarn npm audit --severity critical`; exits 0 unless a critical advisory is found.
+- `yarn up` — interactive dependency upgrade (`yarn upgrade-interactive`, built-in to Yarn 4). Exact versions are enforced project-wide via `defaultSemverRangePrefix: ""` in `.yarnrc.yml`.
 
 To run a single test, use Mocha's `--grep`: `yarn build && npx mocha test/index.js --timeout 15000 --grep "desktop"`.
 
@@ -44,11 +47,16 @@ Because the assertion is `equal(0)`, screenshots are platform-sensitive (font re
 
 ## Conventions enforced by tooling
 
-- **Conventional Commits** via commitlint (`commit-msg` husky hook).
+- **Yarn 4** with `nodeLinker: node-modules` (no PnP). `.yarnrc.yml` sets `defaultSemverRangePrefix: ""` so every `yarn add` writes exact versions — preserve this when editing `package.json` by hand.
+- **Conventional Commits** via commitlint (`commit-msg` husky 9 hook).
 - **No direct commits to `master`** — `pre-commit` husky hook hard-fails. Work on a feature branch.
-- `pre-commit` runs `lint-staged` (prettier + stylelint on `*.{css,html}`, remark on `*.md`).
+- `pre-commit` runs `lint-staged`: prettier + stylelint on `*.{css,html}`, remark on `!(CLAUDE).md` (CLAUDE.md is excluded from the markdown style-guide lint).
 - Prettier config lives in `package.json`: `singleQuote`, no semicolons, `printWidth: 76`, `arrowParens: avoid`. Stylelint extends `stylelint-prettier/recommended`.
 - Renovate is enabled with full automerge (including major); dependency PRs land on green CI without review.
+
+## CI specifics
+
+In `.github/workflows/pipeline.yml`, every job runs steps in this order: `actions/checkout` → `actions/setup-node@v6.4.0` (with `cache: 'yarn'`, which auto-detects Yarn 4 from the `packageManager` field) → `corepack enable` → `yarn install --immutable`. `corepack enable` must come *after* `setup-node` — running it earlier attaches yarn shims to the runner's preinstalled Node, which then gets shadowed when setup-node prepends its own Node to PATH.
 
 ## Notes
 
