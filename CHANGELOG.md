@@ -2,6 +2,16 @@
 
 ## v4.0.0 [unreleased]
 
+- Migrated from Yarn Classic 1.22 to Yarn 4.14.1 via Corepack
+- Added .yarnrc.yml with nodeLinker: node-modules and exact-version policy
+- Set packageManager field in package.json
+- Regenerated yarn.lock in v4 format
+- Replaced manual yarn cache step in CI with setup-node cache: 'yarn'
+- Replaced --frozen-lockfile with --immutable in CI and Dockerfile
+- Dockerfile: dropped npm install -g yarn, switched to corepack
+- Updated up script to yarn upgrade-interactive (built-in to v4)
+- Rewrote security-audit as yarn npm audit --severity critical
+- Added Yarn 4 ignore rules to .gitignore
 - Bumped engines.node to >=24 (Node 24 LTS)
 - Bumped CI Node version from 18.x to 24.x
 - Updated GitHub Actions to current patch versions

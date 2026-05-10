@@ -9,48 +9,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - run: corepack enable
       - uses: actions/setup-node@v6.4.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: corepack enable
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v5.0.5
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - run: yarn css
 
   editor-config:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - run: corepack enable
       - uses: actions/setup-node@v6.4.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: corepack enable
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v5.0.5
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - run: yarn editorconfig
 
 
@@ -58,76 +38,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - run: corepack enable
       - uses: actions/setup-node@v6.4.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: corepack enable
+          cache: 'yarn'
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 8
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v5.0.5
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - run: yarn html
 
   markdown:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - run: corepack enable
       - uses: actions/setup-node@v6.4.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: corepack enable
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v5.0.5
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - run: yarn markdown
 
   security-audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - run: corepack enable
       - uses: actions/setup-node@v6.4.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: corepack enable
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v5.0.5
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - run: yarn security-audit
 
   test:
@@ -136,24 +86,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - run: corepack enable
       - uses: actions/setup-node@v6.4.0
         with:
           node-version: 24.x
-      - run: corepack enable
-
-      - name: Get yarn cache
-        id: yarn-cache
-        run: echo "dir=$(yarn cache dir)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v5.0.5
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - run: yarn test
       - uses: actions/upload-artifact@v7.0.1
         if: failure()
