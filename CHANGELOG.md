@@ -1,6 +1,6 @@
 # Changelog
 
-## v4.0.0 [unreleased]
+## v4.0.0 [2026-05-10]
 
 - Bumped @commitlint/cli + config-conventional 20.5.0 -> 21.0.0
 - Bumped lint-staged 13.2.3 -> 17.0.4 (four majors)
