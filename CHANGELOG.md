@@ -2,6 +2,9 @@
 
 ## v4.0.0 [unreleased]
 
+- Bumped @commitlint/cli + config-conventional 20.5.0 -> 21.0.0
+- Bumped lint-staged 13.2.3 -> 17.0.4 (four majors)
+- Bumped editorconfig-checker 5.0.1 -> 6.1.1
 - Renovate major.automerge -> false (review majors by hand)
 - browserslist simplified to ["defaults", "not op_mini all"]
 - README replaced multi-badge legacy with single CI badge
