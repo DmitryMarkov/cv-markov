@@ -4,36 +4,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A single-page static CV/resume site (HTML + CSS, no JS framework) published at https://dmitrymarkov.pro. Source lives in `src/` (one HTML file, light-theme `main.css`, `dark-theme.css`); a Gulp pipeline emits a minified, versioned site to `build/`.
+A single-page static CV/resume site (HTML + CSS, no JS framework) published at https://dmitrymarkov.pro. Source lives in `src/` (one HTML file, light-theme `main.css`, `dark-theme.css`); a Vite-driven pipeline emits a minified, versioned site to `build/`.
 
 ## Common commands
 
 Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack downloads it on demand. First-time setup on a new machine: `corepack enable` (one-time, may need sudo on macOS), then `yarn install --immutable`.
 
-- `yarn build` — run default Gulp task: `clean` → parallel `copy:assets` + `do:css` + `do:html`. Output → `build/`.
-- `yarn build:favicons` — `gulp publish`: same as build but also regenerates favicons via RealFaviconGenerator (network call).
-- `yarn serve` / `yarn start` — currently a no-op (`gulp watch` task body is empty / `// todo`). There is no functional dev server. To preview, run `yarn build` and serve `build/` with any static server (e.g. `npx polyserve --root build`).
-- `yarn test` — builds, then runs Mocha (`test/index.js`, 15s timeout). See "Testing" below.
-- `yarn test:update` — rebuilds, then regenerates the reference screenshots in `test/reference/{desktop,mobile}/`. Run this after any intentional visual change.
-- Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (W3C, requires Java), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
+- `yarn build` — `vite build`. Output → `build/` (HTML minified, `$version` replaced with `package.json#version`, `main.css` and `dark-theme.css` processed through PostCSS with autoprefixer + cssnano, `assets/` copied verbatim into `build/assets/`).
+- `yarn serve` / `yarn start` — `vite` dev server with HMR. CSS files served live (autoprefixer applied on the fly, no minification); assets/ available at `/assets/...`; HTML transforms (`$version` and CSS-link injection) apply on every reload.
+- `yarn preview` — `vite preview --port 4444`, serves the production `build/` for manual smoke-testing or visual-regression tests.
+- `yarn test` — builds, then runs Mocha (`test/index.js`, 15s timeout). Will be replaced by Playwright in Phase 5; currently broken on Node 24 because `polyserve` is abandoned.
+- `yarn test:update` — rebuilds, then regenerates the reference screenshots in `test/reference/{desktop,mobile}/`. Same Phase 5 caveat.
+- Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (W3C, requires Java — Phase 3 will swap to html-validate), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
 - `yarn security-audit` — `yarn npm audit --severity critical`; exits 0 unless a critical advisory is found.
 - `yarn up` — interactive dependency upgrade (`yarn upgrade-interactive`, built-in to Yarn 4). Exact versions are enforced project-wide via `defaultSemverRangePrefix: ""` in `.yarnrc.yml`.
 
-To run a single test, use Mocha's `--grep`: `yarn build && npx mocha test/index.js --timeout 15000 --grep "desktop"`.
 
 ## Architecture
 
-### Build pipeline (`gulpfile.js` + `gulp/*.js`)
+### Build pipeline (`vite.config.js`)
 
-`gulpfile.js` loads each task module and exposes a shared `global.$` (gulp, plugins, fs, del, package.json, config). Each `gulp/*.js` file exports a function that registers one task; the entry adds them all on require.
+Vite's HTML/CSS bundling is too aggressive for this project (it inlines small CSS as base64 and renames bundles after the HTML page). Instead the config uses Vite as a thin orchestrator and handles CSS through a custom PostCSS plugin so filenames stay stable.
 
-- `do:css` — postcss (autoprefixer + cssnano, comments stripped) with sourcemaps.
-- `do:html` — replaces literal `$version` with `package.json#version` (used for cache-busting query strings on assets), then htmlmin.
-- `copy:assets` — incremental copy of `assets/**/*` to `build/assets`.
-- `favicon:generate` — calls RealFaviconGenerator API using `materials/icon-transparent.png`; writes icons to `build/` and metadata to `faviconData.json`. Versioned by `package.json#version`.
-- `favicon:check-for-update` and `favicon:inject-markups` exist but are not wired into `default` or `publish`.
-
-`default = clean → parallel(copy:assets, do:css, do:html)`. `publish` adds `favicon:generate` to that parallel group.
+- `src/index.html` is the only Rollup input. The `inject-version-and-css` plugin runs `transformIndexHtml` with `order: 'post'` (after Vite's own asset rewrite) and: (a) substitutes `$version` for `package.json#version` and (b) replaces the `<!-- vite-css-injection -->` placeholder with the three `<link>` tags for `main.css` (preload + stylesheet) and `dark-theme.css` (media-query-gated). The `order: 'post'` is load-bearing — putting it `pre` lets Rolldown pick up `main.css` and bundle it under a hashed name.
+- The `postcss-static-build` plugin runs in `closeBundle` (build only) and processes `src/main.css` and `src/dark-theme.css` through autoprefixer + cssnano (`discardComments: { removeAll: true }`), writing `build/main.css(+.map)` and `build/dark-theme.css(+.map)`.
+- The `postcss-static-dev` plugin (serve only) installs a middleware that intercepts `/main.css` and `/dark-theme.css` and runs autoprefixer (no minification) on the fly.
+- `vite-plugin-static-copy` copies `assets/` → `build/assets/` and serves the same files at `/assets/...` in dev. Source is an absolute path against `import.meta.dirname` because the plugin's fast-glob doesn't accept Vite's `root: 'src'`-relative paths well.
+- `publicDir` is `false` — there is no Vite public folder; everything served at the site root comes from the static-copy plugin or build outputs. Favicon files referenced in HTML (`/favicon.ico` etc) currently 404 in dev/build until Phase 4 lands the offline favicon pipeline.
 
 ### Visual regression tests (`test/`)
 

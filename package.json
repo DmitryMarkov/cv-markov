@@ -18,8 +18,7 @@
     "url": "git@github.com:DmitryMarkov/cv-markov.git"
   },
   "scripts": {
-    "build": "gulp",
-    "build:favicons": "gulp publish",
+    "build": "vite build",
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
     "editorconfig": "editorconfig-checker",
@@ -28,8 +27,9 @@
     "prepare": "husky",
     "prettier": "prettier ./src/** src/index.html",
     "prettier:fix": "prettier --write ./src/** src/index.html",
+    "preview": "vite preview --port 4444",
     "security-audit": "yarn npm audit --severity critical",
-    "serve": "gulp watch",
+    "serve": "vite",
     "start": "yarn serve",
     "test": "yarn build && mocha test/index.js --timeout 15000",
     "test:update": "yarn build && node test/update.js",
@@ -43,16 +43,8 @@
     "@commitlint/config-conventional": "20.5.0",
     "autoprefixer": "10.5.0",
     "chai": "6.2.2",
-    "cssnano": "6.1.2",
-    "del": "6.1.1",
+    "cssnano": "8.0.1",
     "editorconfig-checker": "5.0.1",
-    "gulp": "4.0.2",
-    "gulp-htmlmin": "5.0.1",
-    "gulp-load-plugins": "2.0.8",
-    "gulp-postcss": "9.0.1",
-    "gulp-real-favicon": "0.3.2",
-    "gulp-replace": "1.1.4",
-    "gulp-sourcemaps": "3.0.0",
     "husky": "9.1.7",
     "lint-staged": "13.2.3",
     "mocha": "10.8.2",
@@ -67,7 +59,9 @@
     "remark-preset-lint-markdown-style-guide": "6.0.1",
     "remark-preset-lint-recommended": "7.0.1",
     "stylelint": "17.11.0",
-    "stylelint-prettier": "5.0.3"
+    "stylelint-prettier": "5.0.3",
+    "vite": "8.0.11",
+    "vite-plugin-static-copy": "4.1.0"
   },
   "browserslist": [
     ">0.2%",
@@ -84,12 +78,15 @@
     "node": ">=24"
   },
   "lint-staged": {
-    "*.{css,html}": [
-      "yarn prettier",
-      "yarn css"
+    "*.css": [
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
     ],
     "!(CLAUDE).md": [
-      "yarn markdown"
+      "remark --quiet"
     ]
   },
   "nodeW3Cvalidator": {
