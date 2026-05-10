@@ -22,7 +22,7 @@
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
     "editorconfig": "editorconfig-checker",
-    "html": "node-w3c-validator -i src/index.html -f lint -evH",
+    "html": "html-validate src/index.html",
     "markdown": "remark CHANGELOG.md README.md TODO.md",
     "prepare": "husky",
     "prettier": "prettier ./src/** src/index.html",
@@ -45,10 +45,10 @@
     "chai": "6.2.2",
     "cssnano": "8.0.1",
     "editorconfig-checker": "5.0.1",
+    "html-validate": "10.15.0",
     "husky": "9.1.7",
     "lint-staged": "13.2.3",
     "mocha": "10.8.2",
-    "node-w3c-validator": "2.0.2",
     "pixelmatch": "7.2.0",
     "pngjs": "7.0.0",
     "polyserve": "0.27.15",
@@ -88,9 +88,6 @@
     "!(CLAUDE).md": [
       "remark --quiet"
     ]
-  },
-  "nodeW3Cvalidator": {
-    "suppressErrors": []
   },
   "prettier": {
     "arrowParens": "avoid",

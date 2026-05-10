@@ -2,6 +2,11 @@
 
 ## v4.0.0 [unreleased]
 
+- Replaced node-w3c-validator (Java) with html-validate 10.15.0
+- Added .htmlvalidate.json extending recommended preset
+- Overrode doctype-style and void-style to match Prettier output
+- Dropped actions/setup-java step from CI html-validate job
+- Removed nodeW3Cvalidator config block from package.json
 - Replaced Gulp pipeline with Vite 8.0.11 + custom PostCSS plugin
 - Removed gulp and 7 plugins, plus del and standalone postcss.config.js
 - Added vite-plugin-static-copy 4.1.0 for assets/ -> build/assets/

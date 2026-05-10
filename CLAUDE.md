@@ -15,7 +15,7 @@ Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack
 - `yarn preview` — `vite preview --port 4444`, serves the production `build/` for manual smoke-testing or visual-regression tests.
 - `yarn test` — builds, then runs Mocha (`test/index.js`, 15s timeout). Will be replaced by Playwright in Phase 5; currently broken on Node 24 because `polyserve` is abandoned.
 - `yarn test:update` — rebuilds, then regenerates the reference screenshots in `test/reference/{desktop,mobile}/`. Same Phase 5 caveat.
-- Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (W3C, requires Java — Phase 3 will swap to html-validate), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
+- Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (`html-validate` 10, pure JS, config in `.htmlvalidate.json`), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
 - `yarn security-audit` — `yarn npm audit --severity critical`; exits 0 unless a critical advisory is found.
 - `yarn up` — interactive dependency upgrade (`yarn upgrade-interactive`, built-in to Yarn 4). Exact versions are enforced project-wide via `defaultSemverRangePrefix: ""` in `.yarnrc.yml`.
 
@@ -41,6 +41,10 @@ The test suite is purely a pixel-diff harness — there is no DOM or unit testin
 3. `pixelmatch` (threshold 0.1) compares against `test/reference/<viewport>/<route>.png`. The test asserts **0 different pixels** — any visual drift fails. Diff images are written to `test/screenshots/<viewport>/diff.png`.
 
 Because the assertion is `equal(0)`, screenshots are platform-sensitive (font rendering differs Linux vs macOS). The CI test job is currently gated off (`if: false` in `.github/workflows/pipeline.yml`); run tests locally and regenerate references with `yarn test:update` for any deliberate UI change.
+
+## HTML validation
+
+`.htmlvalidate.json` extends `html-validate:recommended` but overrides two stylistic rules to align with Prettier (the source of truth for formatting): `doctype-style` accepts `lowercase` (Prettier 3 always lowercases `<!doctype html>`) and `void-style` accepts `selfclose` (Prettier outputs `<meta />`). Without these overrides, the formatter and the linter would chase each other forever. Substantive rules (alt text, attribute names, deprecated tags, accessibility) stay strict. The CI `html-validate` job no longer needs `actions/setup-java` — pure JS.
 
 ## Conventions enforced by tooling
 
