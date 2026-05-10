@@ -56,7 +56,7 @@ Because the assertion is `equal(0)`, screenshots are platform-sensitive (font re
 
 ## CI specifics
 
-In `.github/workflows/pipeline.yml`, every job runs steps in this order: `actions/checkout` → `actions/setup-node@v6.4.0` (with `cache: 'yarn'`, which auto-detects Yarn 4 from the `packageManager` field) → `corepack enable` → `yarn install --immutable`. `corepack enable` must come *after* `setup-node` — running it earlier attaches yarn shims to the runner's preinstalled Node, which then gets shadowed when setup-node prepends its own Node to PATH.
+In `.github/workflows/pipeline.yml`, every job runs steps in this order: `actions/checkout` → `corepack enable` → `actions/setup-node@v6.4.0` (with `cache: 'yarn'`) → `yarn install --immutable`. `corepack enable` must come *before* `setup-node@cache:'yarn'`: setup-node calls `yarn cache dir` internally to locate the cache directory, and without corepack already enabled that call resolves to the runner's preinstalled Yarn 1.22, which refuses to run because of the `packageManager` mismatch. Corepack's shims read the active Node from PATH at call time, so enabling it before setup-node still picks up setup-node's Node correctly.
 
 ## Notes
 
