@@ -37,4 +37,17 @@ winscp.md
 .idea
 
 # Tests
-test/screenshots
+playwright-report
+test-results
+
+# Favicon generator scratch output
+src/_favicon-tags.html
+
+# Yarn 4
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

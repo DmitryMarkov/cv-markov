@@ -1,6 +1,6 @@
 {
   "name": "cv-markov",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "author": "Dmitry Markov",
   "description": "Dmitry Markov's CV",
   "bugs": {
@@ -13,67 +13,62 @@
   ],
   "license": "ISC",
   "main": "src/index.html",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com:DmitryMarkov/cv-markov.git"
   },
   "scripts": {
-    "build": "gulp",
-    "build:favicons": "gulp publish",
+    "build": "vite build",
+    "build:favicons": "node scripts/generate-favicons.mjs",
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
     "editorconfig": "editorconfig-checker",
-    "html": "node-w3c-validator -i src/index.html -f lint -evH",
-    "markdown": "remark '*.md'",
-    "prepare": "husky install",
+    "html": "html-validate src/index.html",
+    "markdown": "remark CHANGELOG.md README.md TODO.md",
+    "prepare": "husky",
     "prettier": "prettier ./src/** src/index.html",
     "prettier:fix": "prettier --write ./src/** src/index.html",
-    "security-audit": "yarn audit --groups dependencies --level high || test $? -lt 7",
-    "serve": "gulp watch",
+    "preview": "vite preview --host 127.0.0.1 --port 4444",
+    "security-audit": "yarn npm audit --severity critical",
+    "serve": "vite",
     "start": "yarn serve",
-    "test": "yarn build && mocha test/index.js --timeout 15000",
-    "test:update": "yarn build && node test/update.js",
-    "up": "yarn upgrade-interactive --latest --exact"
+    "test": "HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm test",
+    "test:run": "playwright test",
+    "test:update": "TEST_FLAGS=--update-snapshots HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose run --rm test",
+    "up": "yarn upgrade-interactive"
   },
   "resolutions": {
     "caniuse-lite": "^1.0.30001478"
   },
+  "dependenciesMeta": {
+    "sharp": {
+      "built": true
+    }
+  },
   "devDependencies": {
-    "@commitlint/cli": "20.5.0",
-    "@commitlint/config-conventional": "20.5.0",
+    "@commitlint/cli": "21.0.0",
+    "@commitlint/config-conventional": "21.0.0",
+    "@playwright/test": "1.59.1",
     "autoprefixer": "10.5.0",
-    "chai": "6.2.2",
-    "cssnano": "6.1.2",
-    "del": "6.1.1",
-    "editorconfig-checker": "5.0.1",
-    "gulp": "4.0.2",
-    "gulp-htmlmin": "5.0.1",
-    "gulp-load-plugins": "2.0.8",
-    "gulp-postcss": "9.0.1",
-    "gulp-real-favicon": "0.3.2",
-    "gulp-replace": "1.1.4",
-    "gulp-sourcemaps": "3.0.0",
-    "husky": "8.0.3",
-    "lint-staged": "13.2.3",
-    "mocha": "10.8.2",
-    "node-w3c-validator": "2.0.2",
-    "pixelmatch": "7.2.0",
-    "pngjs": "7.0.0",
-    "polyserve": "0.27.15",
+    "cssnano": "8.0.1",
+    "editorconfig-checker": "6.1.1",
+    "favicons": "7.2.0",
+    "html-validate": "10.15.0",
+    "husky": "9.1.7",
+    "lint-staged": "17.0.4",
     "postcss": "8.5.14",
     "prettier": "3.8.3",
-    "puppeteer": "24.43.0",
     "remark-cli": "12.0.1",
     "remark-preset-lint-markdown-style-guide": "6.0.1",
     "remark-preset-lint-recommended": "7.0.1",
-    "stylelint": "15.11.0",
-    "stylelint-config-prettier": "9.0.5",
-    "stylelint-prettier": "4.1.0"
+    "stylelint": "17.11.0",
+    "stylelint-prettier": "5.0.3",
+    "vite": "8.0.11",
+    "vite-plugin-static-copy": "4.1.0"
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie >= 0",
+    "defaults",
     "not op_mini all"
   ],
   "commitlint": {
@@ -82,19 +77,19 @@
     ]
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=24"
   },
   "lint-staged": {
-    "*.{css, html}": [
-      "yarn prettier",
-      "yarn css"
+    "*.css": [
+      "prettier --write",
+      "stylelint --fix"
     ],
-    "*.md": [
-      "yarn markdown"
+    "*.html": [
+      "prettier --write"
+    ],
+    "!(CLAUDE).md": [
+      "remark --quiet"
     ]
-  },
-  "nodeW3Cvalidator": {
-    "suppressErrors": []
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -117,8 +112,24 @@
       "config:recommended"
     ],
     "major": {
-      "automerge": true
-    }
+      "automerge": false
+    },
+    "packageRules": [
+      {
+        "groupName": "playwright",
+        "groupSlug": "playwright",
+        "matchPackageNames": [
+          "@playwright/test",
+          "mcr.microsoft.com/playwright"
+        ]
+      },
+      {
+        "matchPackageNames": [
+          "mcr.microsoft.com/playwright"
+        ],
+        "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-noble$"
+      }
+    ]
   },
   "stylelint": {
     "extends": "stylelint-prettier/recommended",
@@ -137,5 +148,6 @@
         }
       ]
     }
-  }
+  },
+  "packageManager": "yarn@4.14.1"
 }
