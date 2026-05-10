@@ -10,7 +10,3 @@ USER root
 RUN corepack enable
 RUN yarn install --immutable
 RUN yarn build
-
-#ENTRYPOINT "yarn build && mocha test/index.js --timeout 15000"
-
-CMD ["mocha test/index.js --timeout 15000"]

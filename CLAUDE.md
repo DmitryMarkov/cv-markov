@@ -14,8 +14,9 @@ Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack
 - `yarn serve` / `yarn start` — `vite` dev server with HMR. CSS files served live (autoprefixer applied on the fly, no minification); assets/ available at `/assets/...`; HTML transforms (`$version` and CSS-link injection) apply on every reload.
 - `yarn preview` — `vite preview --port 4444`, serves the production `build/` for manual smoke-testing or visual-regression tests.
 - `yarn build:favicons` — `node scripts/generate-favicons.mjs`. Manual, offline regeneration of favicon set from `materials/icon-transparent.png`. Writes 33 files into `assets/favicons/` and prints HTML tags into `src/_favicon-tags.html` (gitignored scratch file) for manual integration into `src/index.html`. Re-run only when the source icon changes — the generated files are committed and copied as-is during `yarn build`.
-- `yarn test` — builds, then runs Mocha (`test/index.js`, 15s timeout). Will be replaced by Playwright in Phase 5; currently broken on Node 24 because `polyserve` is abandoned.
-- `yarn test:update` — rebuilds, then regenerates the reference screenshots in `test/reference/{desktop,mobile}/`. Same Phase 5 caveat.
+- `yarn test` — runs Playwright visual-regression tests *inside* the official Microsoft Playwright Docker container (`mcr.microsoft.com/playwright:v1.59.1-noble`) via `docker compose run --rm test`. The container does its own `yarn install --immutable && yarn build && yarn test:run`. This is the only sane way to run these tests: the assertion is `maxDiffPixels: 0` and font rendering differs Linux vs macOS, so the container guarantees identical rendering between local dev (mac) and CI (ubuntu-latest, same image).
+- `yarn test:run` — direct `playwright test` invocation. Only useful inside the test container or in a CI job that already runs in the playwright image; running on macOS host will produce snapshots that the next Linux run rejects.
+- `yarn test:update` — same as `yarn test` but with `--update-snapshots`; regenerates `tests/__screenshots__/<viewport>-<route>.png`. Run this after any intentional visual change.
 - Lint: `yarn css` (stylelint 17), `yarn css:fix`, `yarn html` (`html-validate` 10, pure JS, config in `.htmlvalidate.json`), `yarn markdown` (remark, scoped to CHANGELOG/README/TODO), `yarn editorconfig`, `yarn prettier` / `yarn prettier:fix`.
 - `yarn security-audit` — `yarn npm audit --severity critical`; exits 0 unless a critical advisory is found.
 - `yarn up` — interactive dependency upgrade (`yarn upgrade-interactive`, built-in to Yarn 4). Exact versions are enforced project-wide via `defaultSemverRangePrefix: ""` in `.yarnrc.yml`.
@@ -31,23 +32,27 @@ Vite's HTML/CSS bundling is too aggressive for this project (it inlines small CS
 - The `postcss-static-build` plugin runs in `closeBundle` (build only) and processes `src/main.css` and `src/dark-theme.css` through autoprefixer + cssnano (`discardComments: { removeAll: true }`), writing `build/main.css(+.map)` and `build/dark-theme.css(+.map)`.
 - The `postcss-static-dev` plugin (serve only) installs a middleware that intercepts `/main.css` and `/dark-theme.css` and runs autoprefixer (no minification) on the fly.
 - `vite-plugin-static-copy` copies `assets/` → `build/assets/` and serves the same files at `/assets/...` in dev. Source is an absolute path against `import.meta.dirname` because the plugin's fast-glob doesn't accept Vite's `root: 'src'`-relative paths well.
-- `publicDir` is `false` — there is no Vite public folder; everything served at the site root comes from the static-copy plugin or build outputs. Favicon files referenced in HTML (`/favicon.ico` etc) currently 404 in dev/build until Phase 4 lands the offline favicon pipeline.
+- `publicDir` is `false` — there is no Vite public folder; everything served at the site root comes from the static-copy plugin or build outputs. Favicons live under `/assets/favicons/` (see "Favicons" below).
 
-### Visual regression tests (`test/`)
+### Visual regression tests (`tests/`, `playwright.config.js`, `docker-compose.yml`)
 
-The test suite is purely a pixel-diff harness — there is no DOM or unit testing.
+`@playwright/test` 1.59.1 with full-page `toHaveScreenshot()` assertions and `maxDiffPixels: 0` (zero-tolerance). The harness covers two viewports — `desktop` 1280×1080 and `mobile` 375×667 — over the single `/` route. Reference snapshots live in `tests/__screenshots__/`.
 
-1. `test/index.js` boots a `polyserve` server rooted at `build/` on port 4444.
-2. For each viewport in `test/config/index.js` (`desktop` 1280×1080, `mobile` 375×667) and each route in `test/config/routes.js` (currently just `index`), Puppeteer takes a full-page screenshot to `test/screenshots/<viewport>/<route>.png`.
-3. `pixelmatch` (threshold 0.1) compares against `test/reference/<viewport>/<route>.png`. The test asserts **0 different pixels** — any visual drift fails. Diff images are written to `test/screenshots/<viewport>/diff.png`.
+The whole test run is wrapped in Docker:
 
-Because the assertion is `equal(0)`, screenshots are platform-sensitive (font rendering differs Linux vs macOS). The CI test job is currently gated off (`if: false` in `.github/workflows/pipeline.yml`); run tests locally and regenerate references with `yarn test:update` for any deliberate UI change.
+- `docker-compose.yml` defines a single `test` service using `mcr.microsoft.com/playwright:v1.59.1-noble`. The image tag must stay in sync with the `@playwright/test` package version (mismatch makes Playwright unable to find browser executables) — both are pinned exactly and need to bump together.
+- The container bind-mounts the repo to `/work` and uses a named volume `playwright-node-modules` for `/work/node_modules` — keeps the host's macOS-native sharp/etc binaries separate from the container's Linux ones.
+- Container start sequence: `corepack enable && yarn install --immutable && yarn build && yarn test:run` (plus `--update-snapshots` if `yarn test:update` was the entrypoint). The Yarn 4 cache lives in `.yarn/cache` (per-project, gitignored) and persists across runs via the bind mount.
+- `playwright.config.js` boots `yarn preview` as the `webServer` (Vite preview on `127.0.0.1:4444` — the explicit `--host 127.0.0.1` matters: bare `localhost` on Linux can resolve to IPv6 first, and Playwright's `baseURL` health check uses IPv4). On failure, the HTML report writes into `playwright-report/`.
+- CI runs the test job directly inside the same `mcr.microsoft.com/playwright:v1.59.1-noble` image (via the workflow's `container:` field) — no docker-compose involvement on the runner. On failure, the job uploads `playwright-report` and `test-results` as the `playwright-report` artifact.
+
+To regenerate snapshots after an intentional visual change: `yarn test:update`, commit `tests/__screenshots__/`. Snapshots are platform-specific to the Playwright Linux image — never run `yarn test:run` directly on macOS.
 
 ## Favicons
 
 Generated offline by `scripts/generate-favicons.mjs` (the `favicons` npm package, depends on `sharp`). Output lives in `assets/favicons/` (33 PNG/ICO files plus `manifest.webmanifest` and `browserconfig.xml`) and gets copied into `build/assets/favicons/` by the same `vite-plugin-static-copy` target that handles `assets/`. URLs in HTML reference `/assets/favicons/...?v=$version` (Vite substitutes the version at build time). The manifest and browserconfig themselves do not carry cache-busting params on icon refs — they're loaded with `?v=$version` from the HTML and contain stable paths into the same icons folder.
 
-`sharp` requires a postinstall build script. Yarn 4 disables those by default for security; the project enables it explicitly via `dependenciesMeta."sharp@0.33.5".built: true` in `package.json`. If `sharp`'s major version changes after a Renovate bump, update that key.
+`sharp` requires a postinstall build script. Yarn 4 disables those by default for security; the project enables it explicitly via `dependenciesMeta.sharp.built: true` in `package.json` (bare ident, so it covers any sharp version Renovate bumps to).
 
 ## HTML validation
 
@@ -68,6 +73,6 @@ In `.github/workflows/pipeline.yml`, every job runs steps in this order: `action
 
 ## Notes
 
-- Node engines field requires `24`; CI jobs run on 24.x; the disabled test job is also set to 24.x; `Dockerfile` uses `node:24`. Use Node 24 locally, including if you want to run the screenshot tests under the same conditions as the Docker image.
+- Node engines field requires `>=24`; CI jobs run on 24.x; `Dockerfile` uses `node:24`. The Playwright test container ships its own Node (currently 22) — that's fine because `yarn install --immutable` runs inside the container.
 - `assets/documents/*.pdf|.docx` are the downloadable CV files and are served as-is from `build/assets/`.
 - `materials/` contains source artwork (PSD, master icon) — not shipped.

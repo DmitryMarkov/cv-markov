@@ -37,7 +37,8 @@ winscp.md
 .idea
 
 # Tests
-test/screenshots
+playwright-report
+test-results
 
 # Favicon generator scratch output
 src/_favicon-tags.html

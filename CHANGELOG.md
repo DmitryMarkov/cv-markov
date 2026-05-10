@@ -2,6 +2,14 @@
 
 ## v4.0.0 [unreleased]
 
+- Replaced mocha/chai/puppeteer/pixelmatch/pngjs/polyserve with @playwright/test
+- Tests run inside mcr.microsoft.com/playwright:v1.59.1-noble Docker image
+- Added docker-compose.yml; yarn test wraps it locally
+- Added yarn test:run for in-container/CI direct invocation
+- Reference snapshots regenerated in tests/\_\_screenshots\_\_/
+- Re-enabled CI test job (was if:false) using container: field
+- Dropped legacy mocha CMD from Dockerfile
+- vite preview now binds to 127.0.0.1 to align with Playwright baseURL
 - Added favicons 7.2.0 with offline scripts/generate-favicons.mjs
 - Generated 33 static icons + manifest.webmanifest + browserconfig.xml
 - Removed gulp-real-favicon (was Phase 2) and faviconData.json artifact
