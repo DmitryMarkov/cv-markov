@@ -47,8 +47,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "21.0.0",
-    "@commitlint/config-conventional": "21.0.0",
+    "@commitlint/cli": "21.0.1",
+    "@commitlint/config-conventional": "21.0.1",
     "@playwright/test": "1.60.0",
     "autoprefixer": "10.5.0",
     "cssnano": "8.0.1",
