@@ -1,6 +1,6 @@
 {
   "name": "cv-markov",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "author": "Dmitry Markov",
   "description": "Dmitry Markov's CV",
   "bugs": {
@@ -23,6 +23,7 @@
     "build:favicons": "node scripts/generate-favicons.mjs",
     "css": "stylelint src/**/*.css",
     "css:fix": "stylelint src/**/*.css --fix",
+    "deploy": "bash scripts/deploy.sh",
     "editorconfig": "editorconfig-checker",
     "html": "html-validate src/index.html",
     "markdown": "remark CHANGELOG.md README.md TODO.md",

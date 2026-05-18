@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.1.0 [2026-05-18]
+
+- Added scripts/deploy.sh + yarn deploy (FTPS via lftp to OrangeHost)
+- Added .env.deploy.example template (.env.deploy gitignored)
+- Documented one-time FTP account + lftp setup in CLAUDE.md
+
 ## v4.0.0 [2026-05-10]
 
 - Bumped @commitlint/cli + config-conventional 20.5.0 -> 21.0.0

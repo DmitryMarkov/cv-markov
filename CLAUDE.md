@@ -13,6 +13,7 @@ Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack
 - `yarn build` — `vite build`. Output → `build/` (HTML minified, `$version` replaced with `package.json#version`, `main.css` and `dark-theme.css` processed through PostCSS with autoprefixer + cssnano, `assets/` copied verbatim into `build/assets/`).
 - `yarn serve` / `yarn start` — `vite` dev server with HMR. CSS files served live (autoprefixer applied on the fly, no minification); assets/ available at `/assets/...`; HTML transforms (`$version` and CSS-link injection) apply on every reload.
 - `yarn preview` — `vite preview --host 127.0.0.1 --port 4444`, serves the production `build/` for manual smoke-testing or visual-regression tests. The explicit `--host 127.0.0.1` is required for Playwright's `webServer` health check (bare default `localhost` resolves IPv6 first on Linux while Playwright uses IPv4).
+- `yarn deploy` — `bash scripts/deploy.sh`. Rebuilds and rsyncs `build/` to the production host over SSH. See "Deployment" below for one-time setup; requires `.env.deploy` to be filled in locally. Will fail loudly if any required env var is missing.
 - `yarn build:favicons` — `node scripts/generate-favicons.mjs`. Manual, offline regeneration of favicon set from `materials/icon-transparent.png`. Writes 33 files into `assets/favicons/` and prints HTML tags into `src/_favicon-tags.html` (gitignored scratch file) for manual integration into `src/index.html`. Re-run only when the source icon changes — the generated files are committed and copied as-is during `yarn build`.
 - `yarn test` — runs Playwright visual-regression tests *inside* the official Microsoft Playwright Docker container (`mcr.microsoft.com/playwright:v1.59.1-noble`) via `docker compose run --rm test`. The container does its own `yarn install --immutable && yarn build && yarn test:run`. This is the only sane way to run these tests: the assertion is `maxDiffPixels: 0` and font rendering differs Linux vs macOS, so the container guarantees identical rendering between local dev (mac) and CI (ubuntu-latest, same image).
 - `yarn test:run` — direct `playwright test` invocation. Only useful inside the test container or in a CI job that already runs in the playwright image; running on macOS host will produce snapshots that the next Linux run rejects.
@@ -54,6 +55,33 @@ To regenerate snapshots after an intentional visual change: `yarn test:update`, 
 Generated offline by `scripts/generate-favicons.mjs` (the `favicons` npm package, depends on `sharp`). Output lives in `assets/favicons/` (33 PNG/ICO files plus `manifest.webmanifest` and `browserconfig.xml`) and gets copied into `build/assets/favicons/` by the same `vite-plugin-static-copy` target that handles `assets/`. URLs in HTML reference `/assets/favicons/...?v=$version` (Vite substitutes the version at build time). The manifest and browserconfig themselves do not carry cache-busting params on icon refs — they're loaded with `?v=$version` from the HTML and contain stable paths into the same icons folder.
 
 `sharp` requires a postinstall build script. Yarn 4 disables those by default for security; the project enables it explicitly via `dependenciesMeta.sharp.built: true` in `package.json` (bare ident, so it covers any sharp version Renovate bumps to).
+
+## Deployment
+
+Static site deploys to OrangeHost shared hosting (Micro plan, cPanel) via FTPS using `lftp`. Single command: `yarn deploy`. The script (`scripts/deploy.sh`) contains zero hardcoded credentials or host-specific values — everything is sourced from `.env.deploy` (gitignored). The committed template is `.env.deploy.example` with empty placeholders.
+
+SSH/rsync was the original choice but OrangeHost support confirmed SSH is not available on the Micro plan despite "SSH Access (Jailed)" being listed in the marketing copy — only the cPanel key manager is exposed; sshd does not accept connections. FTPS is the working alternative.
+
+### One-time local setup
+
+1. Install `lftp`: `brew install lftp` (macOS) or `apt install lftp` (Debian/CI).
+2. In cPanel → **FTP Accounts** → create a **dedicated** FTP user scoped to the document-root directory only (do **not** reuse the main cPanel password). Generate a strong password — it will live in `.env.deploy` and pass through `lftp` argv. Limiting the user's directory means a leaked password can only overwrite the public site, not touch other files.
+3. Look up the FTP host + port in cPanel → FTP Accounts → "Configure FTP Client". Port is typically 21 (explicit FTPS via AUTH TLS).
+4. `cp .env.deploy.example .env.deploy` and fill in all five values: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER` (the dedicated FTP login, often `something@dmitrymarkov.pro`), `DEPLOY_PASSWORD`, `DEPLOY_PATH`. The file is gitignored — never commit it.
+5. Sanity-check FTPS before the first deploy: `lftp -c "set ftp:ssl-force true; open -u $DEPLOY_USER,$DEPLOY_PASSWORD ftp://$DEPLOY_HOST; ls $DEPLOY_PATH/"` should list the current site files.
+
+### What `yarn deploy` does
+
+- Sources `.env.deploy`, validates required vars (`DEPLOY_PORT` defaults to 21).
+- Always runs `yarn build` first — guarantees the deployed bundle matches current HEAD; no risk of shipping a stale `build/`.
+- `lftp mirror --reverse --delete` from `build/` to `$DEPLOY_PATH/` over **forced FTPS** (`ftp:ssl-force true`, `ftp:ssl-protect-data true`, `ssl:verify-certificate true` — connection aborts if the server can't do TLS or has a bad cert). Excludes (anchored regex, top-level only): `^\.well-known/`, `^cgi-bin/`, `^\.htaccess$`, `^\.ftpquota$`. These are cPanel/Let's-Encrypt-managed; `--delete` would otherwise wipe them every deploy. Anchored on purpose — same-named files deeper in the tree (e.g. `dm/.ftpquota` from a stale FTP user's dir) are not protected and get cleaned up.
+- Prints the final HTTP status from the production URL as a smoke check.
+
+### Security
+
+The repo is public; `scripts/deploy.sh` and `.env.deploy.example` must stay free of usernames, hostnames, ports, or absolute paths. Real values live only in `.env.deploy` on disk.
+
+`DEPLOY_PASSWORD` passes through `lftp` argv and is briefly visible in `ps` on the local machine — acceptable on a single-user dev box, mitigated by using a dedicated path-restricted FTP account. To rotate: change the password in cPanel → FTP Accounts and update `.env.deploy`.
 
 ## HTML validation
 
