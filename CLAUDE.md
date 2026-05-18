@@ -83,12 +83,14 @@ SSH/rsync was the original choice but OrangeHost support confirmed SSH is not av
 
 Manual run: `gh workflow run "CI Pipeline" --ref master` (or the "Run workflow" button on the Actions tab).
 
-Required GitHub Secrets (Settings → Secrets and variables → Actions → New repository secret):
+GitHub Secrets (Settings → Secrets and variables → Actions → New repository secret):
 
-- `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER`, `DEPLOY_PASSWORD`, `DEPLOY_PATH` — same values as in your local `.env.deploy`
-- `DEPLOY_VERIFY_URL` — public site URL; the post-deploy smoke check fails the job on non-2xx/3xx
+- Required: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER`, `DEPLOY_PASSWORD`, `DEPLOY_PATH` — same values as in your local `.env.deploy`
+- Optional: `DEPLOY_VERIFY_URL` — public site URL; when set, the post-deploy smoke check fails the job on non-2xx/3xx. When unset, the check is skipped and the deploy job stays green based on the `lftp` exit status alone.
 
-All five+1 are referenced as `${{ secrets.X }}` only inside the `Deploy` step's `env:` block; they never appear in the workflow file as plain text. Rotation: change the FTP password in cPanel, update both `.env.deploy` and the `DEPLOY_PASSWORD` secret.
+All are referenced as `${{ secrets.X }}` only inside the `Deploy` step's `env:` block; they never appear in the workflow file as plain text. Rotation: change the FTP password in cPanel, update both `.env.deploy` and the `DEPLOY_PASSWORD` secret.
+
+A "Detect stale revision" step runs before `Deploy`: it compares `$GITHUB_SHA` against `origin/master` and skips the upload (logging a `::notice::`) if a newer commit has overtaken this run. The `concurrency` group alone doesn't enforce push order — it serialises by ready-time — so without this guard a slower-tested older commit could deploy after a faster-tested newer one and roll production back.
 
 ### Security
 

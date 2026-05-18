@@ -123,7 +123,19 @@ jobs:
         run: yarn install --immutable
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
+      - name: Detect stale revision
+        id: revcheck
+        run: |
+          git fetch origin master --depth=1
+          remote_sha=$(git rev-parse origin/master)
+          if [ "$GITHUB_SHA" != "$remote_sha" ]; then
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::This run is for $GITHUB_SHA but master HEAD is now $remote_sha; skipping deploy to avoid rolling back production."
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Deploy
+        if: steps.revcheck.outputs.stale != 'true'
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
