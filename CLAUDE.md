@@ -77,11 +77,26 @@ SSH/rsync was the original choice but OrangeHost support confirmed SSH is not av
 - `lftp mirror --reverse --delete` from `build/` to `$DEPLOY_PATH/` over **forced FTPS** (`ftp:ssl-force true`, `ftp:ssl-protect-data true`, `ssl:verify-certificate true` — connection aborts if the server can't do TLS or has a bad cert). Excludes (anchored regex, top-level only): `^\.well-known/`, `^cgi-bin/`, `^\.htaccess$`, `^\.ftpquota$`. These are cPanel/Let's-Encrypt-managed; `--delete` would otherwise wipe them every deploy. Anchored on purpose — same-named files deeper in the tree (e.g. `dm/.ftpquota` from a stale FTP user's dir) are not protected and get cleaned up.
 - If `DEPLOY_VERIFY_URL` is set, does a `curl` smoke check at the end and exits non-zero on non-2xx/3xx; otherwise prints "Skipping verification".
 
+### CI deploy (GitHub Actions)
+
+`.github/workflows/pipeline.yml` contains a `deploy` job that runs the same `scripts/deploy.sh` on every push to `master` (and via manual `workflow_dispatch`). It `needs:` every lint/test job — a red CI blocks the deploy. The job is also gated by `if: github.ref == 'refs/heads/master'`, so pushes to feature branches never touch production. A `concurrency: deploy-production` group serialises overlapping runs (the second waits for the first; nothing is cancelled mid-upload).
+
+Manual run: `gh workflow run "CI Pipeline" --ref master` (or the "Run workflow" button on the Actions tab).
+
+GitHub Secrets (Settings → Secrets and variables → Actions → New repository secret):
+
+- Required: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER`, `DEPLOY_PASSWORD`, `DEPLOY_PATH` — same values as in your local `.env.deploy`
+- Optional: `DEPLOY_VERIFY_URL` — public site URL; when set, the post-deploy smoke check fails the job on non-2xx/3xx. When unset, the check is skipped and the deploy job stays green based on the `lftp` exit status alone.
+
+All are referenced as `${{ secrets.X }}` only inside the `Deploy` step's `env:` block; they never appear in the workflow file as plain text. Rotation: change the FTP password in cPanel, update both `.env.deploy` and the `DEPLOY_PASSWORD` secret.
+
+A "Detect stale revision" step runs before `Deploy`: it compares `$GITHUB_SHA` against `origin/master` and skips the upload (logging a `::notice::`) if a newer commit has overtaken this run. The `concurrency` group alone doesn't enforce push order — it serialises by ready-time — so without this guard a slower-tested older commit could deploy after a faster-tested newer one and roll production back.
+
 ### Security
 
-The repo is public; `scripts/deploy.sh` and `.env.deploy.example` must stay free of usernames, hostnames, ports, or absolute paths. Real values live only in `.env.deploy` on disk.
+The repo is public; `scripts/deploy.sh` and `.env.deploy.example` must stay free of usernames, hostnames, ports, or absolute paths. Real values live only in `.env.deploy` on disk (locally) and in GitHub Secrets (CI).
 
-`DEPLOY_PASSWORD` passes through `lftp` argv and is briefly visible in `ps` on the local machine — acceptable on a single-user dev box, mitigated by using a dedicated path-restricted FTP account. To rotate: change the password in cPanel → FTP Accounts and update `.env.deploy`.
+`DEPLOY_PASSWORD` passes through `lftp` argv. Locally it's briefly visible in `ps` on the dev machine; in CI it's shielded by GitHub's job-level secret masking (any literal match of the secret in logs gets replaced with `***`). Both contexts are mitigated by using a dedicated path-restricted FTP account: a leaked password can only overwrite the public site, recoverable via `yarn deploy` from git. To rotate: change the password in cPanel → FTP Accounts, update `.env.deploy` and the GitHub `DEPLOY_PASSWORD` secret.
 
 ## HTML validation
 

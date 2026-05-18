@@ -1,5 +1,7 @@
 name: CI Pipeline
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 env:
   NODE_VERSION: 24.x
@@ -99,3 +101,46 @@ jobs:
           path: |
             playwright-report
             test-results
+
+  deploy:
+    needs: [lint, editor-config, html-validate, markdown, security-audit, test]
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v6.0.2
+      - run: corepack enable
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+      - name: Detect stale revision
+        id: revcheck
+        run: |
+          git fetch origin master --depth=1
+          remote_sha=$(git rev-parse origin/master)
+          if [ "$GITHUB_SHA" != "$remote_sha" ]; then
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::This run is for $GITHUB_SHA but master HEAD is now $remote_sha; skipping deploy to avoid rolling back production."
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy
+        if: steps.revcheck.outputs.stale != 'true'
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_VERIFY_URL: ${{ secrets.DEPLOY_VERIFY_URL }}
+        run: bash scripts/deploy.sh

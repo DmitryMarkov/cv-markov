@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.2.0 [2026-05-18]
+
+- Added CI deploy job (auto on master push + manual workflow_dispatch)
+- Deploy job gated by all lint/test jobs; only runs on refs/heads/master
+- Concurrency group prevents overlapping production deploys
+- Credentials sourced from GitHub Secrets, not the workflow file
+
 ## v4.1.0 [2026-05-18]
 
 - Added scripts/deploy.sh + yarn deploy (FTPS via lftp to OrangeHost)
