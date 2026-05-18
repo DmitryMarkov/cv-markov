@@ -13,7 +13,7 @@ Yarn 4.14.1 is pinned via the `packageManager` field in `package.json`; Corepack
 - `yarn build` — `vite build`. Output → `build/` (HTML minified, `$version` replaced with `package.json#version`, `main.css` and `dark-theme.css` processed through PostCSS with autoprefixer + cssnano, `assets/` copied verbatim into `build/assets/`).
 - `yarn serve` / `yarn start` — `vite` dev server with HMR. CSS files served live (autoprefixer applied on the fly, no minification); assets/ available at `/assets/...`; HTML transforms (`$version` and CSS-link injection) apply on every reload.
 - `yarn preview` — `vite preview --host 127.0.0.1 --port 4444`, serves the production `build/` for manual smoke-testing or visual-regression tests. The explicit `--host 127.0.0.1` is required for Playwright's `webServer` health check (bare default `localhost` resolves IPv6 first on Linux while Playwright uses IPv4).
-- `yarn deploy` — `bash scripts/deploy.sh`. Rebuilds and rsyncs `build/` to the production host over SSH. See "Deployment" below for one-time setup; requires `.env.deploy` to be filled in locally. Will fail loudly if any required env var is missing.
+- `yarn deploy` — `bash scripts/deploy.sh`. Rebuilds and mirrors `build/` to the production host via FTPS (forced TLS) using `lftp`. See "Deployment" below for one-time setup; requires `.env.deploy` to be filled in locally. Will fail loudly if any required env var is missing.
 - `yarn build:favicons` — `node scripts/generate-favicons.mjs`. Manual, offline regeneration of favicon set from `materials/icon-transparent.png`. Writes 33 files into `assets/favicons/` and prints HTML tags into `src/_favicon-tags.html` (gitignored scratch file) for manual integration into `src/index.html`. Re-run only when the source icon changes — the generated files are committed and copied as-is during `yarn build`.
 - `yarn test` — runs Playwright visual-regression tests *inside* the official Microsoft Playwright Docker container (`mcr.microsoft.com/playwright:v1.59.1-noble`) via `docker compose run --rm test`. The container does its own `yarn install --immutable && yarn build && yarn test:run`. This is the only sane way to run these tests: the assertion is `maxDiffPixels: 0` and font rendering differs Linux vs macOS, so the container guarantees identical rendering between local dev (mac) and CI (ubuntu-latest, same image).
 - `yarn test:run` — direct `playwright test` invocation. Only useful inside the test container or in a CI job that already runs in the playwright image; running on macOS host will produce snapshots that the next Linux run rejects.
@@ -67,7 +67,7 @@ SSH/rsync was the original choice but OrangeHost support confirmed SSH is not av
 1. Install `lftp`: `brew install lftp` (macOS) or `apt install lftp` (Debian/CI).
 2. In cPanel → **FTP Accounts** → create a **dedicated** FTP user scoped to the document-root directory only (do **not** reuse the main cPanel password). Generate a strong password — it will live in `.env.deploy` and pass through `lftp` argv. Limiting the user's directory means a leaked password can only overwrite the public site, not touch other files.
 3. Look up the FTP host + port in cPanel → FTP Accounts → "Configure FTP Client". Port is typically 21 (explicit FTPS via AUTH TLS).
-4. `cp .env.deploy.example .env.deploy` and fill in all five values: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER` (the dedicated FTP login, often `something@dmitrymarkov.pro`), `DEPLOY_PASSWORD`, `DEPLOY_PATH`. The file is gitignored — never commit it.
+4. `cp .env.deploy.example .env.deploy` and fill in: `DEPLOY_HOST`, `DEPLOY_PORT`, `DEPLOY_USER` (the dedicated FTP login, often `something@<your-domain>`), `DEPLOY_PASSWORD`, `DEPLOY_PATH`. Optionally set `DEPLOY_VERIFY_URL` to the public URL of the site — when set, the script does a post-deploy `curl` smoke check and fails on non-2xx/3xx. Leave empty to skip verification. The file is gitignored — never commit it.
 5. Sanity-check FTPS before the first deploy: `lftp -c "set ftp:ssl-force true; open -u $DEPLOY_USER,$DEPLOY_PASSWORD ftp://$DEPLOY_HOST; ls $DEPLOY_PATH/"` should list the current site files.
 
 ### What `yarn deploy` does
@@ -75,7 +75,7 @@ SSH/rsync was the original choice but OrangeHost support confirmed SSH is not av
 - Sources `.env.deploy`, validates required vars (`DEPLOY_PORT` defaults to 21).
 - Always runs `yarn build` first — guarantees the deployed bundle matches current HEAD; no risk of shipping a stale `build/`.
 - `lftp mirror --reverse --delete` from `build/` to `$DEPLOY_PATH/` over **forced FTPS** (`ftp:ssl-force true`, `ftp:ssl-protect-data true`, `ssl:verify-certificate true` — connection aborts if the server can't do TLS or has a bad cert). Excludes (anchored regex, top-level only): `^\.well-known/`, `^cgi-bin/`, `^\.htaccess$`, `^\.ftpquota$`. These are cPanel/Let's-Encrypt-managed; `--delete` would otherwise wipe them every deploy. Anchored on purpose — same-named files deeper in the tree (e.g. `dm/.ftpquota` from a stale FTP user's dir) are not protected and get cleaned up.
-- Prints the final HTTP status from the production URL as a smoke check.
+- If `DEPLOY_VERIFY_URL` is set, does a `curl` smoke check at the end and exits non-zero on non-2xx/3xx; otherwise prints "Skipping verification".
 
 ### Security
 

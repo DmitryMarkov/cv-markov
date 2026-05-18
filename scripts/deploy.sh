@@ -43,5 +43,15 @@ lftp -c "
     build/ $DEPLOY_PATH/
 "
 
-echo "==> Verifying production response"
-curl -sI https://dmitrymarkov.pro | head -1
+if [ -n "${DEPLOY_VERIFY_URL:-}" ]; then
+  echo "==> Verifying $DEPLOY_VERIFY_URL"
+  http_code=$(curl -s -o /dev/null -w '%{http_code}' "$DEPLOY_VERIFY_URL" 2>/dev/null || true)
+  : "${http_code:=000}"
+  echo "HTTP $http_code"
+  case "$http_code" in
+    2*|3*) ;;
+    *) echo "Verification failed (expected 2xx/3xx, got $http_code)" >&2; exit 1 ;;
+  esac
+else
+  echo "==> Skipping verification (DEPLOY_VERIFY_URL not set)"
+fi
