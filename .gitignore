@@ -43,6 +43,9 @@ test-results
 # Favicon generator scratch output
 src/_favicon-tags.html
 
+# Local deploy credentials
+.env.deploy
+
 # Yarn 4
 .yarn/*
 !.yarn/patches
