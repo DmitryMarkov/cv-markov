@@ -55,7 +55,7 @@
     "cssnano": "8.0.1",
     "editorconfig-checker": "6.1.1",
     "favicons": "7.2.0",
-    "html-validate": "10.17.0",
+    "html-validate": "11.2.0",
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
     "postcss": "8.5.14",
