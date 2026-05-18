@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.4.0 [2026-05-18]
+
+- Hero avatar served via &lt;picture&gt; with WebP source + PNG fallback
+- Avatar PNGs (40.9 KiB total) gain WebP variants (26.8 KiB, -34%)
+- Added scripts/generate-image-variants.mjs + yarn build:images
+- &lt;img&gt; fallback marked fetchpriority="high" for faster LCP
+- Wrapped page content in &lt;main&gt; landmark (Lighthouse a11y)
+- Added robots.txt at site root via vite-plugin-static-copy
+- Fixed Lighthouse CI false positive on /robots.txt under vite preview
+
 ## v4.3.0 [2026-05-18]
 
 - Added Lighthouse CI job to pipeline.yml (treosh/lighthouse-ci-action)

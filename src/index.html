@@ -104,17 +104,27 @@
       <header>
         <div class="row">
           <div class="column text-xs-center">
-            <img
-              src="/assets/images/avatar-dm.png"
-              class="img-thumbnail"
-              alt="Dmitry Markov, software engineer"
-              width="166"
-              height="166"
-              srcset="
-                /assets/images/avatar-dm.png,
-                /assets/images/avatar-dm-2x.png 2x
-              "
-            />
+            <picture>
+              <source
+                type="image/webp"
+                srcset="
+                  /assets/images/avatar-dm.webp,
+                  /assets/images/avatar-dm-2x.webp 2x
+                "
+              />
+              <img
+                src="/assets/images/avatar-dm.png"
+                class="img-thumbnail"
+                alt="Dmitry Markov, software engineer"
+                width="166"
+                height="166"
+                srcset="
+                  /assets/images/avatar-dm.png,
+                  /assets/images/avatar-dm-2x.png 2x
+                "
+                fetchpriority="high"
+              />
+            </picture>
             <h1>Dmitry&nbsp;Markov</h1>
             <h2>Team Lead / Software&nbsp;Engineer</h2>
             <nav>
@@ -130,370 +140,381 @@
           </div>
         </div>
       </header>
-      <section id="summary">
-        <div class="row">
-          <div class="column column-66 column-offset-20">
-            <strong
-              >Professional web engineer with 15+ years of experience in web
-              and software development</strong
-            >
-            <ul>
-              <li>
-                Creating apps with <b>React/Redux</b> and
-                <b>Vue.js</b> frameworks
-              </li>
-              <li>
-                Passionate to design systems, user interfaces, graphics and
-                <b>interactive prototypes</b>
-              </li>
-              <li>
-                Experienced in <b>web design</b>, desktop and mobile apps
-              </li>
-              <li>
-                Have a deep knowledge of
-                <b>HTML, CSS/SASS/LESS, JavaScript/ESNext</b>
-              </li>
-              <li>
-                Understand <b>SPA</b> development, <b>REST/GraphQL</b> APIs,
-                component-based architecture, and mobile-first approach
-              </li>
-              <li>
-                Follow <b>Clean Code</b> practices and SOLID design patterns
-              </li>
-              <li>
-                Using <b>TypeScript, Continuous Integration</b>, ESlint,
-                git, npm, webpack, gulp, pug, markdown
-              </li>
-              <li>
-                Testing with <b>Jest, Cypress.io</b>, Webdriver, Chai,
-                Nightwatch, Sinon, Enzyme, Mocha, Puppeteer
-              </li>
-              <li>
-                Interested in DevOps and full-stack development with
-                <b>Node.js</b> and <b>SQL/noSQL</b> databases
-              </li>
-              <li>
-                <b>Mentoring students</b> at
-                <a href="https://htmlacademy.ru">HTML Academy</a> on
-                JavaScript and React courses
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section id="experience">
-        <div class="row">
-          <div class="column column-80 column-offset-20">
-            <h3>Experience</h3>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2024 &mdash; present</small>
-          </div>
-          <div class="column column-80">
-            <h4>Head of Engineering</h4>
-            <em>Allthings GmbH (Freiburg, DE)</em>
-            <ul>
-              <li>Leading Engineering team</li>
-              <li>Participate in company strategy sessions</li>
-              <li>AI squad leading and implementation</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2022 &mdash; 2023</small>
-          </div>
-          <div class="column column-80">
-            <h4>DevOps Team Lead</h4>
-            <em>Allthings GmbH (Freiburg, DE)</em>
-            <ul>
-              <li>Lead DevOps team</li>
-              <li>Managed microservices infrastructure</li>
-              <li>Set up CI/CD with AWS, Docker and Buildkite</li>
-              <li>
-                Developed strategy and upgrade plans for DevOps and Frontend
-                initiatives
-              </li>
-              <li>Reviewed code for Frontends/JS/TS projects</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2021 &mdash; 2022</small>
-          </div>
-          <div class="column column-80">
-            <h4>Frontend Chapter Lead</h4>
-            <em>Allthings GmbH (Freiburg, DE)</em>
-            <ul>
-              <li>Lead Frontend team</li>
-              <li>Supported CI/CD with AWS/Docker/Buildkite</li>
-              <li>Maintained microservices in Node.js</li>
-              <li>Managed Frontend strategy</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2020 &mdash; 2021</small>
-          </div>
-          <div class="column column-80">
-            <h4>Software Engineer</h4>
-            <em>Oxygen Technologies GmbH (Freiburg, DE)</em>
-            <ul>
-              <li>
-                Created Progressive Web Applications with Vue.js, Nuxt.js
-                and Vuetify
-              </li>
-              <li>Established e2e testing with Cypress.io</li>
-              <li>
-                Set up frontend continuous integration with Jenkins and
-                Gitlab
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2019 &mdash; 2020</small>
-          </div>
-          <div class="column column-80">
-            <h4>Senior Software Engineer</h4>
-            <em>Allthings GmbH (Freiburg, DE)</em>
-            <ul>
-              <li>
-                Created interactive dashboard components for application
-                with React, Typescript, CSS-in-JS and GraphQL
-              </li>
-              <li>
-                Wrote e2e and unit tests with Jest, Nightwatch and Webdriver
-              </li>
-              <li>Participated in code review and technical discussions</li>
-              <li>Contributed to Node.js, PHP and React Native projects</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2017 &mdash; 2019</small>
-          </div>
-          <div class="column column-80">
-            <h4>Senior Software Developer</h4>
-            <em>Luxoft Poland (Wroclaw, PL)</em>
-            <ul>
-              <li>
-                Worked for one of the most established financial institutes
-                and participated in Digital Transformation program for U.S.
-                branch
-              </li>
-              <li>
-                Developed and supported enterprise-level SPA with
-                React/Redux from the scratch
-              </li>
-              <li>
-                Created library of shared reusable UI components according
-                to customer's visual design specifications, consulted other
-                teams about implementation
-              </li>
-              <li>
-                Participated in frontend architectural solutions and
-                project's documentation process
-              </li>
-              <li>
-                Introduced code style guidelines, maintained linting rules
-                and code review conventions
-              </li>
-              <li>
-                Conducted code reviews and technical interviews for senior
-                positions in team and company
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2015 &mdash; 2017</small>
-          </div>
-          <div class="column column-80">
-            <h4>Frontend Web Developer / Team Lead</h4>
-            <em>Complex pro (Moscow, RU)</em>
-            <ul>
-              <li>
-                Developed web applications with Vue.js and AngularJS
-                frameworks
-              </li>
-              <li>Managed web development team</li>
-              <li>
-                Prototyped graphic and interactive elements with Adobe
-                Experience Design and Bootstrap/jQuery
-              </li>
-              <li>
-                Supervised corporate portal and trained content managers
-              </li>
-              <li>Wrote technical documentation and specifications</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2004 &mdash; 2015</small>
-          </div>
-          <div class="column column-80">
-            <h4>Web Developer</h4>
-            <em>Complex pro (Moscow, RU)</em>
-            <ul>
-              <li>
-                Created graphical design and user interface for websites,
-                desktop and mobile applications
-              </li>
-              <li>
-                Made responsive/adaptive layouts with HTML/CSS and Bootstrap
-                framework
-              </li>
-              <li>Designed style guidelines and provided UX analytics</li>
-              <li>
-                Conducted search engines optimization and participated in
-                marketing working groups
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2002 &mdash; 2004</small>
-          </div>
-          <div class="column column-80">
-            <h4>Web Designer</h4>
-            <em>Hubert Burda Publishing House (Moscow, RU)</em>
-            <ul>
-              <li>
-                Mastered websites and graphic design for &laquo;Chip
-                Russia&raquo; magazine and its side projects
-              </li>
-              <li>
-                Created user interfaces and layout for &laquo;Enter&raquo;
-                and &laquo;Photo &amp; Video Digital&raquo; magazines
-              </li>
-              <li>
-                Wrote articles and IT books reviews for &laquo;Chip
-                Russia&raquo; magazine
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section id="education">
-        <div class="row">
-          <div class="column column-80 column-offset-20">
-            <h3>Education</h3>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2018</small>
-          </div>
-          <div class="column column-80">
-            <h4>CS50's Web Programming with Python and JavaScript</h4>
-            <em>HarvardX Online Education Program</em>
-            <p>
-              Received experience in building scalable and secure web
-              applications with Flask and Django frameworks, practiced
-              continuous integration and development with Travis CI
-            </p>
-          </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2015 &mdash; 2016</small>
-          </div>
-          <div class="column column-80">
-            <h4>Full Stack Web Developer</h4>
-            <em>The Hong Kong University of Science and Technology</em>
-            <p>
-              Practiced in HTML5, CSS3, JavaScript, Bootstrap, AngularJS,
-              Ionic framework for hybrid mobile applications, Node.js,
-              Express.js, MongoDB, test-driven development with Karma and
-              Mocha, Gulp and Grunt automation tools
-              <a
-                href="https://www.coursera.org/account/accomplishments/specialization/certificate/T7FHGXNAX3XV"
-                >#certificate</a
+      <main>
+        <section id="summary">
+          <div class="row">
+            <div class="column column-66 column-offset-20">
+              <strong
+                >Professional web engineer with 15+ years of experience in
+                web and software development</strong
               >
-            </p>
+              <ul>
+                <li>
+                  Creating apps with <b>React/Redux</b> and
+                  <b>Vue.js</b> frameworks
+                </li>
+                <li>
+                  Passionate to design systems, user interfaces, graphics
+                  and
+                  <b>interactive prototypes</b>
+                </li>
+                <li>
+                  Experienced in <b>web design</b>, desktop and mobile apps
+                </li>
+                <li>
+                  Have a deep knowledge of
+                  <b>HTML, CSS/SASS/LESS, JavaScript/ESNext</b>
+                </li>
+                <li>
+                  Understand <b>SPA</b> development,
+                  <b>REST/GraphQL</b> APIs, component-based architecture,
+                  and mobile-first approach
+                </li>
+                <li>
+                  Follow <b>Clean Code</b> practices and SOLID design
+                  patterns
+                </li>
+                <li>
+                  Using <b>TypeScript, Continuous Integration</b>, ESlint,
+                  git, npm, webpack, gulp, pug, markdown
+                </li>
+                <li>
+                  Testing with <b>Jest, Cypress.io</b>, Webdriver, Chai,
+                  Nightwatch, Sinon, Enzyme, Mocha, Puppeteer
+                </li>
+                <li>
+                  Interested in DevOps and full-stack development with
+                  <b>Node.js</b> and <b>SQL/noSQL</b> databases
+                </li>
+                <li>
+                  <b>Mentoring students</b> at
+                  <a href="https://htmlacademy.ru">HTML Academy</a> on
+                  JavaScript and React courses
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-20 text-xs-right">
-            <small>2002</small>
+        </section>
+        <section id="experience">
+          <div class="row">
+            <div class="column column-80 column-offset-20">
+              <h3>Experience</h3>
+            </div>
           </div>
-          <div class="column column-80">
-            <h4>Engineer specialist</h4>
-            <em
-              >Moscow State Institute of Radio Engineering, Electronics and
-              Automation (Technical University)</em
-            >
-            <p>
-              Assessed A-grade score in English language, programming
-              beginnings, communication systems and other studies. Received
-              practice in software development with PHP, MySQL, HTML, CSS
-              and UI design
-            </p>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2024 &mdash; present</small>
+            </div>
+            <div class="column column-80">
+              <h4>Head of Engineering</h4>
+              <em>Allthings GmbH (Freiburg, DE)</em>
+              <ul>
+                <li>Leading Engineering team</li>
+                <li>Participate in company strategy sessions</li>
+                <li>AI squad leading and implementation</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
-      <section id="additional">
-        <div class="row">
-          <div class="column column-80 column-offset-20">
-            <h3>Additional</h3>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2022 &mdash; 2023</small>
+            </div>
+            <div class="column column-80">
+              <h4>DevOps Team Lead</h4>
+              <em>Allthings GmbH (Freiburg, DE)</em>
+              <ul>
+                <li>Lead DevOps team</li>
+                <li>Managed microservices infrastructure</li>
+                <li>Set up CI/CD with AWS, Docker and Buildkite</li>
+                <li>
+                  Developed strategy and upgrade plans for DevOps and
+                  Frontend initiatives
+                </li>
+                <li>Reviewed code for Frontends/JS/TS projects</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-80 column-offset-20">
-            <h4>Languages</h4>
-            <ul>
-              <li>English &mdash; upper-intermediate (B2)</li>
-              <li>German &mdash; basic-plus (A2)</li>
-              <li>Russian &mdash; native</li>
-              <li>Polish, Bulgarian &mdash; basic</li>
-            </ul>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2021 &mdash; 2022</small>
+            </div>
+            <div class="column column-80">
+              <h4>Frontend Chapter Lead</h4>
+              <em>Allthings GmbH (Freiburg, DE)</em>
+              <ul>
+                <li>Lead Frontend team</li>
+                <li>Supported CI/CD with AWS/Docker/Buildkite</li>
+                <li>Maintained microservices in Node.js</li>
+                <li>Managed Frontend strategy</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-80 column-offset-20">
-            <h4>Volunteer Experience</h4>
-            <p>
-              Member of GTC (Global Translator Community): MOOC translations
-              from English to Russian via Translate Coursera Program
-            </p>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2020 &mdash; 2021</small>
+            </div>
+            <div class="column column-80">
+              <h4>Software Engineer</h4>
+              <em>Oxygen Technologies GmbH (Freiburg, DE)</em>
+              <ul>
+                <li>
+                  Created Progressive Web Applications with Vue.js, Nuxt.js
+                  and Vuetify
+                </li>
+                <li>Established e2e testing with Cypress.io</li>
+                <li>
+                  Set up frontend continuous integration with Jenkins and
+                  Gitlab
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-80 column-offset-20">
-            <h4>Interests</h4>
-            <p>Explore new things, listen to music, play darts</p>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2019 &mdash; 2020</small>
+            </div>
+            <div class="column column-80">
+              <h4>Senior Software Engineer</h4>
+              <em>Allthings GmbH (Freiburg, DE)</em>
+              <ul>
+                <li>
+                  Created interactive dashboard components for application
+                  with React, Typescript, CSS-in-JS and GraphQL
+                </li>
+                <li>
+                  Wrote e2e and unit tests with Jest, Nightwatch and
+                  Webdriver
+                </li>
+                <li>
+                  Participated in code review and technical discussions
+                </li>
+                <li>
+                  Contributed to Node.js, PHP and React Native projects
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="row row-top">
-          <div class="column column-80 column-offset-20">
-            <h4>Download résumé</h4>
-            <p>
-              <i class="fa fa-file-word-o"></i
-              ><a
-                href="/assets/documents/Dmitry-Markov-2022.docx?v=$version"
-                title="Download 176Kb"
-                >Microsoft Word</a
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2017 &mdash; 2019</small>
+            </div>
+            <div class="column column-80">
+              <h4>Senior Software Developer</h4>
+              <em>Luxoft Poland (Wroclaw, PL)</em>
+              <ul>
+                <li>
+                  Worked for one of the most established financial
+                  institutes and participated in Digital Transformation
+                  program for U.S. branch
+                </li>
+                <li>
+                  Developed and supported enterprise-level SPA with
+                  React/Redux from the scratch
+                </li>
+                <li>
+                  Created library of shared reusable UI components according
+                  to customer's visual design specifications, consulted
+                  other teams about implementation
+                </li>
+                <li>
+                  Participated in frontend architectural solutions and
+                  project's documentation process
+                </li>
+                <li>
+                  Introduced code style guidelines, maintained linting rules
+                  and code review conventions
+                </li>
+                <li>
+                  Conducted code reviews and technical interviews for senior
+                  positions in team and company
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2015 &mdash; 2017</small>
+            </div>
+            <div class="column column-80">
+              <h4>Frontend Web Developer / Team Lead</h4>
+              <em>Complex pro (Moscow, RU)</em>
+              <ul>
+                <li>
+                  Developed web applications with Vue.js and AngularJS
+                  frameworks
+                </li>
+                <li>Managed web development team</li>
+                <li>
+                  Prototyped graphic and interactive elements with Adobe
+                  Experience Design and Bootstrap/jQuery
+                </li>
+                <li>
+                  Supervised corporate portal and trained content managers
+                </li>
+                <li>Wrote technical documentation and specifications</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2004 &mdash; 2015</small>
+            </div>
+            <div class="column column-80">
+              <h4>Web Developer</h4>
+              <em>Complex pro (Moscow, RU)</em>
+              <ul>
+                <li>
+                  Created graphical design and user interface for websites,
+                  desktop and mobile applications
+                </li>
+                <li>
+                  Made responsive/adaptive layouts with HTML/CSS and
+                  Bootstrap framework
+                </li>
+                <li>Designed style guidelines and provided UX analytics</li>
+                <li>
+                  Conducted search engines optimization and participated in
+                  marketing working groups
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2002 &mdash; 2004</small>
+            </div>
+            <div class="column column-80">
+              <h4>Web Designer</h4>
+              <em>Hubert Burda Publishing House (Moscow, RU)</em>
+              <ul>
+                <li>
+                  Mastered websites and graphic design for &laquo;Chip
+                  Russia&raquo; magazine and its side projects
+                </li>
+                <li>
+                  Created user interfaces and layout for &laquo;Enter&raquo;
+                  and &laquo;Photo &amp; Video Digital&raquo; magazines
+                </li>
+                <li>
+                  Wrote articles and IT books reviews for &laquo;Chip
+                  Russia&raquo; magazine
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id="education">
+          <div class="row">
+            <div class="column column-80 column-offset-20">
+              <h3>Education</h3>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2018</small>
+            </div>
+            <div class="column column-80">
+              <h4>CS50's Web Programming with Python and JavaScript</h4>
+              <em>HarvardX Online Education Program</em>
+              <p>
+                Received experience in building scalable and secure web
+                applications with Flask and Django frameworks, practiced
+                continuous integration and development with Travis CI
+              </p>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2015 &mdash; 2016</small>
+            </div>
+            <div class="column column-80">
+              <h4>Full Stack Web Developer</h4>
+              <em>The Hong Kong University of Science and Technology</em>
+              <p>
+                Practiced in HTML5, CSS3, JavaScript, Bootstrap, AngularJS,
+                Ionic framework for hybrid mobile applications, Node.js,
+                Express.js, MongoDB, test-driven development with Karma and
+                Mocha, Gulp and Grunt automation tools
+                <a
+                  href="https://www.coursera.org/account/accomplishments/specialization/certificate/T7FHGXNAX3XV"
+                  >#certificate</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-20 text-xs-right">
+              <small>2002</small>
+            </div>
+            <div class="column column-80">
+              <h4>Engineer specialist</h4>
+              <em
+                >Moscow State Institute of Radio Engineering, Electronics
+                and Automation (Technical University)</em
               >
-              <i class="fa fa-file-pdf-o"></i
-              ><a
-                href="/assets/documents/Dmitry-Markov-2022.pdf?v=$version"
-                title="Download 290Kb"
-                >Adobe PDF</a
-              >
-            </p>
+              <p>
+                Assessed A-grade score in English language, programming
+                beginnings, communication systems and other studies.
+                Received practice in software development with PHP, MySQL,
+                HTML, CSS and UI design
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section id="additional">
+          <div class="row">
+            <div class="column column-80 column-offset-20">
+              <h3>Additional</h3>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-80 column-offset-20">
+              <h4>Languages</h4>
+              <ul>
+                <li>English &mdash; upper-intermediate (B2)</li>
+                <li>German &mdash; basic-plus (A2)</li>
+                <li>Russian &mdash; native</li>
+                <li>Polish, Bulgarian &mdash; basic</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-80 column-offset-20">
+              <h4>Volunteer Experience</h4>
+              <p>
+                Member of GTC (Global Translator Community): MOOC
+                translations from English to Russian via Translate Coursera
+                Program
+              </p>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-80 column-offset-20">
+              <h4>Interests</h4>
+              <p>Explore new things, listen to music, play darts</p>
+            </div>
+          </div>
+          <div class="row row-top">
+            <div class="column column-80 column-offset-20">
+              <h4>Download résumé</h4>
+              <p>
+                <i class="fa fa-file-word-o"></i
+                ><a
+                  href="/assets/documents/Dmitry-Markov-2022.docx?v=$version"
+                  title="Download 176Kb"
+                  >Microsoft Word</a
+                >
+                <i class="fa fa-file-pdf-o"></i
+                ><a
+                  href="/assets/documents/Dmitry-Markov-2022.pdf?v=$version"
+                  title="Download 290Kb"
+                  >Adobe PDF</a
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </body>
 </html>

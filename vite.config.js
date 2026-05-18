@@ -56,6 +56,13 @@ export default defineConfig({
           src: resolve(import.meta.dirname, 'assets').replaceAll('\\', '/'),
           dest: '.',
         },
+        {
+          src: resolve(import.meta.dirname, 'src/robots.txt').replaceAll(
+            '\\',
+            '/'
+          ),
+          dest: '.',
+        },
       ],
     }),
     {
