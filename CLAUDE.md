@@ -98,6 +98,18 @@ The repo is public; `scripts/deploy.sh` and `.env.deploy.example` must stay free
 
 `DEPLOY_PASSWORD` passes through `lftp` argv. Locally it's briefly visible in `ps` on the dev machine; in CI it's shielded by GitHub's job-level secret masking (any literal match of the secret in logs gets replaced with `***`). Both contexts are mitigated by using a dedicated path-restricted FTP account: a leaked password can only overwrite the public site, recoverable via `yarn deploy` from git. To rotate: change the password in cPanel → FTP Accounts, update `.env.deploy` and the GitHub `DEPLOY_PASSWORD` secret.
 
+## Lighthouse CI
+
+`.github/workflows/pipeline.yml` runs a `lighthouse` job in parallel with the other lint jobs and gates the `deploy` job on it. Config lives in `.lighthouserc.json` at the repo root.
+
+- Server: `yarn preview` started by the action (same pattern Playwright uses) — checks the production build before any FTPS upload.
+- Profile: mobile-only with `--headless=new`; desktop scores equal-or-higher than mobile, so a passing mobile run implies desktop also passes. Adding a desktop run would double CI time without changing the gating outcome.
+- 3 runs averaged (`numberOfRuns: 3`) — Lighthouse fluctuates ±1–2 points per category run-to-run; averaging keeps the gate stable.
+- Thresholds (`assert.assertions`): **>=0.9** on `performance`, `accessibility`, `best-practices`, `seo`. Set as `error` level — below 0.9 fails the job and blocks deploy. Current baseline (measured against prod v4.2.0): perf 99, a11y 97, best-practices 100, seo 100 — well above the floor.
+- Reports: `uploadArtifacts: true` saves the JSON + HTML report on every run; `upload.target: temporary-public-storage` posts a Lighthouse-CI public URL in the action log for quick visual diff.
+
+The mobile a11y score is 97, not 100, because of one real audit failure: `landmark-one-main` (`<main>` element missing in `src/index.html`). Above the threshold, so it doesn't fail CI — worth fixing in a separate small PR.
+
 ## HTML validation
 
 `.htmlvalidate.json` extends `html-validate:recommended` but overrides two stylistic rules to align with Prettier (the source of truth for formatting): `doctype-style` accepts `lowercase` (Prettier 3 always lowercases `<!doctype html>`) and `void-style` accepts `selfclose` (Prettier outputs `<meta />`). Without these overrides, the formatter and the linter would chase each other forever. Substantive rules (alt text, attribute names, deprecated tags, accessibility) stay strict. The CI `html-validate` job no longer needs `actions/setup-java` — pure JS.
