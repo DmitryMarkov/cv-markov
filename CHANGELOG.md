@@ -1,5 +1,13 @@
 # Changelog
 
+## v4.3.0 [2026-05-18]
+
+- Added Lighthouse CI job to pipeline.yml (treosh/lighthouse-ci-action)
+- Runs against yarn preview, mobile profile, 3 runs averaged
+- Asserts >=0.9 on all four categories (perf, a11y, best-practices, seo)
+- Added to deploy job needs:; failed Lighthouse blocks production push
+- Reports uploaded as workflow artifacts on every run
+
 ## v4.2.0 [2026-05-18]
 
 - Added CI deploy job (auto on master push + manual workflow_dispatch)
