@@ -105,6 +105,7 @@ The repo is public; `scripts/deploy.sh` and `.env.deploy.example` must stay free
 - Server: `yarn preview` started by the action (same pattern Playwright uses) — checks the production build before any FTPS upload.
 - Profile: mobile-only with `--headless=new`; desktop scores equal-or-higher than mobile, so a passing mobile run implies desktop also passes. Adding a desktop run would double CI time without changing the gating outcome.
 - 3 runs averaged (`numberOfRuns: 3`) — Lighthouse fluctuates ±1–2 points per category run-to-run; averaging keeps the gate stable.
+- `skipAudits: ["is-on-https"]` — `yarn preview` serves over HTTP on localhost, and Lighthouse v12 stopped exempting localhost from `is-on-https`. Without the skip, best-practices drops to 0.82 (single audit, weight 5/32). Production is on HTTPS and scores 1.00 regardless.
 - Thresholds (`assert.assertions`): **>=0.9** on `performance`, `accessibility`, `best-practices`, `seo`. Set as `error` level — below 0.9 fails the job and blocks deploy. Current baseline (measured against prod v4.2.0): perf 99, a11y 97, best-practices 100, seo 100 — well above the floor.
 - Reports: `uploadArtifacts: true` saves the JSON + HTML report on every run; `upload.target: temporary-public-storage` posts a Lighthouse-CI public URL in the action log for quick visual diff.
 
