@@ -67,7 +67,7 @@
     "stylelint": "17.12.0",
     "stylelint-prettier": "5.0.3",
     "vite": "8.0.16",
-    "vite-plugin-static-copy": "4.1.0"
+    "vite-plugin-static-copy": "4.1.1"
   },
   "browserslist": [
     "defaults",
