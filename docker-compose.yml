@@ -1,6 +1,6 @@
 services:
   test:
-    image: mcr.microsoft.com/playwright:v1.61.0-noble
+    image: mcr.microsoft.com/playwright:v1.61.1-noble
     working_dir: /work
     volumes:
       - .:/work
