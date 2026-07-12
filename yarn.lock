@@ -1680,7 +1680,7 @@ __metadata:
     cssnano: "npm:8.0.2"
     editorconfig-checker: "npm:6.1.1"
     favicons: "npm:7.3.0"
-    html-validate: "npm:11.5.5"
+    html-validate: "npm:11.5.6"
     husky: "npm:9.1.7"
     lint-staged: "npm:17.0.8"
     postcss: "npm:8.5.17"
@@ -2222,9 +2222,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-validate@npm:11.5.5":
-  version: 11.5.5
-  resolution: "html-validate@npm:11.5.5"
+"html-validate@npm:11.5.6":
+  version: 11.5.6
+  resolution: "html-validate@npm:11.5.6"
   dependencies:
     "@html-validate/stylish": "npm:^6.0.0"
     "@sidvind/better-ajv-errors": "npm:7.0.0"
@@ -2251,7 +2251,7 @@ __metadata:
       optional: true
   bin:
     html-validate: bin/html-validate.mjs
-  checksum: 10c0/7c29e2cedb6c7ee15dc5a4b42e716620c61e0eac423846517624fd1d05e6de4cb179a044b0911e1440a77231506e55ea97dcbd339a0ea8e1f7deea7c5494e969
+  checksum: 10c0/e2ec8e7f743842625b672d4e3d9246455892bb02926f76c6a067354dbaebcb9776afcd4a7a2f31842452439d153e9eb72fc27ebfa46127d61e0422ff1eed7136
   languageName: node
   linkType: hard
 
