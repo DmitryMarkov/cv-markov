@@ -52,7 +52,7 @@
     "@commitlint/cli": "21.2.1",
     "@commitlint/config-conventional": "21.2.0",
     "@playwright/test": "1.61.1",
-    "autoprefixer": "10.5.3",
+    "autoprefixer": "10.5.4",
     "cssnano": "8.0.2",
     "editorconfig-checker": "6.1.1",
     "favicons": "7.3.0",
