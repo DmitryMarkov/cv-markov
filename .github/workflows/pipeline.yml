@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -69,7 +69,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -83,7 +83,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -105,7 +105,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
@@ -134,7 +134,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.0
       - run: corepack enable
-      - uses: actions/setup-node@v6.5.0
+      - uses: actions/setup-node@v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
