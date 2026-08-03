@@ -1673,7 +1673,6 @@ __metadata:
     html-validate: "npm:11.6.2"
     husky: "npm:9.1.7"
     lint-staged: "npm:17.3.0"
-    postcss: "npm:8.5.25"
     prettier: "npm:3.9.6"
     remark-cli: "npm:12.0.1"
     remark-preset-lint-markdown-style-guide: "npm:6.0.1"
@@ -3803,7 +3802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.25, postcss@npm:^8.5.23":
+"postcss@npm:^8.5.16, postcss@npm:^8.5.23":
   version: 8.5.25
   resolution: "postcss@npm:8.5.25"
   dependencies:
@@ -3811,17 +3810,6 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/0a12c1e74b456c57122e81f684e02fd98ff4d57526f794d10c996df1147158808f5ae373ac82b988c8de6cbbaa82dbd7b13803b14f5dd3cf7cc6a42ccad5c9f2
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.5.16":
-  version: 8.5.20
-  resolution: "postcss@npm:8.5.20"
-  dependencies:
-    nanoid: "npm:^3.3.16"
-    picocolors: "npm:^1.1.1"
-    source-map-js: "npm:^1.2.1"
-  checksum: 10c0/9c7a0e32c77ac54c5613f974e6ccc97d4a70fdb3bf242617f3fb4d652e5c62a37c86c589e6e7a2d1e7120f80bc169cdf673482b88bd75020d2a44899fa569c13
   languageName: node
   linkType: hard
 
