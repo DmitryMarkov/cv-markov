@@ -1670,7 +1670,7 @@ __metadata:
     cssnano: "npm:8.0.2"
     editorconfig-checker: "npm:6.1.1"
     favicons: "npm:7.3.1"
-    html-validate: "npm:11.6.1"
+    html-validate: "npm:11.6.2"
     husky: "npm:9.1.7"
     lint-staged: "npm:17.3.0"
     postcss: "npm:8.5.25"
@@ -2198,9 +2198,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-validate@npm:11.6.1":
-  version: 11.6.1
-  resolution: "html-validate@npm:11.6.1"
+"html-validate@npm:11.6.2":
+  version: 11.6.2
+  resolution: "html-validate@npm:11.6.2"
   dependencies:
     "@html-validate/stylish": "npm:^6.0.0"
     "@sidvind/better-ajv-errors": "npm:7.0.0"
@@ -2210,10 +2210,10 @@ __metadata:
     semver: "npm:^7.0.0"
   peerDependencies:
     "@jest/globals": ^29.0.3 || ^30.0.0
-    "@vitest/expect": ^3.0.0 || ^4.0.1
+    "@vitest/expect": ^3.2.0 || ^4.0.1
     jest: ^29.0.3 || ^30.0.0
     jest-snapshot: ^29.0.3 || ^30.0.0
-    vitest: ^3.0.0 || ^4.0.1
+    vitest: ^3.2.0 || ^4.0.1
   peerDependenciesMeta:
     "@jest/globals":
       optional: true
@@ -2227,7 +2227,7 @@ __metadata:
       optional: true
   bin:
     html-validate: bin/html-validate.mjs
-  checksum: 10c0/fb916b4534d777157e3af5d1e83d62b0793d393709b6c6427f58c170c253a05145b97029c81233631cb2195b112ab03b5ecf1a344bbd837ede5218d22b8cddd3
+  checksum: 10c0/eddb06b037deaf2213a5310601d1654e766fe7c29b5a2108204bc60667f202abb8b7c55c859e099505669dc176b129708554258c1af82b6298e67e33190c2151
   languageName: node
   linkType: hard
 
