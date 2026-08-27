@@ -1561,9 +1561,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano-preset-default@npm:^8.0.9":
-  version: 8.0.9
-  resolution: "cssnano-preset-default@npm:8.0.9"
+"cssnano-preset-default@npm:^8.0.10":
+  version: 8.0.10
+  resolution: "cssnano-preset-default@npm:8.0.10"
   dependencies:
     browserslist: "npm:^4.28.8"
     cssnano-utils: "npm:^6.0.4"
@@ -1580,7 +1580,7 @@ __metadata:
     postcss-minify-gradients: "npm:^8.0.6"
     postcss-minify-params: "npm:^8.0.4"
     postcss-minify-selectors: "npm:^8.0.5"
-    postcss-normalize-charset: "npm:^8.0.4"
+    postcss-normalize-charset: "npm:^8.0.5"
     postcss-normalize-display-values: "npm:^8.0.4"
     postcss-normalize-positions: "npm:^8.0.4"
     postcss-normalize-repeat-style: "npm:^8.0.4"
@@ -1596,7 +1596,7 @@ __metadata:
     postcss-unique-selectors: "npm:^8.0.4"
   peerDependencies:
     postcss: ^8.5.26
-  checksum: 10c0/0a18c5cabd4e21781098b0f9d3a7f8b3bfce5799a91ca033516bcf38a9aa0fa09d13828b59255d94eb4d8c1dbc21fe1507ce5c46d6ef1f1c6d011cc6e1c8da35
+  checksum: 10c0/46659ad0cf3479c1527fdb34453e1598c179c7c80d40249a268cef70d3f6c06d3a0e183f5539a1673c44eb1b3d82065eddd76f0c991a639307d11f4052e70f3a
   languageName: node
   linkType: hard
 
@@ -1609,15 +1609,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:8.0.9":
-  version: 8.0.9
-  resolution: "cssnano@npm:8.0.9"
+"cssnano@npm:8.0.10":
+  version: 8.0.10
+  resolution: "cssnano@npm:8.0.10"
   dependencies:
-    cssnano-preset-default: "npm:^8.0.9"
+    cssnano-preset-default: "npm:^8.0.10"
     lilconfig: "npm:^3.1.3"
   peerDependencies:
     postcss: ^8.5.26
-  checksum: 10c0/bcbfc986ba7608e359c29e256a2b5c877a17ee2dc83616f692510b713b5f8370729ce6d1f14de0577596f009dcdff701f02061fb0b0b0f8026f7cd39eae6b6d8
+  checksum: 10c0/5773a93b3ceadffdd8448b2a29a8240ba800dedc0a8d9e99c6f38f7e058d927db39d3b0bca77a2e1cab062ad07bb6f8f6c12b2f2e51f653c5fd3ff65fc6ed91d
   languageName: node
   linkType: hard
 
@@ -1638,7 +1638,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:21.2.2"
     "@playwright/test": "npm:1.62.1"
     autoprefixer: "npm:10.5.4"
-    cssnano: "npm:8.0.9"
+    cssnano: "npm:8.0.10"
     editorconfig-checker: "npm:6.1.1"
     favicons: "npm:7.3.1"
     html-validate: "npm:11.10.0"
@@ -3605,12 +3605,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-normalize-charset@npm:^8.0.4":
-  version: 8.0.4
-  resolution: "postcss-normalize-charset@npm:8.0.4"
+"postcss-normalize-charset@npm:^8.0.5":
+  version: 8.0.5
+  resolution: "postcss-normalize-charset@npm:8.0.5"
   peerDependencies:
     postcss: ^8.5.26
-  checksum: 10c0/363fa1d52ec3785e6b45128e9812200b29e83c1fefc338174729ff0a576ebb9434f2664c615489aa77f2c0125bcc788a0fda071469f3b3e48660c31252f6b4dd
+  checksum: 10c0/722dae117d268e0b4dc40c4b6f39609116fd6e73b3b4b53e6f4073ff3d888addea88f9c812824dada48e31902f9fe202c70243ccb396bfba8c5b9a1a582842aa
   languageName: node
   linkType: hard
 
