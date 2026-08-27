@@ -1639,7 +1639,7 @@ __metadata:
     "@playwright/test": "npm:1.62.1"
     autoprefixer: "npm:10.5.4"
     cssnano: "npm:8.0.10"
-    editorconfig-checker: "npm:6.2.0"
+    editorconfig-checker: "npm:7.0.0"
     favicons: "npm:7.3.1"
     html-validate: "npm:11.10.0"
     husky: "npm:9.1.7"
@@ -1748,13 +1748,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"editorconfig-checker@npm:6.2.0":
-  version: 6.2.0
-  resolution: "editorconfig-checker@npm:6.2.0"
+"editorconfig-checker@npm:7.0.0":
+  version: 7.0.0
+  resolution: "editorconfig-checker@npm:7.0.0"
   bin:
     ec: dist/index.js
     editorconfig-checker: dist/index.js
-  checksum: 10c0/be501bbfe12381e5cd95137aede46ed4f4755d0b7a2b7ab2c3f06b34f66fea583713f45f67a28784a070db0db6cd39faa9b78a0fb1385d771429111e40dfb4d9
+  checksum: 10c0/017e50d5fe859d9cbd2c9f2a2ed7089380700c8e171c6fa3b09d5d3f5e55852ae280d631580e10810b5714ed090cdc56cb40b10d6a3fcceceda1bfd9465cf181
   languageName: node
   linkType: hard
 
