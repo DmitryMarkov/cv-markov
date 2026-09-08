@@ -1537,13 +1537,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano-preset-default@npm:^9.0.3":
-  version: 9.0.3
-  resolution: "cssnano-preset-default@npm:9.0.3"
+"cssnano-preset-default@npm:^9.0.4":
+  version: 9.0.4
+  resolution: "cssnano-preset-default@npm:9.0.4"
   dependencies:
     browserslist: "npm:^4.28.9"
     cssnano-utils: "npm:^7.0.2"
-    postcss-calc: "npm:^11.0.3"
+    postcss-calc: "npm:^11.1.1"
     postcss-colormin: "npm:^9.0.2"
     postcss-convert-values: "npm:^9.0.2"
     postcss-discard-comments: "npm:^9.0.2"
@@ -1572,7 +1572,7 @@ __metadata:
     postcss-unique-selectors: "npm:^9.0.2"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/5e6f38fb56a54cd1f844670328ee7f1f75a3c8fc1e55363582ca74d17b0d1105877c691ddfd398f444bd017ece5a2c489ff4777c2a9edee2fd8c508663e46448
+  checksum: 10c0/fb6cede1e8e5614d66d21212f277680e7ee95534a5684785b7ceaa5a723d292eeb8a002f0fd786be6759a2f40535f02a48912ab424d1c7e2089329159039e23c
   languageName: node
   linkType: hard
 
@@ -1585,14 +1585,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:9.0.3":
-  version: 9.0.3
-  resolution: "cssnano@npm:9.0.3"
+"cssnano@npm:9.0.4":
+  version: 9.0.4
+  resolution: "cssnano@npm:9.0.4"
   dependencies:
-    cssnano-preset-default: "npm:^9.0.3"
+    cssnano-preset-default: "npm:^9.0.4"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/6e68d4571444ac968332416cf5442ff3b541a45e94d7272173757b5f719f809538caf903a2e6b175c817ae1b70626747b8c78a1059a321865f69a47919ddacf5
+  checksum: 10c0/ad325957add9ef69501e3fa9f5c574c67fc066eac984b0cfe83111b1b0e80b40520b32d3e8935105ff3d9f1d49df8bbd62f819bd6f4e46fddb1333c1819133e4
   languageName: node
   linkType: hard
 
@@ -1613,7 +1613,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:21.2.2"
     "@playwright/test": "npm:1.63.0"
     autoprefixer: "npm:10.5.5"
-    cssnano: "npm:9.0.3"
+    cssnano: "npm:9.0.4"
     editorconfig-checker: "npm:7.0.0"
     favicons: "npm:7.3.1"
     html-validate: "npm:11.15.0"
@@ -3398,14 +3398,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-calc@npm:^11.0.3":
-  version: 11.0.3
-  resolution: "postcss-calc@npm:11.0.3"
+"postcss-calc@npm:^11.1.1":
+  version: 11.1.1
+  resolution: "postcss-calc@npm:11.1.1"
   dependencies:
     "@csstools/css-tokenizer": "npm:^4.0.0"
   peerDependencies:
-    postcss: ^8.5.25
-  checksum: 10c0/6dc90a89313def9891105ef291ba8701c84d03b30ad70f00a851e5b85f829ae9ef84f461c8f677202324d920814b0eb0b0d7585bb41e7b390886222c41abed3d
+    postcss: ^8.5.28
+  checksum: 10c0/7fe0eda0c1f6da296a2262fbda125ef16b54fb3d36b5038ab6547ddf58d353ba924a5c2cdca7ff2601487962b70eb7839a93d63e2285f93bdcbb42fad8e92d0d
   languageName: node
   linkType: hard
 
