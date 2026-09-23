@@ -60,7 +60,7 @@
     "husky": "9.1.7",
     "lint-staged": "17.5.1",
     "postcss": "8.5.28",
-    "prettier": "3.9.8",
+    "prettier": "3.9.9",
     "remark-cli": "12.0.1",
     "remark-preset-lint-markdown-style-guide": "6.0.1",
     "remark-preset-lint-recommended": "7.0.1",
