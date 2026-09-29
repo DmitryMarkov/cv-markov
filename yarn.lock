@@ -1559,15 +1559,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano-preset-default@npm:^9.1.0":
-  version: 9.1.0
-  resolution: "cssnano-preset-default@npm:9.1.0"
+"cssnano-preset-default@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "cssnano-preset-default@npm:9.1.1"
   dependencies:
     browserslist: "npm:^4.29.1"
-    cssnano-utils: "npm:^8.0.0"
+    cssnano-utils: "npm:^8.0.1"
     postcss-calc: "npm:^11.2.1"
     postcss-colormin: "npm:^9.0.4"
-    postcss-convert-values: "npm:^9.0.4"
+    postcss-convert-values: "npm:^9.0.5"
     postcss-discard-comments: "npm:^9.0.4"
     postcss-discard-duplicates: "npm:^9.0.4"
     postcss-discard-empty: "npm:^9.0.4"
@@ -1594,7 +1594,7 @@ __metadata:
     postcss-unique-selectors: "npm:^9.0.4"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/9b88302fede3c77a498cc9353f652b7571ad7a04d0c97c8e0f9d25fb29c2c6d0e7c4ad283a4a891c9c2330896c624582cb167f2a44ec89637fa8b0b4b92544ec
+  checksum: 10c0/21e1e67d135974753aac1970c19de6a1843cf64dc468b6b52258c456b5bfd33d8f43c00a7e6284db07281c152c80161a847225045ec711eb173ecc0f2a3aeca6
   languageName: node
   linkType: hard
 
@@ -1609,14 +1609,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:9.1.0":
-  version: 9.1.0
-  resolution: "cssnano@npm:9.1.0"
+"cssnano-utils@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "cssnano-utils@npm:8.0.1"
   dependencies:
-    cssnano-preset-default: "npm:^9.1.0"
+    "@csstools/css-tokenizer": "npm:^4.0.2"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/4b40e7810f6b65f3e71a88857be8c4c83e29b2ba5fb9a6629edbad30b16223dae6e0c3c39cf31d47bd95262e1a8e82350c0e5621b5ec102aeb1eaccb0d559a96
+  checksum: 10c0/efdff759d582e516554f0c07af4fc8b140136dd3968811eeccb77d4d251b4f81dc77ccb9072d6667718149f92907be6ac32adce61e6be8b405a91aba4778360d
+  languageName: node
+  linkType: hard
+
+"cssnano@npm:9.1.1":
+  version: 9.1.1
+  resolution: "cssnano@npm:9.1.1"
+  dependencies:
+    cssnano-preset-default: "npm:^9.1.1"
+  peerDependencies:
+    postcss: ^8.5.28
+  checksum: 10c0/66cab5ba30b22600382ae9393b48eef6d91f1d16d39a5c04f55dfa50e921549e42cf60caa9818de9638e41d7d4160b0d0af161efef880f7cabf89ca9f964e076
   languageName: node
   linkType: hard
 
@@ -1637,7 +1648,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:21.2.3"
     "@playwright/test": "npm:1.63.0"
     autoprefixer: "npm:10.6.1"
-    cssnano: "npm:9.1.0"
+    cssnano: "npm:9.1.1"
     editorconfig-checker: "npm:7.0.0"
     favicons: "npm:7.3.1"
     html-validate: "npm:11.16.1"
@@ -3455,15 +3466,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-convert-values@npm:^9.0.4":
-  version: 9.0.4
-  resolution: "postcss-convert-values@npm:9.0.4"
+"postcss-convert-values@npm:^9.0.5":
+  version: 9.0.5
+  resolution: "postcss-convert-values@npm:9.0.5"
   dependencies:
     browserslist: "npm:^4.29.1"
-    cssnano-utils: "npm:^8.0.0"
+    cssnano-utils: "npm:^8.0.1"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/33e3de048082c46e3b0256ba94791dba4b0602eabfb7c47a1b270919840fda90e93f12758a968f1ef51e36cc1d2fb9b6aa001fb655ba5089d18fe58ccc918368
+  checksum: 10c0/5de2ad9df1cf4849310d80f8ae278830bfaf57f2710d8b15fda928059063d0ec01d9d6337872a22709c25045cb55049d4fe81ee5d1a38127cf4a1d1e54894c05
   languageName: node
   linkType: hard
 
