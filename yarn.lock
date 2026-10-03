@@ -1559,9 +1559,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano-preset-default@npm:^9.2.1":
-  version: 9.2.1
-  resolution: "cssnano-preset-default@npm:9.2.1"
+"cssnano-preset-default@npm:^9.2.2":
+  version: 9.2.2
+  resolution: "cssnano-preset-default@npm:9.2.2"
   dependencies:
     browserslist: "npm:^4.29.3"
     cssnano-utils: "npm:^8.1.0"
@@ -1573,7 +1573,7 @@ __metadata:
     postcss-discard-empty: "npm:^9.0.5"
     postcss-discard-overridden: "npm:^9.0.5"
     postcss-merge-longhand: "npm:^9.2.0"
-    postcss-merge-rules: "npm:^9.0.7"
+    postcss-merge-rules: "npm:^9.0.8"
     postcss-minify-font-values: "npm:^9.0.7"
     postcss-minify-gradients: "npm:^9.0.6"
     postcss-minify-params: "npm:^9.0.6"
@@ -1594,7 +1594,7 @@ __metadata:
     postcss-unique-selectors: "npm:^9.0.5"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/0593ff8ed1c18843f9ce4ea9a3d99ecb121d0df78424fb034320ac0cbe8672ffb2b02ab716d8e6293f3182d3d7a8d87c9d286f2dd953e97627d44a0a543c1c1b
+  checksum: 10c0/d5b848ffa225ab30fd38c38b7b597815b668e0d1d6ddc35e898aa0b9c74c6a208bd482b3c663edc04f0e930cb97b478fdaa237c3a45244ec2bef52944e0d68c2
   languageName: node
   linkType: hard
 
@@ -1642,14 +1642,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:9.2.1":
-  version: 9.2.1
-  resolution: "cssnano@npm:9.2.1"
+"cssnano@npm:9.2.2":
+  version: 9.2.2
+  resolution: "cssnano@npm:9.2.2"
   dependencies:
-    cssnano-preset-default: "npm:^9.2.1"
+    cssnano-preset-default: "npm:^9.2.2"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/1ee35d39f2920743ac7200d03eb25da3b40cdb5e3d57a49708107b6c87b0b1877aa64b8abdc93465e089b56d4e3d702c2b109b9a2404eb2a166fcec258c63105
+  checksum: 10c0/e4d9c6f52f49528434a3fbb0b6c954a211459fe17dac193740e6aa9c0852bbca51d9152a3e9ac21a2480b4f2d4f02ef97360e6160d0bedeb8eb947f54d89ffa4
   languageName: node
   linkType: hard
 
@@ -1670,7 +1670,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:21.2.3"
     "@playwright/test": "npm:1.63.0"
     autoprefixer: "npm:10.6.1"
-    cssnano: "npm:9.2.1"
+    cssnano: "npm:9.2.2"
     editorconfig-checker: "npm:7.0.0"
     favicons: "npm:7.3.1"
     html-validate: "npm:11.16.1"
@@ -3554,18 +3554,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-merge-rules@npm:^9.0.7":
-  version: 9.0.7
-  resolution: "postcss-merge-rules@npm:9.0.7"
+"postcss-merge-rules@npm:^9.0.8":
+  version: 9.0.8
+  resolution: "postcss-merge-rules@npm:9.0.8"
   dependencies:
     "@csstools/css-tokenizer": "npm:^4.0.2"
     browserslist: "npm:^4.29.3"
     caniuse-api: "npm:^4.0.0"
-    cssnano-utils: "npm:^8.0.2"
+    cssnano-utils: "npm:^8.1.0"
     postcss-minify-selectors: "npm:^9.0.6"
   peerDependencies:
     postcss: ^8.5.28
-  checksum: 10c0/8f35e98f0901970e2cf6a20f33a9b0af3d68f60bc3f6c0d6d42abed2a016562730530d7c24ed3b5d58292fcedaea6bb384af2350699eeb054837100765dfadf7
+  checksum: 10c0/f7e520cdb3e189ed1dbf670eb0d57e2d9a9f255e272504dc9207536de26e0e8b7be3cef419c67621f024350ab412cb9c9e1173568963d16b3fcebdfc2499e65e
   languageName: node
   linkType: hard
 
