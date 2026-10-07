@@ -114,7 +114,7 @@ jobs:
         run: yarn install --immutable
       - run: yarn build
       - run: yarn test:run
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: failure()
         with:
           name: playwright-report
