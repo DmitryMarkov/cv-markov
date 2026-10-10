@@ -1559,9 +1559,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano-preset-default@npm:^9.4.0":
-  version: 9.4.0
-  resolution: "cssnano-preset-default@npm:9.4.0"
+"cssnano-preset-default@npm:^9.5.0":
+  version: 9.5.0
+  resolution: "cssnano-preset-default@npm:9.5.0"
   dependencies:
     browserslist: "npm:^4.29.3"
     cssnano-utils: "npm:^8.2.1"
@@ -1584,9 +1584,9 @@ __metadata:
     postcss-normalize-repeat-style: "npm:^9.0.6"
     postcss-normalize-string: "npm:^9.0.6"
     postcss-normalize-timing-functions: "npm:^9.0.6"
-    postcss-normalize-unicode: "npm:^9.0.6"
+    postcss-normalize-unicode: "npm:^9.1.0"
     postcss-normalize-url: "npm:^9.0.6"
-    postcss-normalize-whitespace: "npm:^9.0.6"
+    postcss-normalize-whitespace: "npm:^9.0.7"
     postcss-ordered-values: "npm:^9.0.8"
     postcss-reduce-initial: "npm:^9.0.7"
     postcss-reduce-transforms: "npm:^9.0.5"
@@ -1594,7 +1594,7 @@ __metadata:
     postcss-unique-selectors: "npm:^9.0.6"
   peerDependencies:
     postcss: ^8.5.29
-  checksum: 10c0/bab4de00b26619c7170ec0d8fb006a5dfadfdc91095f152f7101312ecec0bad2cfd800232311dc0e35c4f235ba365144a90d5444201824739fa1b6d90c6c9f1f
+  checksum: 10c0/025b710bc53786fc5dea7647ea0a7b7b72040de77e44de0c306bb00eae26efc5034237184ad728e7b6531dfe75411c871e76f35a3a5ed3416ca08d7926ad07a1
   languageName: node
   linkType: hard
 
@@ -1609,14 +1609,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:9.4.0":
-  version: 9.4.0
-  resolution: "cssnano@npm:9.4.0"
+"cssnano@npm:9.5.0":
+  version: 9.5.0
+  resolution: "cssnano@npm:9.5.0"
   dependencies:
-    cssnano-preset-default: "npm:^9.4.0"
+    cssnano-preset-default: "npm:^9.5.0"
   peerDependencies:
     postcss: ^8.5.29
-  checksum: 10c0/3758f0c331a1ea33aafdeda8b4c42c09329170279a020839dc398d0cad3288bb8ecbd19aba9068b50594f0bd576f5812f53635bbc5509b0615b74b4106e0fd43
+  checksum: 10c0/2f8a912e2771c771b7bc4ac07d5e74862d7c3d50d26039b414e72c9419cc618d41aae229246162b6aed878a4a2f6493a94843e5a827e83c17c2fdce873c8f5c0
   languageName: node
   linkType: hard
 
@@ -1637,7 +1637,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:21.2.3"
     "@playwright/test": "npm:1.64.0"
     autoprefixer: "npm:10.6.1"
-    cssnano: "npm:9.4.0"
+    cssnano: "npm:9.5.0"
     editorconfig-checker: "npm:7.0.0"
     favicons: "npm:7.3.1"
     html-validate: "npm:11.16.2"
@@ -3656,16 +3656,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-normalize-unicode@npm:^9.0.6":
-  version: 9.0.6
-  resolution: "postcss-normalize-unicode@npm:9.0.6"
+"postcss-normalize-unicode@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "postcss-normalize-unicode@npm:9.1.0"
   dependencies:
     "@csstools/css-tokenizer": "npm:^4.0.2"
     browserslist: "npm:^4.29.3"
     cssnano-utils: "npm:^8.2.1"
   peerDependencies:
     postcss: ^8.5.29
-  checksum: 10c0/8ab34df3f41c59e9d51261a0c241c3362f520c1a78375aecea1aed2be95114b9ed97b0fdfd8d0d6d4b0347c03a3ff1c4ed7fb38f6f1ef3ba653a1e58cae0f713
+  checksum: 10c0/31345d56776f16a487675251d847b0fef4db32b25d4c02073d9790911d8f2ef00780cefaf1205605a98a4b0e5e41d6844a5cd768144688bcea32d0bfd2fd4d78
   languageName: node
   linkType: hard
 
@@ -3681,15 +3681,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-normalize-whitespace@npm:^9.0.6":
-  version: 9.0.6
-  resolution: "postcss-normalize-whitespace@npm:9.0.6"
+"postcss-normalize-whitespace@npm:^9.0.7":
+  version: 9.0.7
+  resolution: "postcss-normalize-whitespace@npm:9.0.7"
   dependencies:
     "@csstools/css-tokenizer": "npm:^4.0.2"
     cssnano-utils: "npm:^8.2.1"
   peerDependencies:
     postcss: ^8.5.29
-  checksum: 10c0/5b608585df6bf533a0caa32418b2e454c323de74027ad79c40e150c3d77eac59c262ba37e7ef64468437131b2096209f4dd0451b7764c87616cdf3c929f12251
+  checksum: 10c0/2db0c38e38fa2e114fd4efe04d7e9264ec1df18e7110254c27523bd8110b9c1cfe4394b012a70bee67afc8f44163a515c93695a81b3bb4115834131ba425754b
   languageName: node
   linkType: hard
 
