@@ -59,7 +59,7 @@
     "html-validate": "11.16.4",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "postcss": "8.5.30",
+    "postcss": "8.5.31",
     "prettier": "3.9.10",
     "remark-cli": "12.0.1",
     "remark-preset-lint-markdown-style-guide": "6.0.1",
