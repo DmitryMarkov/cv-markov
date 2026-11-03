@@ -14,7 +14,7 @@ services:
       - |
         set -e
         trap 'chown -R "$$HOST_UID:$$HOST_GID" /work/build /work/playwright-report /work/test-results /work/tests/__screenshots__ 2>/dev/null || true' EXIT
-        corepack enable
+        npm install -g corepack@0.36.0 && corepack enable
         yarn install --immutable
         yarn build
         yarn test:run $$TEST_FLAGS
