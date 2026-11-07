@@ -75,8 +75,8 @@
 }
 
 /* Inconsolata 700 (OFL, latin subset from @fontsource/inconsolata 5.3.0).
-   Bundled so section headings render identically on every OS and in the
-   Playwright test image; see assets/fonts/inconsolata-OFL.txt */
+  Bundled so section headings render identically on every OS and in the
+  Playwright test image; see assets/fonts/inconsolata-OFL.txt */
 @font-face {
   font-display: swap;
   font-family: 'Inconsolata';
@@ -285,11 +285,11 @@ h3 {
   color: #ff5a18;
   font-family: 'Inconsolata', monospace;
   /* Inconsolata is narrower than the old Consolas/Menlo fallback (0.5em vs
-     0.6em advance): 2.7rem keeps the previous visual size, line-height
-     7/6 keeps the old 31.5px line box so the layout below doesn't shift
-     (unitless, so the smaller ':before'/':after' markers scale too), and
-     margin-left equals the width of the hidden ':before' '<' (0.5 x 2.1rem)
-     so the word stays aligned with h4 */
+    0.6em advance): 2.7rem keeps the previous visual size, line-height
+    7/6 keeps the old 31.5px line box so the layout below doesn't shift
+    (unitless, so the smaller ':before'/':after' markers scale too), and
+    margin-left equals the width of the hidden ':before' '<' (0.5 x 2.1rem)
+    so the word stays aligned with h4 */
   font-size: 2.7rem;
   font-weight: 700;
   letter-spacing: 0;
