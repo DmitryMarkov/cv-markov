@@ -74,16 +74,20 @@
     U+2DE0-2DFF, U+A640-A69F;
 }
 
-/* Inconsolata 700 (OFL, latin subset from @fontsource/inconsolata 5.3.0).
+/* Inconsolata 700 (OFL, from @fontsource/inconsolata 5.3.0).
   Bundled so section headings render identically on every OS and in the
-  Playwright test image; see assets/fonts/inconsolata-OFL.txt */
+  Playwright test image; see assets/fonts/inconsolata-OFL.txt.
+  Subset to what h3 needs (lowercased text + ':before'/':after' markers),
+  5.7 KB instead of 18 KB, which keeps Lighthouse performance at 100:
+  pyftsubset inconsolata-latin-700-normal.woff2 --flavor=woff2
+    --unicodes=U+0020,U+002D,U+003C,U+003E,U+0061-007A
+  Characters outside the subset fall back to the generic monospace. */
 @font-face {
   font-display: swap;
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 700;
-  src: url('/assets/fonts/inconsolata-latin-700-normal.woff2')
-    format('woff2');
+  src: url('/assets/fonts/inconsolata-700-headings.woff2') format('woff2');
 }
 
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css (exerpt) */
