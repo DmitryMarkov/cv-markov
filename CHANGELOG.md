@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.5.0 [2026-11-07]
+
+- Section headings use bundled Inconsolata 700 instead of 'Consolas', monospace
+- Headings now render identically on every OS (Consolas was Windows-only)
+- Visual snapshots no longer depend on the Playwright image's fallback font
+- Heading size, line-height, hover markers and offset rescaled to match layout
+- Heading font subset to the glyphs h3 uses (18 KB -> 5.7 KB woff2)
+- Lighthouse performance 100 in 10/10 local runs (FCP 1.05s -> 0.90s)
+- Dependencies: Playwright 1.65.0, stylelint 18, cssnano 9, Vite 8.3, Node 26
+- Dependencies: editorconfig-checker 7, html-validate 11.19, Yarn 4.18.1
+
 ## v4.4.0 [2026-05-18]
 
 - Hero avatar served via &lt;picture&gt; with WebP source + PNG fallback
