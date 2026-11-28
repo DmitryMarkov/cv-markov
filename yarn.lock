@@ -1037,12 +1037,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.7.0":
-  version: 10.7.0
-  resolution: "autoprefixer@npm:10.7.0"
+"autoprefixer@npm:10.7.1":
+  version: 10.7.1
+  resolution: "autoprefixer@npm:10.7.1"
   dependencies:
     browserslist: "npm:^4.29.6"
-    caniuse-lite: "npm:^1.0.30001826"
+    caniuse-lite: "npm:^1.0.30001828"
     fraction.js: "npm:^5.3.4"
     picocolors: "npm:^1.1.1"
     postcss-value-parser: "npm:^4.2.0"
@@ -1050,7 +1050,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 10c0/ef9f1bee2f65b9079c2175f8a7037ba29bb0696376354adf7b351ff0f608b231ab7f8c4eaead9fe82a117c9aed8d61852b4c1486eff8de5f663ab8b784abeb22
+  checksum: 10c0/0ec1671142af1d3be8f03d065889b1e75a4b75522916e91136e7fb593390807181e059e0cd7e95f47c5b3625ae3848010891421553e562cf51fe6d8c883449cf
   languageName: node
   linkType: hard
 
@@ -1407,7 +1407,7 @@ __metadata:
     "@commitlint/cli": "npm:21.2.4"
     "@commitlint/config-conventional": "npm:21.2.4"
     "@playwright/test": "npm:1.65.1"
-    autoprefixer: "npm:10.7.0"
+    autoprefixer: "npm:10.7.1"
     cssnano: "npm:9.9.0"
     editorconfig-checker: "npm:7.0.0"
     favicons: "npm:7.3.1"
